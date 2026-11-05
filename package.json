@@ -1,0 +1,53 @@
+{
+  "name": "openbridge",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Open-source, privacy-first benefits eligibility navigator. Screen once for SNAP, Medicaid, WIC and more, entirely on-device.",
+  "license": "AGPL-3.0-only",
+  "author": "StarlingTek, LLC <openbridge@starlingtek.com> (https://starlingtek.com)",
+  "keywords": [
+    "benefits",
+    "eligibility",
+    "snap",
+    "medicaid",
+    "wic",
+    "civic-tech",
+    "privacy",
+    "pwa"
+  ],
+  "type": "module",
+  "packageManager": "npm@11.8.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "e2e": "npm run e2e -w @openbridge/web-app",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run validate:adapters && npm run test:fixtures && npm run check:reason-keys && npm run check:readability",
+    "validate:adapters": "tsx scripts/validate-state-adapter.ts",
+    "test:fixtures": "tsx scripts/run-fixtures.ts",
+    "check:reason-keys": "tsx scripts/check-reason-keys.ts",
+    "seed:fpl": "tsx scripts/seed-fpl-data.ts",
+    "check:readability": "tsx scripts/check-readability.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.15.0",
+    "@typescript-eslint/eslint-plugin": "^8.15.0",
+    "@typescript-eslint/parser": "^8.15.0",
+    "eslint": "^9.15.0",
+    "prettier": "^3.4.1",
+    "tsx": "^4.19.2",
+    "turbo": "^2.3.3",
+    "typescript": "^5.7.2",
+    "vitest": "^2.1.8",
+    "zod": "^3.23.8"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

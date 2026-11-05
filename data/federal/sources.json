@@ -1,0 +1,16 @@
+[
+  {
+    "field": "fplTables",
+    "sourceName": "HHS Poverty Guidelines",
+    "url": "https://aspe.hhs.gov/topics/poverty-economic-mobility/poverty-guidelines",
+    "publishedDate": "2024-01-17",
+    "note": "2024 guidelines. Illustrative values pending SME verification."
+  },
+  {
+    "field": "snap.maxAllotmentByHouseholdSizeCents",
+    "sourceName": "USDA FNS SNAP COLA (FY2024)",
+    "url": "https://www.fns.usda.gov/snap/allotment/COLA",
+    "publishedDate": "2023-08-01",
+    "note": "FY2024 (Oct 2023–Sep 2024). Illustrative values pending SME verification."
+  }
+]

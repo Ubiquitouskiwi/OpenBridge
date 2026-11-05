@@ -1,0 +1,18 @@
+{
+  "name": "Texas childless adult: SNAP yes, Medicaid coverage gap",
+  "profile": {
+    "members": [{ "id": "self", "relationship": "self", "age": 40 }],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 100000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "Bexar",
+    "stateCode": "TX"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "ineligible",
+    "wic": "ineligible",
+    "liheap": "likely_eligible",
+    "tanf": "ineligible"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "name": "Washington BBCE: SNAP eligible above the 130% gross limit",
+  "profile": {
+    "members": [{ "id": "self", "relationship": "self", "age": 30 }],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 200000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "King",
+    "stateCode": "WA"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "ineligible",
+    "wic": "ineligible",
+    "liheap": "possibly_eligible",
+    "tanf": "ineligible"
+  }
+}

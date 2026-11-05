@@ -1,0 +1,21 @@
+{
+  "name": "Washington single adult near the BBCE limit: federal minimum benefit applies",
+  "profile": {
+    "members": [{ "id": "self", "relationship": "self", "age": 40 }],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 200000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "King",
+    "stateCode": "WA"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "ineligible",
+    "wic": "ineligible",
+    "liheap": "possibly_eligible",
+    "tanf": "ineligible"
+  },
+  "expectedBenefits": {
+    "snap": 2300
+  }
+}

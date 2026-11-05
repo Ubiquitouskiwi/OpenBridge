@@ -1,0 +1,50 @@
+[
+  {
+    "type": "gov",
+    "name": "211 (United Way) — local resource line",
+    "coverageArea": "US",
+    "categories": ["benefits", "housing", "food", "utilities"],
+    "languages": ["en", "es"],
+    "phone": "211",
+    "url": "https://www.211.org",
+    "lastVerified": "2026-07-02"
+  },
+  {
+    "type": "legal_aid",
+    "name": "Ohio Legal Help",
+    "coverageArea": "OH",
+    "categories": ["benefits", "housing", "immigration"],
+    "languages": ["en", "es"],
+    "url": "https://www.ohiolegalhelp.org",
+    "lastVerified": "2026-07-02"
+  },
+  {
+    "type": "legal_aid",
+    "name": "Community Legal Aid (NE/Central Ohio)",
+    "coverageArea": "OH",
+    "categories": ["benefits", "immigration"],
+    "languages": ["en", "es"],
+    "phone": "1-800-998-9454",
+    "url": "https://www.communitylegalaid.org",
+    "lastVerified": "2026-07-02"
+  },
+  {
+    "type": "legal_aid",
+    "name": "Texas Legal Services Center",
+    "coverageArea": "TX",
+    "categories": ["benefits", "immigration"],
+    "languages": ["en", "es"],
+    "url": "https://www.tlsc.org",
+    "lastVerified": "2026-07-02"
+  },
+  {
+    "type": "legal_aid",
+    "name": "Northwest Justice Project",
+    "coverageArea": "WA",
+    "categories": ["benefits", "housing", "immigration"],
+    "languages": ["en", "es"],
+    "phone": "1-888-201-1014",
+    "url": "https://nwjustice.org",
+    "lastVerified": "2026-07-02"
+  }
+]

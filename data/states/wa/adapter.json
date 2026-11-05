@@ -1,0 +1,75 @@
+{
+  "stateCode": "WA",
+  "stateName": "Washington",
+  "medicaidExpansion": true,
+  "programs": {
+    "snap": {
+      "bbce": true,
+      "grossIncomeLimitPct": 200,
+      "netIncomeLimitPct": null,
+      "assetLimitCents": null,
+      "assetLimitElderlyDisabledCents": null,
+      "hasVehicleAssetTest": false
+    },
+    "medicaid": {
+      "expansion": true,
+      "adultLimitPct": 138,
+      "parentCaretakerLimitPct": 138,
+      "pregnantLimitPct": 193,
+      "childTiers": [
+        { "maxAgeInclusive": 1, "limitPct": 215 },
+        { "maxAgeInclusive": 18, "limitPct": 215 }
+      ]
+    },
+    "wic": { "incomeLimitPct": 185 },
+    "liheap": { "incomeLimitPct": 150, "categoricalIfSnap": true },
+    "tanf": { "baseMonthlyLimitCents": 65400, "perAdditionalPersonCents": 16000 }
+  },
+  "portalUrls": {
+    "snap": "https://www.washingtonconnection.org",
+    "medicaid": "https://www.washingtonconnection.org",
+    "wic": "https://doh.wa.gov/you-and-your-family/wic",
+    "liheap": "https://www.commerce.wa.gov/growing-the-economy/energy/low-income-home-energy-assistance",
+    "tanf": "https://www.washingtonconnection.org"
+  },
+  "sources": [
+    {
+      "field": "snap.grossIncomeLimitPct",
+      "sourceName": "WA DSHS (BBCE 200%)",
+      "url": "https://www.dshs.wa.gov/esa/community-services-offices/basic-food",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    },
+    {
+      "field": "medicaid.adultLimitPct",
+      "sourceName": "Washington Apple Health / Medicaid.gov",
+      "url": "https://www.hca.wa.gov/health-care-services-supports/apple-health-medicaid-coverage",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    },
+    {
+      "field": "wic.incomeLimitPct",
+      "sourceName": "USDA FNS WIC Income Eligibility Guidelines (185% FPL)",
+      "url": "https://www.fns.usda.gov/wic/income-eligibility-guidelines",
+      "publishedDate": "2024-01-01",
+      "note": "Federal standard; Washington applies 185% FPL. Pending SME verification."
+    },
+    {
+      "field": "liheap.incomeLimitPct",
+      "sourceName": "Washington Dept. of Commerce LIHEAP",
+      "url": "https://www.commerce.wa.gov/growing-the-economy/energy/low-income-home-energy-assistance",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    },
+    {
+      "field": "tanf.baseMonthlyLimitCents",
+      "sourceName": "Washington DSHS TANF/WorkFirst payment standards",
+      "url": "https://www.dshs.wa.gov/esa/community-services-offices/tanf-and-support-services",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    }
+  ],
+  "verificationStatus": "draft",
+  "lastVerified": "2026-07-02",
+  "lastVerifiedBy": "pending-sme"
+}

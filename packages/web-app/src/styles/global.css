@@ -1,0 +1,205 @@
+:root {
+  --brand: #0b5cad;
+  --ink: #16202b;
+  --muted: #55636e;
+  --ok: #1c7a3f;
+  --warn: #8a5a00;
+  --bad: #a12a2a;
+  --border: #d4dbe2;
+  --bg-soft: #f2f6fa;
+  --radius: 10px;
+  --gap: 1rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    sans-serif;
+  color: var(--ink);
+  line-height: 1.55;
+  font-size: 18px;
+}
+
+.container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 0.75rem;
+  gap: 1rem;
+}
+
+.app-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--brand);
+  text-decoration: none;
+}
+
+.app-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+button {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--brand);
+  background: #fff;
+  color: var(--brand);
+  cursor: pointer;
+}
+
+button.primary,
+button.clear-data-button {
+  min-height: 44px;
+}
+
+button.primary {
+  background: var(--brand);
+  color: #fff;
+}
+
+button.clear-data-button {
+  border-color: var(--bad);
+  color: var(--bad);
+}
+
+a {
+  color: var(--brand);
+}
+
+:focus-visible {
+  outline: 3px solid #ffbf47;
+  outline-offset: 2px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 0.5rem;
+  background: #fff;
+  padding: 0.5rem;
+  z-index: 10;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.transparency-banner {
+  background: var(--bg-soft);
+  border-block: 1px solid var(--border);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  font-size: 0.95rem;
+}
+
+.transparency-banner p {
+  margin: 0;
+}
+
+.auto-clear-warning {
+  background: #fff6e5;
+  border: 1px solid var(--warn);
+  border-radius: var(--radius);
+  padding: 0.75rem 1rem;
+  margin: 0.5rem auto;
+  max-width: 720px;
+}
+
+section,
+.welcome {
+  padding-block: 1.25rem;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-block: 1rem;
+  padding: 1rem;
+}
+
+label {
+  display: block;
+  margin-block: 0.35rem;
+}
+
+input,
+select {
+  font: inherit;
+  min-height: 44px;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.field-hint {
+  color: var(--muted);
+  font-size: 0.9rem;
+  margin: 0.15rem 0 0;
+}
+
+.program-card {
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 1rem;
+  margin-block: 0.75rem;
+}
+
+.outcome-eligible,
+.outcome-likely_eligible {
+  color: var(--ok);
+  font-weight: 700;
+}
+.outcome-possibly_eligible {
+  color: var(--warn);
+  font-weight: 700;
+}
+.outcome-ineligible,
+.outcome-unknown {
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.footer {
+  color: var(--muted);
+  font-size: 0.9rem;
+  padding-block: 2rem;
+}
+
+.wizard-steps {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.reason-list,
+.step-list,
+.doc-list {
+  padding-left: 1.2rem;
+}

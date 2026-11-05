@@ -1,0 +1,18 @@
+{
+  "name": "Ohio single low-income adult",
+  "profile": {
+    "members": [{ "id": "self", "relationship": "self", "age": 30 }],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 120000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "Franklin",
+    "stateCode": "OH"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "likely_eligible",
+    "wic": "ineligible",
+    "liheap": "likely_eligible",
+    "tanf": "ineligible"
+  }
+}

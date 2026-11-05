@@ -1,0 +1,23 @@
+name: Feature request
+description: Suggest an improvement.
+labels: ['enhancement', 'triage']
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem does this solve, and for whom?
+      description: Benefit seeker, navigator, organization, or contributor.
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+  - type: checkboxes
+    id: principles
+    attributes:
+      label: Fit with project principles
+      options:
+        - label: Works without sending personal data off the device
+        - label: Works on shared computers and older phones
+        - label: Can be explained in plain language
