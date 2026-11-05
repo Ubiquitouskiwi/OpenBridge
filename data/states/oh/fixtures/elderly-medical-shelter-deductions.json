@@ -1,0 +1,24 @@
+{
+  "name": "Ohio elderly adult: medical + uncapped shelter deductions drive the SNAP benefit",
+  "profile": {
+    "members": [{ "id": "self", "relationship": "self", "age": 68 }],
+    "incomeSources": [
+      { "type": "social_security", "amountCents": 140000, "frequency": "monthly", "earned": false }
+    ],
+    "monthlyMedicalExpensesCents": 20000,
+    "monthlyHousingCostCents": 80000,
+    "monthlyUtilityCostCents": 15000,
+    "county": "Franklin",
+    "stateCode": "OH"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "likely_eligible",
+    "wic": "ineligible",
+    "liheap": "likely_eligible",
+    "tanf": "ineligible"
+  },
+  "expectedBenefits": {
+    "snap": 10935
+  }
+}

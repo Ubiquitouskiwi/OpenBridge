@@ -1,0 +1,61 @@
+name: Eligibility rule correction
+description: A rule value, threshold, or result looks wrong for a program or state.
+labels: ['eligibility-rules', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Rule corrections are among the most valuable contributions. Please cite an official source so
+        a maintainer and a subject-matter expert can verify it. Use a made-up household, never a real one.
+  - type: dropdown
+    id: program
+    attributes:
+      label: Program
+      options:
+        ['SNAP', 'Medicaid', 'CHIP', 'WIC', 'LIHEAP', 'TANF', 'Federal poverty guidelines', 'Other']
+    validations:
+      required: true
+  - type: input
+    id: state
+    attributes:
+      label: State
+      placeholder: e.g. OH
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What OpenBridge says or uses now
+      description: The value or result, and where you saw it (file path, screen, or result card).
+    validations:
+      required: true
+  - type: textarea
+    id: correct
+    attributes:
+      label: What it should be
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Official source (URL)
+      description: An agency page, policy manual, or published table.
+    validations:
+      required: true
+  - type: input
+    id: published
+    attributes:
+      label: Source publication or effective date
+  - type: dropdown
+    id: role
+    attributes:
+      label: Your background (optional)
+      options:
+        [
+          'Benefits navigator or caseworker',
+          'Agency staff',
+          'Legal aid',
+          'Policy researcher',
+          'Developer',
+          'Other',
+        ]

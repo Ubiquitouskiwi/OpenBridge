@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vitest/globals"],
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false
+  },
+  "references": [
+    { "path": "../shared" },
+    { "path": "../eligibility-engine" },
+    { "path": "../form-assembly" }
+  ],
+  "include": ["src"]
+}

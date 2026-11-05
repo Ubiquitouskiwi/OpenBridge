@@ -1,0 +1,25 @@
+name: New state request or offer
+description: Ask for, or volunteer to help with, support for a new state.
+labels: ['new-state', 'triage']
+body:
+  - type: input
+    id: state
+    attributes:
+      label: State
+      placeholder: e.g. PA
+    validations:
+      required: true
+  - type: checkboxes
+    id: help
+    attributes:
+      label: How can you help?
+      options:
+        - label: I can research and cite rule values
+        - label: I can review rules as a subject-matter expert
+        - label: I can write the adapter and fixtures
+        - label: I am requesting support, not offering help
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Organizations, programs, or local resources that matter for this state.

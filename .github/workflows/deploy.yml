@@ -1,0 +1,60 @@
+name: Deploy
+
+# Deploys the built PWA to the hosted AWS account via CDK on pushes to main.
+# Requires repository configuration:
+#   - secret AWS_DEPLOY_ROLE_ARN: an IAM role ARN trusted for GitHub OIDC.
+#   - variable AWS_REGION (optional; defaults to us-west-2).
+# The job is skipped automatically if the role secret is not set.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: sandbox
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Guard — require deploy role
+        id: guard
+        run: |
+          if [ -z "${{ secrets.AWS_DEPLOY_ROLE_ARN }}" ]; then
+            echo "No AWS_DEPLOY_ROLE_ARN configured; skipping deploy."
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install and build web app
+        if: steps.guard.outputs.enabled == 'true'
+        run: |
+          npm ci
+          npm run build
+
+      - name: Install infra deps
+        if: steps.guard.outputs.enabled == 'true'
+        working-directory: infra
+        run: npm install
+
+      - name: Configure AWS credentials (OIDC)
+        if: steps.guard.outputs.enabled == 'true'
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
+          aws-region: ${{ vars.AWS_REGION || 'us-west-2' }}
+
+      - name: CDK deploy
+        if: steps.guard.outputs.enabled == 'true'
+        working-directory: infra
+        run: npx cdk deploy --require-approval never

@@ -1,0 +1,19 @@
+# Generated output
+node_modules/
+dist/
+build/
+coverage/
+.turbo/
+infra/cdk.out/
+packages/web-app/test-results/
+packages/web-app/playwright-report/
+*.tsbuildinfo
+package-lock.json
+
+# Binary or vendored text kept verbatim
+*.pdf
+LICENSE
+CODE_OF_CONDUCT.md
+
+# Authored specs keep their hand-maintained table layout
+.kiro/specs/

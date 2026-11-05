@@ -1,0 +1,41 @@
+name: Bug report
+description: Something in the app or tooling does not work as expected.
+labels: ['bug', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting. **Do not include real personal information** (names, incomes, immigration
+        status) in this issue. Use made-up values. For security problems, follow SECURITY.md instead.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Choose state ...
+        2. Add household of ...
+        3. See ...
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Browser and device
+      placeholder: e.g. Chrome 130 on a library Windows PC, Safari on iPhone
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Mode
+      options: ['Individual', 'Navigator', 'Not sure']
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options: ['English', 'Spanish']

@@ -1,0 +1,9 @@
+{
+  "SNAP_GROSS_INCOME": "Monthly income",
+  "SNAP_NET_INCOME": "Income after deductions",
+  "SNAP_ASSETS": "Savings",
+  "MEDICAID_ANNUAL_INCOME": "Yearly household income",
+  "WIC_ANNUAL_INCOME": "Yearly household income",
+  "LIHEAP_ANNUAL_INCOME": "Yearly household income",
+  "TANF_MONTHLY_INCOME": "Monthly income"
+}
