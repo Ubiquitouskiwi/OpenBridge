@@ -1,0 +1,75 @@
+{
+  "stateCode": "OH",
+  "stateName": "Ohio",
+  "medicaidExpansion": true,
+  "programs": {
+    "snap": {
+      "bbce": true,
+      "grossIncomeLimitPct": 130,
+      "netIncomeLimitPct": null,
+      "assetLimitCents": null,
+      "assetLimitElderlyDisabledCents": null,
+      "hasVehicleAssetTest": false
+    },
+    "medicaid": {
+      "expansion": true,
+      "adultLimitPct": 138,
+      "parentCaretakerLimitPct": 90,
+      "pregnantLimitPct": 200,
+      "childTiers": [
+        { "maxAgeInclusive": 1, "limitPct": 206 },
+        { "maxAgeInclusive": 18, "limitPct": 206 }
+      ]
+    },
+    "wic": { "incomeLimitPct": 185 },
+    "liheap": { "incomeLimitPct": 175, "categoricalIfSnap": true },
+    "tanf": { "baseMonthlyLimitCents": 60000, "perAdditionalPersonCents": 15000 }
+  },
+  "portalUrls": {
+    "snap": "https://benefits.ohio.gov",
+    "medicaid": "https://benefits.ohio.gov",
+    "wic": "https://odh.ohio.gov/know-our-programs/women-infants-children",
+    "liheap": "https://energyhelp.ohio.gov",
+    "tanf": "https://benefits.ohio.gov"
+  },
+  "sources": [
+    {
+      "field": "medicaid.adultLimitPct",
+      "sourceName": "Ohio Medicaid / Medicaid.gov eligibility",
+      "url": "https://medicaid.ohio.gov",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending Franklin County SME verification."
+    },
+    {
+      "field": "snap.grossIncomeLimitPct",
+      "sourceName": "Ohio Dept. of Job and Family Services (BBCE)",
+      "url": "https://jfs.ohio.gov",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending Franklin County SME verification."
+    },
+    {
+      "field": "wic.incomeLimitPct",
+      "sourceName": "USDA FNS WIC Income Eligibility Guidelines (185% FPL)",
+      "url": "https://www.fns.usda.gov/wic/income-eligibility-guidelines",
+      "publishedDate": "2024-01-01",
+      "note": "Federal standard; Ohio applies 185% FPL. Pending SME verification."
+    },
+    {
+      "field": "liheap.incomeLimitPct",
+      "sourceName": "Ohio Dept. of Development HEAP eligibility",
+      "url": "https://energyhelp.ohio.gov",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending Franklin County SME verification."
+    },
+    {
+      "field": "tanf.baseMonthlyLimitCents",
+      "sourceName": "Ohio Works First payment/eligibility standards (ODJFS)",
+      "url": "https://jfs.ohio.gov/ocomm/owf",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending Franklin County SME verification."
+    }
+  ],
+  "verificationStatus": "draft",
+  "lastVerified": "2026-07-02",
+  "lastVerifiedBy": "pending-franklin-county-sme"
+}

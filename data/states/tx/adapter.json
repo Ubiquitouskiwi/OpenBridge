@@ -1,0 +1,76 @@
+{
+  "stateCode": "TX",
+  "stateName": "Texas",
+  "medicaidExpansion": false,
+  "programs": {
+    "snap": {
+      "bbce": false,
+      "grossIncomeLimitPct": 130,
+      "netIncomeLimitPct": 100,
+      "assetLimitCents": 500000,
+      "assetLimitElderlyDisabledCents": 750000,
+      "hasVehicleAssetTest": true
+    },
+    "medicaid": {
+      "expansion": false,
+      "adultLimitPct": 0,
+      "parentCaretakerLimitPct": 15,
+      "pregnantLimitPct": 198,
+      "childTiers": [
+        { "maxAgeInclusive": 1, "limitPct": 198 },
+        { "maxAgeInclusive": 5, "limitPct": 144 },
+        { "maxAgeInclusive": 18, "limitPct": 133 }
+      ]
+    },
+    "wic": { "incomeLimitPct": 185 },
+    "liheap": { "incomeLimitPct": 150, "categoricalIfSnap": true },
+    "tanf": { "baseMonthlyLimitCents": 40000, "perAdditionalPersonCents": 8000 }
+  },
+  "portalUrls": {
+    "snap": "https://www.yourtexasbenefits.com",
+    "medicaid": "https://www.yourtexasbenefits.com",
+    "wic": "https://texaswic.org",
+    "liheap": "https://www.tdhca.state.tx.us/community-affairs/ceap",
+    "tanf": "https://www.yourtexasbenefits.com"
+  },
+  "sources": [
+    {
+      "field": "medicaid.parentCaretakerLimitPct",
+      "sourceName": "Texas HHSC / Medicaid.gov eligibility",
+      "url": "https://www.hhs.texas.gov",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    },
+    {
+      "field": "snap.assetLimitCents",
+      "sourceName": "Texas HHSC SNAP",
+      "url": "https://www.hhs.texas.gov/services/food/snap-food-benefits",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    },
+    {
+      "field": "wic.incomeLimitPct",
+      "sourceName": "USDA FNS WIC Income Eligibility Guidelines (185% FPL)",
+      "url": "https://www.fns.usda.gov/wic/income-eligibility-guidelines",
+      "publishedDate": "2024-01-01",
+      "note": "Federal standard; Texas applies 185% FPL. Pending SME verification."
+    },
+    {
+      "field": "liheap.incomeLimitPct",
+      "sourceName": "Texas TDHCA Comprehensive Energy Assistance Program (CEAP)",
+      "url": "https://www.tdhca.state.tx.us/community-affairs/ceap",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    },
+    {
+      "field": "tanf.baseMonthlyLimitCents",
+      "sourceName": "Texas HHSC TANF income limits",
+      "url": "https://www.hhs.texas.gov/services/financial/cash/tanf-cash-help",
+      "publishedDate": "2024-01-01",
+      "note": "Illustrative; pending SME verification."
+    }
+  ],
+  "verificationStatus": "draft",
+  "lastVerified": "2026-07-02",
+  "lastVerifiedBy": "pending-sme"
+}

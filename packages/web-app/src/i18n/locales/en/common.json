@@ -1,0 +1,60 @@
+{
+  "appName": "OpenBridge",
+  "tagline": "See which benefits you may qualify for.",
+  "start": "Start",
+  "next": "Next",
+  "back": "Back",
+  "continue": "Continue",
+  "clearData": "Clear my data / Start over",
+  "startOver": "Start over",
+  "results": "Your results",
+  "getHelp": "Get help",
+  "language": "Language",
+  "mode": {
+    "individual": "I'm checking for myself",
+    "navigator": "I'm helping others (navigator)"
+  },
+  "programs": {
+    "snap": "SNAP (food assistance)",
+    "medicaid": "Medicaid / CHIP (health coverage)",
+    "chip": "CHIP (children's health coverage)",
+    "wic": "WIC (nutrition for parents and young children)",
+    "liheap": "LIHEAP (help with energy bills)",
+    "tanf": "TANF (cash assistance)",
+    "ui": "Unemployment Insurance",
+    "ssi_ssdi": "SSI / SSDI (disability)"
+  },
+  "outcome": {
+    "eligible": "You likely qualify",
+    "likely_eligible": "You may well qualify",
+    "possibly_eligible": "You might qualify — worth applying",
+    "ineligible": "You may not qualify right now",
+    "unknown": "Not enough information yet"
+  },
+  "transparency": {
+    "onDevice": "Your information is only on this device. It has not been sent anywhere.",
+    "willClear": "We'll clear it when you finish or if you step away.",
+    "beforeShare": "You're about to share this. Here's what will be included:"
+  },
+  "results_intro": "Based on what you told us, here's what we found. These are estimates, not decisions.",
+  "no_match": "We couldn't find a match here, but that doesn't mean there's no help for you.",
+  "no_match_help": "Talk to a navigator, contact 211 for local resources, or see other programs below.",
+  "estimated_benefit": "Estimated monthly benefit",
+  "next_steps": "Next steps",
+  "required_documents": "Documents you'll likely need",
+  "not_legal_advice": "OpenBridge helps you complete forms. It is not legal advice. For complex situations, talk to a professional.",
+  "draft_adapter_warning": "The rules for this state are still being reviewed and may not be accurate yet.",
+  "resume": {
+    "title": "Resume from a saved file",
+    "fileLabel": "Saved file",
+    "passphraseLabel": "Passphrase",
+    "unlock": "Unlock and continue",
+    "chooseFile": "Please choose your saved file.",
+    "staleNotice": "The rules changed since you saved. Please re-check your results.",
+    "errors": {
+      "unrecognized_format": "This is not a saved OpenBridge file.",
+      "unlock_failed": "Couldn't unlock this file. Check your passphrase.",
+      "unreadable": "Couldn't open this file."
+    }
+  }
+}

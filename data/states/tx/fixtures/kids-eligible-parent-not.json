@@ -1,0 +1,24 @@
+{
+  "name": "Texas non-expansion: child eligible, parent in the coverage gap",
+  "profile": {
+    "members": [
+      { "id": "parent", "relationship": "self", "age": 35 },
+      { "id": "kid", "relationship": "child", "age": 4 }
+    ],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 150000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "Harris",
+    "stateCode": "TX"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "likely_eligible",
+    "wic": "possibly_eligible",
+    "liheap": "likely_eligible",
+    "tanf": "ineligible"
+  },
+  "expectedMembers": {
+    "medicaid": { "kid": "likely_eligible", "parent": "ineligible" }
+  }
+}

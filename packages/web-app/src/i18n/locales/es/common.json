@@ -1,0 +1,60 @@
+{
+  "appName": "OpenBridge",
+  "tagline": "Vea a qué beneficios podría calificar.",
+  "start": "Comenzar",
+  "next": "Siguiente",
+  "back": "Atrás",
+  "continue": "Continuar",
+  "clearData": "Borrar mis datos / Empezar de nuevo",
+  "startOver": "Empezar de nuevo",
+  "results": "Sus resultados",
+  "getHelp": "Obtener ayuda",
+  "language": "Idioma",
+  "mode": {
+    "individual": "Estoy verificando para mí",
+    "navigator": "Estoy ayudando a otros (navegador)"
+  },
+  "programs": {
+    "snap": "SNAP (ayuda alimentaria)",
+    "medicaid": "Medicaid / CHIP (cobertura de salud)",
+    "chip": "CHIP (cobertura de salud para niños)",
+    "wic": "WIC (nutrición para padres y niños pequeños)",
+    "liheap": "LIHEAP (ayuda con facturas de energía)",
+    "tanf": "TANF (asistencia en efectivo)",
+    "ui": "Seguro de desempleo",
+    "ssi_ssdi": "SSI / SSDI (discapacidad)"
+  },
+  "outcome": {
+    "eligible": "Probablemente califica",
+    "likely_eligible": "Es muy posible que califique",
+    "possibly_eligible": "Podría calificar — vale la pena solicitar",
+    "ineligible": "Quizás no califique ahora",
+    "unknown": "Aún no hay suficiente información"
+  },
+  "transparency": {
+    "onDevice": "Su información solo está en este dispositivo. No se ha enviado a ningún lugar.",
+    "willClear": "La borraremos cuando termine o si se aleja.",
+    "beforeShare": "Está a punto de compartir esto. Esto es lo que se incluirá:"
+  },
+  "results_intro": "Según lo que nos dijo, esto es lo que encontramos. Son estimaciones, no decisiones.",
+  "no_match": "No encontramos una coincidencia aquí, pero eso no significa que no haya ayuda para usted.",
+  "no_match_help": "Hable con un navegador, llame al 211 para recursos locales, o vea otros programas abajo.",
+  "estimated_benefit": "Beneficio mensual estimado",
+  "next_steps": "Próximos pasos",
+  "required_documents": "Documentos que probablemente necesitará",
+  "not_legal_advice": "OpenBridge le ayuda a completar formularios. No es asesoría legal. Para situaciones complejas, hable con un profesional.",
+  "draft_adapter_warning": "Las reglas para este estado aún se están revisando y podrían no ser exactas.",
+  "resume": {
+    "title": "Continuar desde un archivo guardado",
+    "fileLabel": "Archivo guardado",
+    "passphraseLabel": "Frase de contraseña",
+    "unlock": "Desbloquear y continuar",
+    "chooseFile": "Por favor elija su archivo guardado.",
+    "staleNotice": "Las reglas cambiaron desde que guardó. Vuelva a revisar sus resultados.",
+    "errors": {
+      "unrecognized_format": "Este no es un archivo guardado de OpenBridge.",
+      "unlock_failed": "No se pudo desbloquear este archivo. Revise su frase de contraseña.",
+      "unreadable": "No se pudo abrir este archivo."
+    }
+  }
+}

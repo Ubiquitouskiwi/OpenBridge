@@ -1,0 +1,28 @@
+{
+  "name": "Ohio postpartum parent with an infant: WIC categories + SNAP benefit estimate",
+  "profile": {
+    "members": [
+      { "id": "parent", "relationship": "self", "age": 26, "isPostpartum": true },
+      { "id": "baby", "relationship": "child", "age": 0 }
+    ],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 100000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "Franklin",
+    "stateCode": "OH"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "likely_eligible",
+    "wic": "possibly_eligible",
+    "liheap": "likely_eligible",
+    "tanf": "ineligible"
+  },
+  "expectedMembers": {
+    "wic": { "parent": "possibly_eligible", "baby": "possibly_eligible" },
+    "medicaid": { "parent": "likely_eligible", "baby": "likely_eligible" }
+  },
+  "expectedBenefits": {
+    "snap": 35440
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "name": "Ohio family of four with young children",
+  "profile": {
+    "members": [
+      { "id": "self", "relationship": "self", "age": 32 },
+      { "id": "spouse", "relationship": "spouse", "age": 31 },
+      { "id": "kid1", "relationship": "child", "age": 6 },
+      { "id": "kid2", "relationship": "child", "age": 3 }
+    ],
+    "incomeSources": [
+      { "type": "wages", "amountCents": 250000, "frequency": "monthly", "earned": true }
+    ],
+    "county": "Franklin",
+    "stateCode": "OH"
+  },
+  "expected": {
+    "snap": "likely_eligible",
+    "medicaid": "likely_eligible",
+    "wic": "possibly_eligible",
+    "liheap": "likely_eligible",
+    "tanf": "ineligible"
+  },
+  "expectedMembers": {
+    "medicaid": { "kid1": "likely_eligible", "self": "likely_eligible" }
+  }
+}
