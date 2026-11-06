@@ -2,6 +2,12 @@
 
 **Screen once for the help you already qualify for. Privately, in your browser.**
 
+[![CI](https://github.com/UbiquitousKiwi/OpenBridge/actions/workflows/ci.yml/badge.svg?branch=mainline)](https://github.com/UbiquitousKiwi/OpenBridge/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/UbiquitousKiwi/OpenBridge/actions/workflows/github-code-scanning/codeql/badge.svg)](https://github.com/UbiquitousKiwi/OpenBridge/security/code-scanning)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/UbiquitousKiwi/OpenBridge/badge)](https://scorecard.dev/viewer/?uri=github.com/UbiquitousKiwi/OpenBridge)
+[![Release](https://img.shields.io/github/v/release/UbiquitousKiwi/OpenBridge?include_prereleases)](https://github.com/UbiquitousKiwi/OpenBridge/releases)
+[![Last commit](https://img.shields.io/github/last-commit/UbiquitousKiwi/OpenBridge/mainline)](https://github.com/UbiquitousKiwi/OpenBridge/commits/mainline)
+[![Good first issues](https://img.shields.io/github/issues/UbiquitousKiwi/OpenBridge/good%20first%20issue)](https://github.com/UbiquitousKiwi/OpenBridge/labels/good%20first%20issue)
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](./LICENSE)
 ![Status: prototype](https://img.shields.io/badge/status-prototype-orange.svg)
 ![Node 24 LTS](https://img.shields.io/badge/node-24_LTS-brightgreen.svg)

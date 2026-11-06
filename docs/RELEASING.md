@@ -28,13 +28,28 @@ maintainer applies a downloaded proposal with `npm run rules:apply -- proposal.j
    `0.2.0`). Leave **pre-release** on while any state adapter is `draft`. Leave **draft** on to
    review the release before it goes public.
 4. The workflow runs the full gate (`npm run verify` and `npm run e2e`), builds the hosted and local
-   versions, builds amd64 and arm64 container images, writes checksums, and creates release
-   `v<version>` with every download attached.
+   versions, builds amd64 and arm64 container images, writes checksums, signs a build provenance
+   attestation for every download, and creates release `v<version>` with every download attached.
 5. Open the draft release, check the notes and files, and press **Publish**.
 
 The workflow refuses a version that is not semantic (`1.2.3` or `1.2.3-beta.1`) or that already
 has a tag. It needs no secrets: it uses the repository's built-in `GITHUB_TOKEN` with
-`contents: write` only in the publish job.
+`contents: write`, `id-token: write`, and `attestations: write` only in the publish job.
+
+Release notes start with `.github/release-notes-template.md`, followed by GitHub's generated list of
+merged pull requests, grouped by label as set in `.github/release.yml`. Label pull requests
+(`bug`, `enhancement`, `eligibility-rules`, `accessibility`, `docs`) so they land in the right
+section; `skip-changelog` leaves one out.
+
+### Verifying a download
+
+Anyone can confirm a file came from this repository's release workflow, unchanged:
+
+```bash
+gh attestation verify openbridge-hosted-v0.2.0.tar.gz --repo UbiquitousKiwi/OpenBridge
+```
+
+`SHA256SUMS.txt` remains for people without the GitHub CLI.
 
 ## Building the downloads yourself
 

@@ -9,6 +9,12 @@ for anyone who wants to change code, rule data, or the wiki and run the same che
   also works. With [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the repository folder.
 - **Git**, and a fork or clone of the repository.
 
+**No setup at all:** on the repository page choose **Code**, then **Codespaces**, then **Create
+codespace**. It opens a ready-made environment in your browser with Node, the dependencies, and the
+test browser already installed (from [`.devcontainer/`]({{repo}}/tree/HEAD/.devcontainer)). GitHub
+gives every account free Codespaces hours each month. Skip step 1 below. In step 2, Codespaces offers
+to open the app on port 5173; the link works only for you.
+
 ## Steps
 
 1. Get the code and install exactly what the lockfile lists:

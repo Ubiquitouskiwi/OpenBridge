@@ -1,0 +1,28 @@
+name: Dependency review
+
+# Runs on every pull request. Fails the check when a change adds a dependency with a known
+# vulnerability of moderate severity or higher, or with a license that does not fit an AGPL-3.0
+# project. It reads only the lockfile diff; nothing is installed or run.
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  review:
+    name: Dependency review
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # Pinned to a commit (the project has no floating v5 tag). Dependabot keeps it current.
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: moderate
+          # Licenses that cannot be combined with AGPL-3.0, or that restrict use.
+          deny-licenses: >-
+            SSPL-1.0, BUSL-1.1, Elastic-2.0, Commons-Clause, CC-BY-NC-4.0, CC-BY-NC-SA-4.0,
+            CC-BY-NC-ND-4.0, CPAL-1.0, EUPL-1.1
+          comment-summary-in-pr: on-failure
