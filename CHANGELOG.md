@@ -33,6 +33,9 @@ All notable changes to this project are documented here. The format follows
   and build info. Nothing is pushed to a registry. ADR-0004, `docs/RELEASING.md`.
 - Root `Dockerfile` (non-root nginx, health check, OCI labels) and a CI job that builds and
   smoke-tests the image.
+- **GitHub wiki** (source in `wiki/`): plain-language guides for using, hosting, reviewing rules,
+  recording test cases, translating, and developing, published by `.github/workflows/wiki.yml`.
+  `npm run check:wiki` (part of `npm run verify`) checks links, the sidebar, and copy rules.
 
 ### Changed
 

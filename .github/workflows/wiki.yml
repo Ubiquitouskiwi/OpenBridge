@@ -1,0 +1,56 @@
+name: Publish wiki
+
+# Publishes wiki/ to the repository's GitHub wiki. The wiki source lives in the main repository so
+# it is reviewed in pull requests and checked by CI (`npm run check:wiki`); edits made directly in
+# the GitHub wiki are overwritten on the next publish.
+#
+# One-time setup: enable the wiki (Settings, then Features, then Wikis) and create any first page
+# in the GitHub UI so the wiki repository exists.
+
+on:
+  push:
+    branches: [mainline]
+    paths: ['wiki/**', '.github/workflows/wiki.yml']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: wiki
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - name: Check wiki links and style
+        run: npm run check:wiki
+
+      - name: Publish to the GitHub wiki
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPO_URL: ${{ github.server_url }}/${{ github.repository }}
+        run: |
+          git clone --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" wiki-repo
+          # Mirror wiki/ exactly: remove pages deleted from the source, then copy every page.
+          find wiki-repo -maxdepth 1 -name '*.md' -delete
+          cp wiki/*.md wiki-repo/
+          # Fill in links to files in the main repository.
+          sed -i "s#{{repo}}#${REPO_URL}#g" wiki-repo/*.md
+          cd wiki-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Wiki is already up to date."
+          else
+            git commit -m "Publish wiki from ${GITHUB_SHA::7}"
+            git push
+          fi

@@ -15,6 +15,9 @@ to make a real difference here.
 
 ## Ground rules
 
+New to the project? The [wiki](../../wiki) walks you through each way to help, step by step,
+starting with "Ways to help" for contributions that need no code.
+
 Read [`AGENTS.md`](./AGENTS.md) before your first code change. It applies to humans as much as to
 AI agents. The short version:
 
@@ -47,7 +50,7 @@ npm run e2e        # for UI changes (first time: npx playwright install chromium
 ## Workflow
 
 1. Open or find an issue, and comment that you are working on it.
-2. Branch from `main`: `feat/<short-name>`, `fix/<short-name>`, `data/<state>-<change>`.
+2. Branch from `mainline`: `feat/<short-name>`, `fix/<short-name>`, `data/<state>-<change>`.
 3. Keep the change to one concern, with tests.
 4. Commit with [Conventional Commits](https://www.conventionalcommits.org/), e.g.
    `fix(engine): treat income at the limit as passing`. If an AI agent wrote or substantially

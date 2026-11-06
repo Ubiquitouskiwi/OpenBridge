@@ -49,8 +49,27 @@ Launch blockers are marked **(blocker)**. Nothing ships to the public until ever
       moderate or low and limited to dev tooling (typescript-eslint and workbox chains).
 - [x] Keep the PDF renderer out of the first load (lazy chunk; entry is about 146 KB gzipped).
 - [ ] Add type-aware ESLint rules and test coverage reporting.
-- [ ] Move user-facing intake validation messages into i18n (`features/intake/validation.ts`)
-      and the Terms of Use page copy (`routes/Terms.tsx`) into locales, after legal review.
+- [ ] **(blocker)** Finish translation coverage: much of the intake and several screens still
+      have hardcoded English, so Spanish mode is only partly Spanish (`IntakeWizard.tsx`,
+      `validation.ts`, `SaveProgress.tsx`, `DownloadForms.tsx`, `DashboardView.tsx`,
+      `HelpView.tsx`, `Welcome.tsx`, `AppHeader.tsx`, `AutoClearWarning.tsx`, PDF titles in
+      `buildModels.ts`). Menus also show raw codes such as `biweekly` and `us_citizen`. Remove the
+      remaining em dashes and the lock emoji from UI copy. Terms of Use copy moves after legal
+      review.
+- [ ] Show the unused "rules still being reviewed" banner (`draft_adapter_warning`) on results.
+- [ ] Fix the saved-file "rules changed since you saved" notice, which is set and then lost when
+      `ResumeView` navigates away.
+- [ ] Display `orgName`, `contact`, and `localResources` from `deployment-config.json`, and apply
+      partial config files instead of ignoring them.
+- [ ] Cite sources for every adapter value (many, such as `medicaid.pregnantLimitPct` and
+      `medicaid.childTiers`, show "Source not listed yet" in Show the math).
+- [ ] Fix `scripts/seed-fpl-data.ts`: it rewrites `data/federal/snap.json` without `abawdMinAge`,
+      `abawdMaxAge`, and `elderlyAge` (which validation requires) and never updates
+      `data/federal/sources.json`. Make `dataVersion` reflect SNAP-only updates too.
+- [ ] Bring Texas and Washington to at least three fixtures each, and every state up to the full
+      fixture category list in `.kiro/steering/eligibility-rules.md`.
+- [ ] Reconsider adapter `lastVerified` dates while adapters are still `draft` (they read as if a
+      review happened).
 
 ### Releases
 
@@ -68,7 +87,7 @@ Launch blockers are marked **(blocker)**. Nothing ships to the public until ever
 
 ### Publishing
 
-- [ ] Publish the repository, enable branch protection on `main`, private vulnerability reporting,
+- [ ] Publish the repository, enable branch protection on `mainline`, private vulnerability reporting,
       and Dependabot.
 - [ ] Deploy a pilot instance for partner organizations.
 

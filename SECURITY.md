@@ -40,4 +40,4 @@ within 30 days. Reporters who wish to be credited will be acknowledged in the re
 
 ## Supported versions
 
-OpenBridge is pre-release. Only the latest commit on `main` receives security fixes.
+OpenBridge is pre-release. Only the latest commit on `mainline` receives security fixes.

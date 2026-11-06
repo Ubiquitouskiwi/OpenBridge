@@ -12,23 +12,24 @@ authoritative description of what data exists, where it lives, and how it is pro
 3. **Radical transparency.** Every data-collecting screen states, in plain language, that the
    information is only on the device and has not been sent anywhere.
 4. **No analytics in Phase 1.** No user analytics are collected. Only infrastructure metrics
-   (CloudWatch) exist, and they never contain personal data.
+   (CloudWatch) would exist when hosted on AWS, and they never contain personal data.
 
 ## PII inventory
 
 Collected during a screening session (in memory only):
 
-| Field                              | Sensitivity | Notes                                                              |
-| ---------------------------------- | ----------- | ------------------------------------------------------------------ |
-| Household members' ages            | Medium      | Used for age-based eligibility. DOB is not required.               |
-| Relationships                      | Low         | Used to derive program households.                                 |
-| Pregnancy / disability flags       | High        | Drive WIC/Medicaid rules.                                          |
-| Immigration/eligibility status     | High        | Optional; "prefer not to say" supported. Never disqualifies alone. |
-| Income (amounts, types, frequency) | High        | Self-reported; used for income tests.                              |
-| Expenses, assets                   | Medium      | Optional; improve accuracy.                                        |
-| County / state                     | Low–Medium  | State selection is a residency attestation.                        |
+| Field                              | Sensitivity | Notes                                                                                   |
+| ---------------------------------- | ----------- | --------------------------------------------------------------------------------------- |
+| Household members' ages            | Medium      | Used for age-based eligibility. Date of birth is optional (more exact for age cutoffs). |
+| Relationships                      | Low         | Used to derive program households.                                                      |
+| Pregnancy / disability flags       | High        | Drive WIC/Medicaid rules.                                                               |
+| Immigration/eligibility status     | High        | Optional; "prefer not to say" supported. Never disqualifies alone.                      |
+| Income (amounts, types, frequency) | High        | Self-reported; used for income tests.                                                   |
+| Expenses, assets                   | Medium      | Optional; improve accuracy.                                                             |
+| County / state                     | Low–Medium  | State selection is a residency attestation.                                             |
 
-**Not collected during screening:** names, SSNs, dates of birth, contact details. (Official
+**Not collected during screening:** names, SSNs, addresses, contact details. Date of birth is
+optional; age alone is enough. (Official
 applications may ask for these separately, on the agency's own site.)
 
 ## Data lifecycle

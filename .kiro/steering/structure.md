@@ -32,6 +32,8 @@ scripts/               Seeding and CI checks (validate adapters, fixtures, reaso
   release/             Release packaging (package-release.ts).
 infra/                 Reference static-hosting infrastructure (AWS CDK).
 docs/                  Privacy model, adapters guide, deployment, a11y checklist, ADRs, sign-offs.
+wiki/                  GitHub wiki source (flat *.md pages, _Sidebar.md, _Footer.md), published by
+                       .github/workflows/wiki.yml and checked by `npm run check:wiki`.
 .kiro/specs/openbridge/  requirements.md, design.md, tasks.md (source of truth for behavior).
 .kiro/steering/        Agent standards (this folder).
 ```
@@ -46,7 +48,9 @@ docs/                  Privacy model, adapters guide, deployment, a11y checklist
 - New state: `data/states/<lowercase code>/adapter.json` plus at least three fixtures.
 - New CI check: a script in `scripts/`, an npm script in the root `package.json`, a step in
   `.github/workflows/ci.yml`, and inclusion in `npm run verify`.
-- New doc: `docs/` and a line in `docs/README.md`.
+- New doc: `docs/` and a line in `docs/README.md`. Technical reference belongs in `docs/`; plain-
+  language how-to guides belong in `wiki/` (follow `wiki/Writing-Wiki-Pages.md`). When behavior a
+  wiki page describes changes, update the page in the same change.
 
 ## Naming
 

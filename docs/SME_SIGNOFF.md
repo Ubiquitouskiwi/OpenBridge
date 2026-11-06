@@ -13,11 +13,11 @@ be set to `verificationStatus: "verified"` after an entry here is marked **Appro
 
 ## Records
 
-| State  | Reviewer  | Affiliation                                  | dataVersion | Date | Outcome    |
-| ------ | --------- | -------------------------------------------- | ----------- | ---- | ---------- |
-| **OH** | _pending_ | Franklin County (social work + epidemiology) | 2024        | —    | ⏳ Pending |
-| TX     | _pending_ | —                                            | 2024        | —    | ⏳ Pending |
-| WA     | _pending_ | —                                            | 2024        | —    | ⏳ Pending |
+| State  | Reviewer  | Affiliation                                  | dataVersion | Date | Outcome |
+| ------ | --------- | -------------------------------------------- | ----------- | ---- | ------- |
+| **OH** | _pending_ | Franklin County (social work + epidemiology) | 2024        | none | Pending |
+| TX     | _pending_ | none                                         | 2024        | none | Pending |
+| WA     | _pending_ | none                                         | 2024        | none | Pending |
 
 > The Ohio adapter (`data/states/oh/adapter.json`) currently has
 > `lastVerifiedBy: "pending-franklin-county-sme"`. Once the Franklin County reviewers approve,
