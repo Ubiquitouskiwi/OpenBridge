@@ -2,11 +2,24 @@ name: New state request or offer
 description: Ask for, or volunteer to help with, support for a new state.
 labels: ['new-state', 'triage']
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Each new state needs rule values from official sources, test cases, and a review by someone
+        who knows that state's programs. The guide is in the wiki page "Add a new state".
   - type: input
     id: state
     attributes:
       label: State
       placeholder: e.g. PA
+    validations:
+      required: true
+  - type: dropdown
+    id: programs
+    attributes:
+      label: Which programs matter most there?
+      multiple: true
+      options: ['SNAP', 'Medicaid and CHIP', 'WIC', 'LIHEAP', 'TANF', 'Not sure']
     validations:
       required: true
   - type: checkboxes
@@ -16,10 +29,18 @@ body:
       options:
         - label: I can research and cite rule values
         - label: I can review rules as a subject-matter expert
-        - label: I can write the adapter and fixtures
+        - label: I can write the adapter and test cases
+        - label: I can help test it with real workflows (using made-up households)
         - label: I am requesting support, not offering help
+  - type: textarea
+    id: sources
+    attributes:
+      label: Official sources you know of
+      description: Links to the state agency pages, policy manuals, or income limit tables.
   - type: textarea
     id: context
     attributes:
       label: Context
-      description: Organizations, programs, or local resources that matter for this state.
+      description: >-
+        Who would use it (for example, a food bank or library network), local organizations for the
+        referral list, and anything unusual about the state's rules.

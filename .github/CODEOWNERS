@@ -1,0 +1,28 @@
+# Code owners are asked to review pull requests that touch these paths. With branch protection's
+# "Require review from Code Owners", these paths cannot merge without an owner's approval.
+# Add more maintainers here (space-separated) as the team grows. Later lines win over earlier ones.
+
+# Everything by default
+*                                   @UbiquitousKiwi
+
+# Highest risk: eligibility results, rule values, and privacy
+/packages/eligibility-engine/       @UbiquitousKiwi
+/data/                              @UbiquitousKiwi
+/packages/web-app/src/store/        @UbiquitousKiwi
+/packages/web-app/src/lib/          @UbiquitousKiwi
+/packages/web-app/src/features/save/ @UbiquitousKiwi
+/docs/PRIVACY_MODEL.md              @UbiquitousKiwi
+/SECURITY.md                        @UbiquitousKiwi
+
+# Supply chain and deployment
+/.github/                           @UbiquitousKiwi
+/infra/                             @UbiquitousKiwi
+/packaging/                         @UbiquitousKiwi
+/Dockerfile                         @UbiquitousKiwi
+/package.json                       @UbiquitousKiwi
+/package-lock.json                  @UbiquitousKiwi
+
+# Project rules for people and AI agents
+/AGENTS.md                          @UbiquitousKiwi
+/.kiro/                             @UbiquitousKiwi
+/LICENSE                            @UbiquitousKiwi
