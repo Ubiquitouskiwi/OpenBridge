@@ -16,7 +16,13 @@ import { isNearAgeBoundary, resolveAgeYears } from '@openbridge/shared';
 import { decideOutcome, isNearThreshold, mostEncouraging } from '../outcome.js';
 import { deriveMagiHousehold } from '../household.js';
 import { normalizeMonthlyCents } from '../income.js';
-import { type EvalContext, applyUrl, factor, fplAnnualForSize } from './util.js';
+import {
+  type EvalContext,
+  annualFplTestSteps,
+  applyUrl,
+  factor,
+  fplAnnualForSize,
+} from './util.js';
 
 const CHILD_AGE_MAX = 18;
 const ELDERLY_AGE = 65;
@@ -67,15 +73,20 @@ function evaluateMember(ctx: EvalContext, member: HouseholdMember): MemberEligib
   const adultPct = cfg.expansion ? cfg.adultLimitPct : hasChild ? cfg.parentCaretakerLimitPct : 0;
   let limitPct: number;
   let limitCode: string;
+  let limitSourceField: string;
   if (member.isPregnant) {
     limitPct = cfg.pregnantLimitPct;
     limitCode = ReasonCodes.MEDICAID_PREGNANT_WITHIN_LIMIT;
+    limitSourceField = 'medicaid.pregnantLimitPct';
   } else if (age !== undefined && age <= CHILD_AGE_MAX) {
     limitPct = childLimitPct(cfg.childTiers, age);
     limitCode = ReasonCodes.MEDICAID_CHILD_WITHIN_LIMIT;
+    limitSourceField = 'medicaid.childTiers';
   } else {
     limitPct = adultPct;
     limitCode = ReasonCodes.MEDICAID_ADULT_WITHIN_LIMIT;
+    limitSourceField =
+      !cfg.expansion && hasChild ? 'medicaid.parentCaretakerLimitPct' : 'medicaid.adultLimitPct';
   }
 
   const incomeLimitAnnual = Math.round((fplAnnual * limitPct) / 100);
@@ -136,7 +147,16 @@ function evaluateMember(ctx: EvalContext, member: HouseholdMember): MemberEligib
     hardDisqualifier: !pass && !plausiblePathway && !near && !ageBoundaryUncertain,
   });
 
-  return { memberId: member.id, outcome, reasons, factors };
+  const calculation = annualFplTestSteps(
+    household.size,
+    fplAnnual,
+    limitPct,
+    limitSourceField,
+    annualIncome,
+    incomeLimitAnnual,
+  );
+
+  return { memberId: member.id, outcome, reasons, factors, calculation };
 }
 
 function childLimitPct(

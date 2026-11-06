@@ -1,0 +1,23 @@
+# Run OpenBridge with Docker Compose:  docker compose up -d
+# It is reachable at http://127.0.0.1:8080 on this machine only. For a public site, point an
+# HTTPS reverse proxy (Caddy, nginx, Traefik) at 127.0.0.1:8080; do not publish the port
+# directly to the internet.
+
+services:
+  openbridge:
+    build: .
+    image: openbridge:local
+    restart: unless-stopped
+    ports:
+      - '127.0.0.1:8080:8080'
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    # Optional: customize for your organization without rebuilding.
+    # volumes:
+    #   - ./site/deployment-config.json:/usr/share/nginx/html/deployment-config.json:ro

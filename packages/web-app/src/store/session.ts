@@ -26,7 +26,8 @@ export const useSessionStore = create<SessionState>((set) => ({
  * `deployment-config.json` at the site root; failures are ignored (the file is optional).
  */
 export async function loadDeploymentConfigOverride(): Promise<void> {
-  if (typeof fetch === 'undefined') return;
+  // The single-file local build runs from disk with no server to hold a config file.
+  if (typeof fetch === 'undefined' || import.meta.env.MODE === 'standalone') return;
   try {
     const res = await fetch('/deployment-config.json', { cache: 'no-store' });
     if (!res.ok) return;

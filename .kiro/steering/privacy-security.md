@@ -9,6 +9,9 @@ fileMatchPattern:
     'packages/web-app/src/features/referrals/**',
     'packages/web-app/vite.config.ts',
     'packages/web-app/index.html',
+    'packages/mcp-server/**',
+    'packaging/**',
+    'Dockerfile',
     'infra/**',
     '.github/workflows/**',
     'docs/PRIVACY_MODEL.md',
@@ -56,6 +59,27 @@ requests carry no user data. Any new request must meet the same bar and be calle
   AES-GCM (random IV per encryption), envelope `openbridge.save.v1`. No key storage, escrow, or
   recovery. Format changes need a new envelope version and a migration path.
 - Referral contact is device-native (`tel:`, `mailto:`, plain links). No forms that post anywhere.
+
+## MCP server (`packages/mcp-server`, ADR-0003)
+
+- Tools are read-only and deterministic. No logging of tool arguments or results, no storage, no
+  outbound network calls. Log only startup and shutdown lines to stderr.
+- stdio is the default. HTTP binds `127.0.0.1` by default with Host and Origin validation; a
+  non-loopback bind requires `OPENBRIDGE_MCP_ALLOW_REMOTE=1` plus an explicit
+  `OPENBRIDGE_MCP_ALLOWED_HOSTS` list. Never weaken these defaults.
+- No home-made authentication. Operators who need a restricted audience put standard auth in front.
+- Tool descriptions tell agents not to send names, SSNs, or addresses, and every screening result
+  carries the estimate/not-legal-advice/draft-rules disclaimer.
+
+## Release packaging (`packaging/`, `Dockerfile`, `docs/RELEASING.md`)
+
+- `serve.mjs` binds `127.0.0.1` by default; containers publish to `127.0.0.1` in every documented
+  example; a public site sits behind an HTTPS reverse proxy.
+- The Content-Security-Policy and other security headers in `serve.mjs`, `nginx.conf`, `Caddyfile`,
+  and `docker/default.conf` stay identical. In nginx, any `add_header` inside a `location` drops
+  the server-level headers, so repeat them there.
+- Release artifacts are attached to GitHub Releases only; do not add registry publishing without an
+  explicit maintainer decision.
 
 ## Infrastructure and CI
 

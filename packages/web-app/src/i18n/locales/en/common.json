@@ -27,7 +27,7 @@
   "outcome": {
     "eligible": "You likely qualify",
     "likely_eligible": "You may well qualify",
-    "possibly_eligible": "You might qualify — worth applying",
+    "possibly_eligible": "You might qualify. It is worth applying.",
     "ineligible": "You may not qualify right now",
     "unknown": "Not enough information yet"
   },
@@ -56,5 +56,106 @@
       "unlock_failed": "Couldn't unlock this file. Check your passphrase.",
       "unreadable": "Couldn't open this file."
     }
+  },
+  "relationship": {
+    "self": "you",
+    "spouse": "spouse or partner",
+    "child": "child",
+    "parent": "parent",
+    "sibling": "brother or sister",
+    "grandparent": "grandparent",
+    "other_relative": "other family",
+    "non_relative": "not family"
+  },
+  "memberLabel": {
+    "withAge": "Person {{n}} ({{relationship}}, age {{age}})",
+    "noAge": "Person {{n}} ({{relationship}})",
+    "unknown": "A person in your household"
+  },
+  "people": {
+    "heading": "Each person"
+  },
+  "showMath": {
+    "summary": "Show the math",
+    "memberSummary": "Show the math for {{person}}",
+    "caption": "How we worked out this result",
+    "colStep": "Step",
+    "colValue": "Amount",
+    "colSource": "Where it comes from",
+    "add": "plus {{value}}",
+    "subtract": "minus {{value}}",
+    "result": "equals {{value}}",
+    "limit": "Limit: {{value}}",
+    "fromAnswers": "From your answers",
+    "workedOut": "Worked out from the lines above",
+    "sourceMissing": "Source not listed yet",
+    "sourceLink": "{{name}}, published {{date}}",
+    "newTab": "(opens in a new tab)",
+    "draftNote": "These rules are drafts. Experts are still checking them.",
+    "estimateNote": "This is an estimate. The agency makes the final choice."
+  },
+  "whatif": {
+    "title": "What if my income changes?",
+    "linkFromResults": "What if my income changes?",
+    "backToResults": "Back to your results",
+    "intro": "See how a raise, more hours, or less pay might change your results. What you type here stays on this device.",
+    "noIntake": "First, answer the screening questions. Then you can try out income changes here.",
+    "startScreen": "Start a screening",
+    "directionLegend": "Will your monthly income go up or down?",
+    "more": "Up (more money)",
+    "less": "Down (less money)",
+    "amountLabel": "How much each month?",
+    "amountHint": "For example, 250",
+    "quickLegend": "Or pick a raise",
+    "quick": "{{amount}} more",
+    "statusNone": "Showing your results with no change.",
+    "statusMore": "Showing your results with {{amount}} more each month.",
+    "statusLess": "Showing your results with {{amount}} less each month.",
+    "tableCaption": "Your results now and with this change",
+    "colProgram": "Program",
+    "colNow": "Now",
+    "colChanged": "With the change",
+    "benefit": "About {{amount}} a month",
+    "cliffsTitle": "Where things may change",
+    "cliffsIntro": "We tried higher pay, up to {{max}} more each month.",
+    "cliffChangeStop": "{{subject}} may change if you earn about {{change}} more each month. It may stop at about {{stop}} more.",
+    "cliffStop": "{{subject}} may stop if you earn about {{stop}} more each month.",
+    "cliffChange": "{{subject}} may change if you earn about {{change}} more each month.",
+    "cliffNone": "{{subject}} did not change in what we tried.",
+    "subjectPerson": "{{program}} for {{person}}",
+    "noCliffs": "None of your results right now are likely to change with more pay.",
+    "estimateNote": "These are estimates. The real rules have more details than we can check here.",
+    "nextStep": "Before you change your hours or take a new job, talk with a navigator or the agency."
+  },
+  "review": {
+    "title": "Save a test case for rule reviewers",
+    "linkFromResults": "For rule reviewers: save this as a test case",
+    "intro1": "This page is for social workers and policy experts who check our rules.",
+    "intro2": "Screen a made-up family. Then save the results you expect as a test case. We run test cases to make sure the rules stay right.",
+    "noIntake": "First, screen a made-up family. Then come back to this page.",
+    "dateNote": "Test cases are checked as if today were June 1, 2024. So a result here may not match your results page.",
+    "madeUpLabel": "This family is made up. It has no real person's details.",
+    "nameLabel": "Test case name (required)",
+    "nameHint": "For example, single parent with two kids",
+    "nameRequired": "Enter a name for this test case.",
+    "expectedLegend": "What result do you expect?",
+    "expectedHint": "We filled in what OpenBridge says now. Change any that you think are wrong.",
+    "memberSelect": "{{program}} for {{person}}",
+    "download": "Download test case",
+    "gateHint": "To download, check the box and enter a name.",
+    "saved": "Saved {{file}}.",
+    "submitTitle": "How to send it to us",
+    "submitIssue": "On the OpenBridge GitHub page, open a new \"Eligibility rule correction\" issue and attach the file.",
+    "submitPr": "Or open a pull request that adds the file to data/states/{{code}}/fixtures/."
+  },
+  "forms": {
+    "loading": "Making your document. This can take a few seconds.",
+    "ready": "Your document is ready.",
+    "error": "We could not make the document. Please try again."
+  },
+  "shell": {
+    "skipToContent": "Skip to content",
+    "footerNotice": "OpenBridge is not legal advice. It helps you complete benefit applications.",
+    "termsLink": "Terms of Use"
   }
 }

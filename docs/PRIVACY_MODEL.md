@@ -62,3 +62,12 @@ Saved progress and encrypted export bundles use WebCrypto:
 - The referral directory is static, bundled data; building it sends no user data.
 - Contact is device-native (`tel:`/`mailto:`), never server-mediated.
 - Any export of a review bundle requires an explicit consent step and carries a privacy notice.
+
+## Optional components with a different data path
+
+- **MCP server for AI agents** (`packages/mcp-server`, ADR-0003). It is separate from the web app
+  and does not change anything above. It receives household details from an AI agent, keeps them
+  in memory for one request, and never logs, stores, or forwards them. The details do pass through
+  the AI app and its model provider, which the server's README explains to users.
+- **Single-file local download** (ADR-0004). It runs entirely from a file on the user's computer,
+  makes no network requests, and keeps the same memory-only and encrypted-save behavior.

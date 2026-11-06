@@ -2,11 +2,18 @@
  * TANF evaluator (requirements §6/§7). Household-scoped. Requires a dependent child in the
  * household and applies a state-variable monthly income limit.
  */
-import type { ProgramEligibilityResult, ReasonCode } from '@openbridge/shared';
-import { ReasonCodes } from '@openbridge/shared';
+import type { CalculationStep, ProgramEligibilityResult, ReasonCode } from '@openbridge/shared';
+import { CalculationStepCodes, ReasonCodes } from '@openbridge/shared';
 import { isNearAgeBoundary, resolveAgeYears } from '@openbridge/shared';
 import { decideOutcome, isNearThreshold } from '../outcome.js';
-import { type EvalContext, applyUrl, factor, fplAnnualForSize } from './util.js';
+import {
+  type EvalContext,
+  applyUrl,
+  calcStep,
+  factor,
+  fplAnnualForSize,
+  stateField,
+} from './util.js';
 
 const DEPENDENT_CHILD_AGE_MAX = 18;
 
@@ -100,5 +107,42 @@ function build(
     nextStepCodes: ['STEP_REVIEW_AND_APPLY'],
     applyUrl: applyUrl(ctx, 'tanf'),
     requiredDocumentCodes: ['DOC_IDENTITY', 'DOC_INCOME_PROOF', 'DOC_RESIDENCY'],
+    calculation: tanfSteps(ctx, size, monthlyIncome, monthlyLimit),
   };
+}
+
+/** TANF uses a flat state limit plus an amount per extra person, not a % of FPL. */
+function tanfSteps(
+  ctx: EvalContext,
+  size: number,
+  monthlyIncome: number,
+  monthlyLimit: number,
+): CalculationStep[] {
+  const cfg = ctx.adapter.programs.tanf!;
+  const C = CalculationStepCodes;
+  const steps: CalculationStep[] = [
+    calcStep(C.HOUSEHOLD_SIZE, size, 'count', 'input'),
+    calcStep(C.GROSS_MONTHLY_INCOME, monthlyIncome, 'cents', 'input'),
+    calcStep(
+      C.TANF_BASE_LIMIT,
+      cfg.baseMonthlyLimitCents,
+      'cents',
+      'rule',
+      stateField('tanf.baseMonthlyLimitCents'),
+    ),
+  ];
+  const extra = Math.max(0, size - 1) * cfg.perAdditionalPersonCents;
+  if (extra > 0) {
+    steps.push(
+      calcStep(
+        C.TANF_PER_PERSON_ADDITION,
+        extra,
+        'cents',
+        'add',
+        stateField('tanf.perAdditionalPersonCents'),
+      ),
+    );
+  }
+  steps.push(calcStep(C.MONTHLY_INCOME_LIMIT, monthlyLimit, 'cents', 'limit'));
+  return steps;
 }

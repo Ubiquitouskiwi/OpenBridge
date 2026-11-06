@@ -1,0 +1,24 @@
+# Keep the build context small and free of local or private files.
+**/node_modules
+**/dist
+**/dist-local
+**/.turbo
+**/*.tsbuildinfo
+**/test-results
+**/playwright-report
+infra/cdk.out
+release-artifacts
+.git
+.github
+.kiro
+.vscode
+.idea
+*.code-workspace
+*.log
+.env
+.env.*
+.DS_Store
+old_chat.txt
+packageInfo
+.builder-mcp
+OpenBridge_White_Paper.pdf

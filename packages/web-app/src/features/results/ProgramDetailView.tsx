@@ -3,6 +3,9 @@ import { Link, useParams } from 'react-router-dom';
 import type { ProgramId } from '@openbridge/shared';
 import { useResultStore } from '../../store/result.js';
 import { renderReason, renderFactorLabel, renderStep } from '../../i18n/renderReason.js';
+import { federal, loadAdapter } from '../../data/index.js';
+import { CalculationSteps } from './CalculationSteps.js';
+import { MemberBreakdown } from './MemberBreakdown.js';
 
 function currency(locale: string, dollarString: string): string {
   const n = Number.parseFloat(dollarString);
@@ -15,6 +18,7 @@ export function ProgramDetailView() {
   const { id } = useParams();
   const result = useResultStore((s) => s.result);
   const program = result?.results.find((r) => r.programId === (id as ProgramId));
+  const adapter = result ? loadAdapter(result.profile.stateCode) : undefined;
 
   if (!program) {
     return (
@@ -62,6 +66,14 @@ export function ProgramDetailView() {
             ))}
           </tbody>
         </table>
+      )}
+
+      {program.scope === 'household' && (
+        <CalculationSteps steps={program.calculation} adapter={adapter} federal={federal} />
+      )}
+
+      {program.scope === 'per_member' && result && (
+        <MemberBreakdown program={program} result={result} adapter={adapter} />
       )}
 
       <h2>Why</h2>
