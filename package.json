@@ -38,7 +38,7 @@
     "check:wiki": "tsx scripts/check-wiki.ts"
   },
   "devDependencies": {
-    "@eslint/js": "^9.15.0",
+    "@eslint/js": "^10.0.1",
     "@typescript-eslint/eslint-plugin": "^8.15.0",
     "@types/node": "24.19.2",
     "@typescript-eslint/parser": "^8.15.0",
