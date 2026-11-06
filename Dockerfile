@@ -23,7 +23,7 @@ RUN npm ci --ignore-scripts --no-audit --no-fund
 COPY . .
 RUN npx turbo run build --filter=@openbridge/web-app
 
-FROM nginxinc/nginx-unprivileged:1.30-alpine
+FROM nginxinc/nginx-unprivileged:1.31-alpine
 
 ARG VERSION=dev
 ARG REVISION=unknown
