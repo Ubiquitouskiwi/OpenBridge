@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 
 /** Automated accessibility checks on key screens (task 13.2, WCAG 2.2 AA target). */
-const pages = ['/', '/screen', '/help', '/resume', '/terms'];
+const pages = ['/', '/screen', '/help', '/resume', '/terms', '/what-if', '/review'];
 
 for (const path of pages) {
   test(`no serious axe violations on ${path}`, async ({ page }) => {

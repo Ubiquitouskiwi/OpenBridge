@@ -71,3 +71,22 @@ npm run preview -w @openbridge/web-app   # serves the production build
 
 > Note: reference data values are illustrative and adapters are `draft` pending SME sign-off (see
 > `docs/SME_SIGNOFF.md`). Do not present results as authoritative until verified.
+
+## Ready-made downloads and containers
+
+Most organizations do not need to build from source. Each GitHub Release includes a hosted
+download (static site plus `Dockerfile`, `compose.yaml`, nginx and Caddy examples, and a
+no-dependency `serve.mjs`), a single-file local download, and prebuilt container images. See
+[RELEASING.md](./RELEASING.md) and the hosting guide inside the download
+(`packaging/hosted/README.md` in this repository).
+
+To build the container image from source:
+
+```bash
+docker build -t openbridge .
+docker run --rm -p 127.0.0.1:8080:8080 openbridge
+```
+
+The image runs nginx as a non-root user on port 8080, keeps no access log, serves `/healthz`, and
+sends the same security headers as the examples. Publish it to `127.0.0.1` and put an HTTPS reverse
+proxy in front for public use.

@@ -16,7 +16,13 @@ import { ReasonCodes } from '@openbridge/shared';
 import { isNearAgeBoundary, resolveAgeYears } from '@openbridge/shared';
 import { isNearThreshold, mostEncouraging } from '../outcome.js';
 import { pregnancyBump } from '../household.js';
-import { type EvalContext, applyUrl, factor, fplAnnualForSize } from './util.js';
+import {
+  type EvalContext,
+  annualFplTestSteps,
+  applyUrl,
+  factor,
+  fplAnnualForSize,
+} from './util.js';
 
 const WIC_CHILD_AGE_MAX = 4; // under 5
 
@@ -84,6 +90,14 @@ export function evaluateWic(ctx: EvalContext): ProgramEligibilityResult {
         outcome,
         reasons,
         factors: [factor('WIC_ANNUAL_INCOME', annualIncome, incomeLimit, incomePass)],
+        calculation: annualFplTestSteps(
+          wicSize,
+          fplAnnual,
+          cfg.incomeLimitPct,
+          'wic.incomeLimitPct',
+          annualIncome,
+          incomeLimit,
+        ),
       };
     },
   );

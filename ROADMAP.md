@@ -44,12 +44,27 @@ Launch blockers are marked **(blocker)**. Nothing ships to the public until ever
 
 ### Engineering hygiene
 
-- [ ] Upgrade dev tooling with known advisories: Vite 5 to current, Vitest 2 to current
-      (critical advisories affect dev servers and test runners, not the shipped app).
-- [ ] Upgrade Zod 3 to 4 (high-severity memory-exhaustion advisory) and React Router 6 to 7
-      (moderate advisories, mostly in server rendering, which OpenBridge does not use).
+- [x] Upgrade Vite 5 to 8, Vitest 2 to 5, Zod 3 to 4, React Router 6 to 7, and tooling to Node 24
+      LTS. Production dependencies now report no known vulnerabilities; remaining advisories are
+      moderate or low and limited to dev tooling (typescript-eslint and workbox chains).
+- [x] Keep the PDF renderer out of the first load (lazy chunk; entry is about 146 KB gzipped).
 - [ ] Add type-aware ESLint rules and test coverage reporting.
-- [ ] Split the PDF renderer into a lazily loaded chunk to keep first load small.
+- [ ] Move user-facing intake validation messages into i18n (`features/intake/validation.ts`)
+      and the Terms of Use page copy (`routes/Terms.tsx`) into locales, after legal review.
+
+### Releases
+
+- [x] One-button GitHub Release with a hosted download, a single-file local download, and
+      prebuilt container images (`docs/RELEASING.md`).
+- [ ] Add the community rule toolkit as a release download once it exists.
+
+### Community tools and documentation (next)
+
+- [ ] Community rule toolkit for non-programmers: guided forms to propose a rule value with a
+      cited source, review a state adapter side by side with its sources, and turn screenings into
+      golden test cases (the first piece, the `/review` test-case recorder, ships today).
+- [ ] GitHub wiki: one-pager overview, white paper and its versions, how to use the app, how to
+      add or correct rules with code and with the community tools, and how to review as an expert.
 
 ### Publishing
 

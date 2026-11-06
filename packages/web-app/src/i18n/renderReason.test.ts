@@ -1,8 +1,10 @@
 import { describe, it, expect, beforeAll } from 'vitest';
 import { createInstance, type i18n as I18n } from 'i18next';
-import { renderReason, renderFactorLabel } from './renderReason.js';
+import { renderReason, renderFactorLabel, renderMathLabel } from './renderReason.js';
 import enReasons from './locales/en/reasons.json';
 import esReasons from './locales/es/reasons.json';
+import enMath from './locales/en/math.json';
+import esMath from './locales/es/math.json';
 
 let i18n: I18n;
 
@@ -54,6 +56,25 @@ describe('renderReason', () => {
       interpolation: { escapeValue: false },
     });
     expect(renderReason(solo, { code: 'ONLY_IN_EN', params: {} })).toBe('English only string.');
+  });
+});
+
+describe('renderMathLabel', () => {
+  it('renders the active locale, falls back to English, then humanizes', async () => {
+    const math = createInstance();
+    await math.init({
+      lng: 'es',
+      fallbackLng: 'en',
+      ns: ['math'],
+      resources: {
+        en: { math: { ...enMath, ONLY_EN: 'English only' } },
+        es: { math: esMath },
+      },
+      interpolation: { escapeValue: false },
+    });
+    expect(renderMathLabel(math, 'CALC_HOUSEHOLD_SIZE')).toBe(esMath.CALC_HOUSEHOLD_SIZE);
+    expect(renderMathLabel(math, 'ONLY_EN')).toBe('English only');
+    expect(renderMathLabel(math, 'CALC_SOME_NEW_STEP')).toBe('Some New Step');
   });
 });
 
