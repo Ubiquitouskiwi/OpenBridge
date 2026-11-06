@@ -39,6 +39,10 @@ jobs:
           cache: npm
       - name: Install
         run: npm ci
+      # Fresh runner: the workspace packages (shared, engine, form-assembly) resolve to their
+      # dist/ output, so build everything before the apps are bundled for testing.
+      - name: Build
+        run: npm run build
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
       # Run both suites even if the first fails, so one failure does not hide the other.
