@@ -1,6 +1,6 @@
 name: Deploy
 
-# Deploys the built PWA to the hosted AWS account via CDK on pushes to main.
+# Deploys the built PWA to the hosted AWS account via CDK on pushes to mainline.
 # Requires repository configuration:
 #   - secret AWS_DEPLOY_ROLE_ARN: an IAM role ARN trusted for GitHub OIDC.
 #   - variable AWS_REGION (optional; defaults to us-west-2).
@@ -8,7 +8,7 @@ name: Deploy
 
 on:
   push:
-    branches: [main]
+    branches: [mainline]
   workflow_dispatch:
 
 permissions:

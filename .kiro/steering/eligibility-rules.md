@@ -79,5 +79,7 @@ reason that routes to referrals. Changing this ladder requires maintainer approv
 1. Copy the closest existing adapter as a starting point (expansion vs. non-expansion, BBCE vs. not).
 2. Replace every value from a cited source. Leave `verificationStatus: "draft"`.
 3. Add the fixture set above.
-4. Run `npm run validate:adapters && npm run test:fixtures`.
-5. Add a pending row in `docs/SME_SIGNOFF.md` and a line in `CHANGELOG.md`.
+4. Register the adapter in `packages/web-app/src/data/index.ts` so the app can load it (the MCP
+   server and scripts read `data/states/` directly).
+5. Run `npm run validate:adapters && npm run test:fixtures`.
+6. Add a pending row in `docs/SME_SIGNOFF.md` and a line in `CHANGELOG.md`.

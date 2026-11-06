@@ -17,9 +17,9 @@ YOUR PRIVACY
 
   - Everything you type stays on this computer. Nothing is sent anywhere.
   - When you close the browser tab, your answers are gone.
-  - To keep your answers, use "Save progress". You choose a passphrase,
+  - To keep your answers, use "Save my progress to a file". You choose a passphrase,
     and the saved file is locked with it.
-  - On a shared or public computer, use "Clear my data" when you finish.
+  - On a shared or public computer, use "Clear my data / Start over" when you finish.
 
 PLEASE NOTE
 

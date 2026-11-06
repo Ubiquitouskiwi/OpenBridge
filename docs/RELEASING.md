@@ -22,7 +22,7 @@ in the app today.
 
 ## How to cut a release (maintainers)
 
-1. Make sure `main` is green and `CHANGELOG.md` has the changes under `## [Unreleased]`.
+1. Make sure `mainline` is green and `CHANGELOG.md` has the changes under `## [Unreleased]`.
 2. Move those entries under a new heading `## [<version>] - <YYYY-MM-DD>` and merge that change.
 3. On GitHub: **Actions**, then **Release**, then **Run workflow**. Enter the version (for example
    `0.2.0`). Leave **pre-release** on while any state adapter is `draft`. Leave **draft** on to

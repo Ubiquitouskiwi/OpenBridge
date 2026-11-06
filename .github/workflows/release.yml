@@ -99,6 +99,9 @@ jobs:
       # Built and saved as a tarball for the release; never pushed to a registry.
       - name: Build image
         uses: docker/build-push-action@v6
+        env:
+          # Skip the build-record artifact; the release only needs the image tarball.
+          DOCKER_BUILD_RECORD_UPLOAD: 'false'
         with:
           context: .
           platforms: linux/${{ matrix.arch }}
@@ -135,10 +138,33 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      # Download only this workflow's own artifacts, by name. Without a name or pattern,
+      # download-artifact also tries to fetch docker/build-push-action's build-record
+      # artifacts, which are not zip files, and the step fails.
+      - name: Download site and local downloads
+        uses: actions/download-artifact@v4
         with:
+          name: release-artifacts
+          path: release-artifacts
+
+      - name: Download container images
+        uses: actions/download-artifact@v4
+        with:
+          pattern: image-*
           path: release-artifacts
           merge-multiple: true
+
+      - name: Check every expected download is present
+        working-directory: release-artifacts
+        env:
+          VERSION: ${{ inputs.version }}
+        run: |
+          for f in "openbridge-hosted-v${VERSION}.tar.gz" "openbridge-local-v${VERSION}.zip" \
+                   "openbridge-image-v${VERSION}-linux-amd64.tar.gz" \
+                   "openbridge-image-v${VERSION}-linux-arm64.tar.gz"; do
+            if [ ! -s "$f" ]; then echo "::error::Missing release file $f"; exit 1; fi
+          done
+          ls -la
 
       - name: Write checksums for every download
         working-directory: release-artifacts

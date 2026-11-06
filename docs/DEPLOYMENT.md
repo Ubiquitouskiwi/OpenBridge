@@ -33,7 +33,7 @@ CDK outputs the CloudFront domain (`DistributionDomainName`) and the bucket name
 
 ### CI/CD
 
-`.github/workflows/deploy.yml` deploys on pushes to `main`. It is **skipped unless** the repository
+`.github/workflows/deploy.yml` deploys on pushes to `mainline`. It is **skipped unless** the repository
 has an `AWS_DEPLOY_ROLE_ARN` secret (an IAM role trusted for GitHub OIDC). Optionally set an
 `AWS_REGION` repo variable (defaults to `us-west-2`). The workflow builds the app, installs infra
 deps, assumes the role via OIDC, and runs `cdk deploy`.
@@ -61,6 +61,10 @@ Because the app is static and AGPL-3.0, any org can host it:
 
 The app loads this file at startup if present (failures are ignored). A sample lives at
 `packages/web-app/public/deployment-config.json`.
+
+> Only `defaultMode` and `autoClearTimeoutSeconds` change behavior today, and the file is applied
+> only when **both** are present. `orgName`, `contact`, and `localResources` are accepted but not
+> shown in the app yet (tracked in `ROADMAP.md`).
 
 ## Verifying a build locally
 

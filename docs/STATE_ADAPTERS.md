@@ -30,7 +30,8 @@ Money is integer **cents**; percentages use the `...Pct` suffix and are percenta
 
 ## Required provenance (Q28)
 
-Every adapter must cite at least one `snap.*` and one `medicaid.*` source in `sources[]`, each with
+Every program configured in an adapter must have at least one matching source in `sources[]`
+(for example a `snap.*` field for SNAP), each with
 `field`, `sourceName`, `url`, and `publishedDate`. `scripts/validate-state-adapter.ts` enforces this
 in CI. Cite authoritative sources: HHS (FPL), USDA FNS (SNAP), and the state Medicaid agency /
 Medicaid.gov.
@@ -57,7 +58,8 @@ them; CI fails on any divergence.
 1. Author the adapter with provenance and fixtures (`verificationStatus: "draft"`).
 2. A subject-matter expert reviews the rule values, provenance, and fixtures.
 3. On sign-off, set `verificationStatus: "verified"` and record `lastVerifiedBy` / `lastVerified`.
-4. Adapters left as `draft` render with a visible "rules still being reviewed" caveat in the UI.
+4. Adapters left as `draft` show a "these rules are drafts" note in Show the math. (A results-page
+   banner exists in the locale files but is not shown yet; see `ROADMAP.md`.)
 
 ## Reference-data refresh
 
@@ -66,5 +68,5 @@ Federal values change on a schedule (requirements 5.15, Q29):
 - **January** — HHS Federal Poverty Guidelines.
 - **October** — USDA SNAP allotments/deductions (federal fiscal year).
 
-Update the constants in `scripts/seed-fpl-data.ts`, run `npm run seed:fpl`, bump `dataVersion`,
+Update the constants in `scripts/seed-fpl-data.ts`, run `npm run seed:fpl` (results report `dataVersion` as the poverty-guideline year),
 re-verify with SMEs, and re-run fixtures.

@@ -48,9 +48,10 @@ If a request conflicts with one of these, stop and say so.
    `verificationStatus: "verified"`, recorded in `docs/SME_SIGNOFF.md`. Agents leave it `draft`.
 7. **Engine emits codes, UI emits words.** The engine returns reason codes and params only. Every
    new reason code gets an English string in `packages/web-app/src/i18n/locales/en/reasons.json`.
-8. **One-way dependencies.** `shared` <- `eligibility-engine` <- `form-assembly` <- `web-app`,
-   and `shared` <- `eligibility-engine` <- `mcp-server`. Nothing imports upward or sideways
-   against this direction (`mcp-server` reads web-app locale JSON as data, never its code).
+8. **One-way dependencies.** `shared` depends on nothing. `eligibility-engine` and
+   `form-assembly` depend only on `shared`. `web-app` may use all three; `mcp-server` uses
+   `shared` and `eligibility-engine`. Nothing imports upward or sideways (`mcp-server` reads
+   web-app locale JSON as data, never its code).
 9. **No secrets in the repo.** No keys, tokens, account IDs, ARNs, or personal contact details in
    code, config, fixtures, or docs. The one published project contact,
    `openbridge@starlingtek.com`, is the only email address that belongs in the repo.
