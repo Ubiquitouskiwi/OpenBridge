@@ -1,8 +1,11 @@
 blank_issues_enabled: false
 contact_links:
   - name: Report a security or privacy vulnerability
-    url: https://docs.github.com/en/code-security/security-advisories/guidance-on-reporting-and-writing-information-about-vulnerabilities/privately-reporting-a-security-vulnerability
-    about: Use GitHub private vulnerability reporting (Security tab). Do not open a public issue.
+    url: https://github.com/UbiquitousKiwi/OpenBridge/security/advisories/new
+    about: Report it privately through GitHub. Do not open a public issue. See SECURITY.md.
+  - name: Questions about using OpenBridge
+    url: https://github.com/UbiquitousKiwi/OpenBridge/wiki/FAQ
+    about: Common questions are answered in the wiki. You can also email openbridge@starlingtek.com.
   - name: Need help applying for benefits?
     url: https://www.211.org/
     about: OpenBridge cannot answer individual eligibility questions. 211 connects you with local help.
