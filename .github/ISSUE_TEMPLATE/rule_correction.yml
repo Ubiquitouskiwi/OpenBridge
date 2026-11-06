@@ -8,8 +8,9 @@ body:
         Rule corrections are among the most valuable contributions. Please cite an official source so
         a maintainer and a subject-matter expert can verify it. Use a made-up household, never a real one.
 
-        **Easiest way:** use the Community Rule Toolkit (in each release) to make a proposal file or
-        a test case file, then attach it below. A maintainer can apply a proposal file with one command.
+        **Easiest way:** use the Community Rule Toolkit (in each release) to make a proposal file,
+        or use the screening app's test-case recorder to make a test case file. Attach it below.
+        A maintainer can apply a proposal file with one command.
   - type: dropdown
     id: program
     attributes:
