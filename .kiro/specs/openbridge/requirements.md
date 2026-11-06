@@ -342,7 +342,8 @@ harm the people we serve.
    mixed-status).
 2. CI SHALL fail if engine output diverges from any fixture.
 3. An adapter SHALL be marked `verified` only after SME review of its rule values, provenance, and fixtures,
-   recorded in `lastVerifiedBy`/`lastVerified`; Ohio SHALL be signed off by the Franklin County SMEs.
+   recorded in `lastVerifiedBy`/`lastVerified`; Ohio SHALL be signed off by Ohio SMEs
+   (not yet recruited; county-level reviewers such as Franklin County navigators are the target).
 4. Required rule values (income limits, allotments, expansion thresholds) SHALL carry provenance sources,
    validated by `validate-state-adapter.ts`.
 
@@ -660,7 +661,7 @@ function estimateSnapBenefit(netIncome: number, householdSize: number, maxAllotm
 ## 12. Phased Roadmap
 
 - **Phase 1 (Core + pilot):** Eligibility engine for SNAP/Medicaid/WIC; pilot states **Ohio** (expansion +
-  integrated Ohio Benefits, Franklin County SME sign-off), **Texas** (non-expansion), **Washington**
+  integrated Ohio Benefits, Ohio SME sign-off once reviewers are recruited), **Texas** (non-expansion), **Washington**
   (expansion + BBCE); English + Spanish; PWA with offline support; SNAP + Medicaid PDF for Ohio plus generic
   summary sheets; local-only status tracking + resume; referral directory + review-bundle export; Terms of Use;
   hosted on S3+CloudFront with self-host docs; golden-fixture + SME verification; no analytics.
@@ -694,7 +695,7 @@ function estimateSnapBenefit(netIncome: number, householdSize: number, maxAllotm
 | Q2 | 2026-07-02 | Income modeling | `incomeSources[]` typed earned/unearned as source of truth; derive gross. | Fixes SNAP 20% earned-income deduction; avoids part/whole mismatch. |
 | Q3 | 2026-07-02 | Status tracking vs privacy | No server tracking Phase 1; optional local encrypted progress file + printable checklist. | Reconciles tracking with privacy on shared devices. |
 | Q4 | 2026-07-02 | Alaska/Hawaii FPL | `calculateFpl` takes a region; bundle contiguous/AK/HI tables. | FPL differs for AK/HI; size-only calc would be wrong. |
-| Q5 | 2026-07-02 | Pilot states | Ohio, Texas, Washington. | Cover expansion/non-expansion/integrated/BBCE; Ohio adds Franklin County SMEs + reach. |
+| Q5 | 2026-07-02 | Pilot states | Ohio, Texas, Washington. | Cover expansion/non-expansion/integrated/BBCE; Ohio is the first target for SME review (reviewers still to be recruited). |
 | Q6 | 2026-07-02 | Outcome semantics | Deterministic, cautious rules; never `ineligible` if a pathway exists; reserve `eligible` for verified. | Prevents harmful false negatives; keeps engine transparent. |
 | Q7 | 2026-07-02 | Rule data lifecycle | Versioned bundled JSON + `dataVersion`; annual seed refresh; offline via app-update cache-bust. | Keeps data current without a live dependency. |
 | Q8 | 2026-07-02 | Reasoning i18n | Engine returns reason codes + params; UI localizes. | Keeps engine pure and translation-ready. |
@@ -710,7 +711,7 @@ function estimateSnapBenefit(netIncome: number, householdSize: number, maxAllotm
 | Q18 | 2026-07-02 | Income normalization + self-employment | Per-source amount+frequency normalized to monthly (standard factors); self-employment net; derived gross. | Monthly budgeting with USDA/SSA-standard factors keeps math correct. |
 | Q19 | 2026-07-02 | Uncomputable criteria scope | WIC caps at `possibly_eligible`; Medicaid MAGI-only with non-MAGI note; ABAWD flagged not disqualifying. | Engine must not output a hard "no" on things it can't compute. |
 | Q20 | 2026-07-02 | Encryption + key handling | Passphrase → PBKDF2 → AES-GCM on-device; no stored key; no recovery; downloaded-file default. | Standard, offline, dependency-free; honest privacy tradeoff. |
-| Q21 | 2026-07-02 | Correctness assurance | Golden fixtures in CI + SME sign-off gate; draft/unverified state; Ohio via Franklin County. | Wrong benefits math harms people; fixtures + human review is the guardrail. |
+| Q21 | 2026-07-02 | Correctness assurance | Golden fixtures in CI + SME sign-off gate; draft/unverified state; Ohio reviewed first once SMEs are recruited. | Wrong benefits math harms people; fixtures + human review is the guardrail. |
 | Q22 | 2026-07-02 | Vehicle assets | Defer valuation; keep config flag; flag `VEHICLE_ASSET_MAY_APPLY` near asset limit. | Rules are complex/state-variable; flagging beats wrong disqualification. |
 | Q23 | 2026-07-02 | `fplRegion` | Derived from `stateCode` via helper; kept as populated field. | Region is a function of state; removes contradiction + redundant question. |
 | Q24 | 2026-07-02 | Age vs birthdate | DOB preferred (months for under-2s) at snapshot `evaluationDate`; age fallback flags boundary cases. | Exact boundary math + reproducibility; keeps low-friction/privacy path. |
@@ -735,7 +736,7 @@ function estimateSnapBenefit(netIncome: number, householdSize: number, maxAllotm
 | Q43 | 2026-07-02 | PDF language | Generate the English official application plus a language-specific companion guide. | Official forms exist only in English; the guide keeps non-English users able to complete/submit. |
 
 > ASSUMPTION: Washington accepted as the third pilot state (user did not object). Revisit if the
-> Franklin County partnership suggests a different comparison state.
+> pilot partners, once found, suggest a different comparison state.
 > OPEN DEPENDENCY: The referral directory and Terms of Use posture (Q27, 5.13) require review by
 > qualified legal counsel before public launch.
 

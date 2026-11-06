@@ -2,6 +2,14 @@
   "name": "openbridge",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/UbiquitousKiwi/OpenBridge#readme",
+  "bugs": {
+    "url": "https://github.com/UbiquitousKiwi/OpenBridge/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UbiquitousKiwi/OpenBridge.git"
+  },
   "description": "Open-source, privacy-first benefits eligibility navigator. Screen once for SNAP, Medicaid, WIC and more, entirely on-device.",
   "license": "AGPL-3.0-only",
   "author": "StarlingTek, LLC <openbridge@starlingtek.com> (https://starlingtek.com)",
@@ -54,6 +62,6 @@
     "zod": "4.6.7"
   },
   "engines": {
-    "node": ">=22.12"
+    "node": "^22.22.2 || >=24.15.0"
   }
 }

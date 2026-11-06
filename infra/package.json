@@ -2,6 +2,12 @@
   "name": "openbridge-infra",
   "version": "0.1.0",
   "private": true,
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UbiquitousKiwi/OpenBridge.git",
+    "directory": "infra"
+  },
   "description": "AWS CDK infrastructure for OpenBridge (static PWA hosting).",
   "scripts": {
     "synth": "cdk synth",

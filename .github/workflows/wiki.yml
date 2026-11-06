@@ -16,7 +16,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
   group: wiki
@@ -25,9 +25,11 @@ concurrency:
 jobs:
   publish:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -40,6 +42,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           REPO_URL: ${{ github.server_url }}/${{ github.repository }}
         run: |
+          # The wiki repository exists only after a first page is created in the GitHub UI.
+          if ! git ls-remote "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" >/dev/null 2>&1; then
+            echo "::notice::The wiki is not set up yet (create any first page in the GitHub UI). Skipping publish."
+            exit 0
+          fi
           git clone --depth 1 "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.wiki.git" wiki-repo
           # Mirror wiki/ exactly: remove pages deleted from the source, then copy every page.
           find wiki-repo -maxdepth 1 -name '*.md' -delete

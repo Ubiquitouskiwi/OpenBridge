@@ -12,24 +12,29 @@ on:
   workflow_dispatch:
 
 permissions:
-  id-token: write
   contents: read
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     environment: sandbox
+    # OIDC token for AWS, granted only to this job.
+    permissions:
+      id-token: write
+      contents: read
     steps:
       - uses: actions/checkout@v7
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v7
         with:
           node-version-file: .nvmrc
           cache: npm
 
-      - name: Guard — require deploy role
+      - name: 'Guard: require deploy role'
         id: guard
+        env:
+          DEPLOY_ROLE: ${{ secrets.AWS_DEPLOY_ROLE_ARN }}
         run: |
-          if [ -z "${{ secrets.AWS_DEPLOY_ROLE_ARN }}" ]; then
+          if [ -z "$DEPLOY_ROLE" ]; then
             echo "No AWS_DEPLOY_ROLE_ARN configured; skipping deploy."
             echo "enabled=false" >> "$GITHUB_OUTPUT"
           else
@@ -45,7 +50,7 @@ jobs:
       - name: Install infra deps
         if: steps.guard.outputs.enabled == 'true'
         working-directory: infra
-        run: npm install
+        run: npm ci
 
       - name: Configure AWS credentials (OIDC)
         if: steps.guard.outputs.enabled == 'true'
