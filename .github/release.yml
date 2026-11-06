@@ -1,0 +1,21 @@
+# Sorts GitHub's generated release notes (`gh release create --generate-notes`, used by
+# .github/workflows/release.yml) into sections by pull request label. A pull request appears in
+# the first section whose labels match.
+changelog:
+  exclude:
+    labels: ['skip-changelog', 'duplicate', 'invalid']
+  categories:
+    - title: Rules and reference data
+      labels: ['eligibility-rules', 'new-state', 'data']
+    - title: Features
+      labels: ['enhancement']
+    - title: Fixes
+      labels: ['bug']
+    - title: Accessibility
+      labels: ['accessibility']
+    - title: Docs, wording, and translations
+      labels: ['docs', 'translation']
+    - title: Dependencies
+      labels: ['dependencies']
+    - title: Other changes
+      labels: ['*']

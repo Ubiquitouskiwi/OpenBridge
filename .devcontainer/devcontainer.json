@@ -1,0 +1,32 @@
+{
+  // Ready-to-use development environment for GitHub Codespaces or VS Code Dev Containers.
+  // Node 24 (matches .nvmrc), dependencies from the lockfile, and the Playwright browser for
+  // `npm run e2e` and `npm run screenshots`.
+  "name": "OpenBridge",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:3-24-bookworm",
+  "postCreateCommand": "npm ci && npx playwright install --with-deps chromium && npm run build",
+  // Codespaces forwards ports privately (only you can open them) unless you change it.
+  // Keep it that way: dev servers are for local testing only.
+  "portsAttributes": {
+    "5173": { "label": "Web app (npm run dev)", "onAutoForward": "notify" },
+    "4173": { "label": "Web app preview (e2e)", "onAutoForward": "silent" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-playwright.playwright",
+        "vitest.explorer",
+        "redhat.vscode-yaml"
+      ],
+      "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+      }
+    },
+    "codespaces": {
+      "openFiles": ["AGENTS.md", "CONTRIBUTING.md"]
+    }
+  }
+}

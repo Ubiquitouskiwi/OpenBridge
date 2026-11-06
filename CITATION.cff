@@ -1,0 +1,27 @@
+cff-version: 1.2.0
+message: >-
+  If you use OpenBridge or its white paper in research or policy work, please cite it as below.
+  OpenBridge is a prototype: its eligibility rules are drafts that experts have not verified.
+type: software
+title: 'OpenBridge: a privacy-first, open-source public benefits screener'
+abstract: >-
+  OpenBridge is an open-source web app that screens a household for several U.S. benefit programs
+  at once (SNAP, Medicaid and CHIP, WIC, with LIHEAP and TANF in progress), explains every result
+  in plain language with the calculation and its sources, and runs entirely on the user's device.
+authors:
+  - name: 'StarlingTek, LLC'
+    email: openbridge@starlingtek.com
+repository-code: 'https://github.com/UbiquitousKiwi/OpenBridge'
+url: 'https://github.com/UbiquitousKiwi/OpenBridge/wiki'
+license: AGPL-3.0-only
+version: 0.1.0
+date-released: '2026-07-15'
+keywords:
+  - public benefits
+  - civic technology
+  - eligibility screening
+  - SNAP
+  - Medicaid
+  - WIC
+  - privacy
+  - accessibility

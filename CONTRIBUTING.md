@@ -68,7 +68,8 @@ in the PR template. Never paste real people's information into an AI tool or int
 ## Conduct and security
 
 This project follows the [Code of Conduct](./CODE_OF_CONDUCT.md). Report vulnerabilities privately
-as described in [SECURITY.md](./SECURITY.md).
+as described in [SECURITY.md](./SECURITY.md). For questions and where to get help, see
+[SUPPORT.md](./SUPPORT.md).
 
 ## License
 

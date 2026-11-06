@@ -1,0 +1,26 @@
+# Normalize line endings so contributors on Windows, macOS, and Linux produce the same files.
+* text=auto eol=lf
+
+# Windows scripts keep Windows line endings.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files: never change line endings or try to diff them as text.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.ico binary
+*.pdf binary
+*.zip binary
+*.gz binary
+*.woff binary
+*.woff2 binary
+
+# Generated files: collapsed in pull request diffs and left out of language stats.
+package-lock.json linguist-generated=true
+infra/package-lock.json linguist-generated=true
+docs/screenshots/*.png linguist-generated=true
+docs/whitepaper/*.pdf linguist-generated=true
