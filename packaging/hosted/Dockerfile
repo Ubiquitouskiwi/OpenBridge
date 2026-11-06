@@ -7,7 +7,7 @@
 # The image listens on 8080 inside the container. Publish it to 127.0.0.1 as above and put an
 # HTTPS reverse proxy in front for public use.
 
-FROM nginxinc/nginx-unprivileged:1.30-alpine
+FROM nginxinc/nginx-unprivileged:1.31-alpine
 
 COPY docker/default.conf /etc/nginx/conf.d/default.conf
 COPY site/ /usr/share/nginx/html/
