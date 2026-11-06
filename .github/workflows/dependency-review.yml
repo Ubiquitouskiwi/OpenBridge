@@ -14,6 +14,9 @@ permissions:
 jobs:
   review:
     name: Dependency review
+    # Dependency review is free only for public repositories (private ones need GitHub Advanced
+    # Security). Skip while the repository is private; a skipped job counts as passing.
+    if: ${{ !github.event.repository.private }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
