@@ -19,7 +19,6 @@ requires manual testing with assistive technology. Before each release, verify:
 
 ## Low vision / zoom
 
-
 - [ ] Layout works at 200% zoom and 320px width with no loss of content.
 - [ ] Color contrast meets AA (text >= 4.5:1).
 
