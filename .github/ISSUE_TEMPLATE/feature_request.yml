@@ -1,23 +1,98 @@
 name: Feature request
-description: Suggest an improvement.
+description: Suggest an improvement or a new capability.
 labels: ['enhancement', 'triage']
 body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for the idea. Please start with the problem, not the solution: knowing who is stuck
+        and why helps us find the simplest fix. Check the roadmap (ROADMAP.md) first, since it may
+        already be planned.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Which part of OpenBridge?
+      multiple: true
+      options:
+        - Screening questions
+        - Results and explanations
+        - Documents and PDFs
+        - Saving and privacy
+        - Navigator mode
+        - Referrals (Get help)
+        - Languages and translation
+        - Accessibility
+        - Community rule toolkit
+        - MCP server (AI assistant tools)
+        - Hosting, releases, or self-hosting
+        - Docs or wiki
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: who
+    attributes:
+      label: Who does this help?
+      multiple: true
+      options:
+        - People checking for themselves
+        - Navigators and caseworkers
+        - Organizations that host OpenBridge
+        - Rule reviewers and policy experts
+        - Translators
+        - Developers and contributors
+    validations:
+      required: true
   - type: textarea
     id: problem
     attributes:
-      label: What problem does this solve, and for whom?
-      description: Benefit seeker, navigator, organization, or contributor.
+      label: What problem does this solve?
+      description: Describe a real situation (with made-up details) where OpenBridge falls short today.
+      placeholder: A navigator screening five families in a row has to ...
     validations:
       required: true
   - type: textarea
     id: proposal
     attributes:
-      label: Proposed solution
+      label: What would you like to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: done
+    attributes:
+      label: How would we know it works?
+      description: One or more things someone could check, so we know when this is done.
+      placeholder: |
+        - A navigator can ... without ...
+        - The results page shows ...
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Other ways you have tried or considered
+  - type: dropdown
+    id: impact
+    attributes:
+      label: How much does this matter?
+      options:
+        - It blocks people from getting help
+        - It makes a common task much easier
+        - It would be nice to have
   - type: checkboxes
     id: principles
     attributes:
       label: Fit with project principles
+      description: Check what you believe is true. Unchecked boxes are fine; they tell us what to think about.
       options:
         - label: Works without sending personal data off the device
         - label: Works on shared computers and older phones
         - label: Can be explained in plain language
+        - label: Does not decide for people, file applications, or give legal advice
+  - type: dropdown
+    id: help
+    attributes:
+      label: Could you help build or test it?
+      options:
+        - Yes, I can write code
+        - Yes, I can test it or give feedback
+        - Yes, I can help with policy, wording, or translation
+        - Not right now

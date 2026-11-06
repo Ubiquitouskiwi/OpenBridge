@@ -38,8 +38,9 @@ Most help happens on GitHub, the website where OpenBridge's files and discussion
 1. Create a free GitHub account at [github.com/signup](https://github.com/signup). You only need an
    email address. You do not need to install anything.
 2. Go to the OpenBridge repository page and choose the **Issues** tab.
-3. Choose **New issue**. Pick the form that fits: "Eligibility rule correction", "New state request
-   or offer", "Bug report", or "Feature request".
+3. Choose **New issue**. Pick the form that fits: "Eligibility rule correction", "Accessibility
+   barrier", "Wording, docs, or translation", "New state request or offer", "Bug report", or
+   "Feature request".
 4. Fill in the form and submit it. A maintainer will reply on the issue.
 
 Prefer not to use GitHub? Email openbridge@starlingtek.com. Say what you want to help with, and we

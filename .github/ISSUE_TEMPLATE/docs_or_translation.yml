@@ -1,0 +1,57 @@
+name: Wording, docs, or translation
+description: Words in the app, a PDF, the wiki, or the docs are wrong, unclear, or not translated.
+labels: ['docs', 'triage']
+body:
+  - type: dropdown
+    id: where
+    attributes:
+      label: Where are the words?
+      options:
+        - A screen in the screening app
+        - A PDF the app makes
+        - The community rule toolkit
+        - The wiki
+        - README or docs in the repository
+        - Other
+    validations:
+      required: true
+  - type: dropdown
+    id: language
+    attributes:
+      label: Language
+      options: ['English', 'Spanish', 'Other']
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What kind of problem?
+      options:
+        - Hard to understand
+        - Wrong or out of date
+        - Not translated, or translated poorly
+        - Typo or grammar
+        - Something is missing
+    validations:
+      required: true
+  - type: input
+    id: location
+    attributes:
+      label: Page, screen, or link
+      placeholder: e.g. Your results, or the wiki page "Using OpenBridge"
+    validations:
+      required: true
+  - type: textarea
+    id: current
+    attributes:
+      label: What it says now
+      description: Copy the words exactly if you can.
+    validations:
+      required: true
+  - type: textarea
+    id: suggested
+    attributes:
+      label: What it should say (optional)
+      description: >-
+        Your suggested wording. For app text, aim for short sentences and everyday words (about a 6th
+        to 8th grade reading level).

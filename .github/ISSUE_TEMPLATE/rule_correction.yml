@@ -7,6 +7,9 @@ body:
       value: |
         Rule corrections are among the most valuable contributions. Please cite an official source so
         a maintainer and a subject-matter expert can verify it. Use a made-up household, never a real one.
+
+        **Easiest way:** use the Community Rule Toolkit (in each release) to make a proposal file or
+        a test case file, then attach it below. A maintainer can apply a proposal file with one command.
   - type: dropdown
     id: program
     attributes:
@@ -22,11 +25,25 @@ body:
       placeholder: e.g. OH
     validations:
       required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: What looks wrong?
+      options:
+        - A number (an income limit, percentage, deduction, or benefit amount)
+        - A result for a household (the answer or the reasons)
+        - A missing rule or pathway
+        - A source link or date
+        - Not sure
+    validations:
+      required: true
   - type: textarea
     id: current
     attributes:
       label: What OpenBridge says or uses now
-      description: The value or result, and where you saw it (file path, screen, or result card).
+      description: >-
+        The value or result, and where you saw it (a screen, "Show the math", the toolkit, or a file
+        path such as data/states/oh/adapter.json).
     validations:
       required: true
   - type: textarea
@@ -35,17 +52,47 @@ body:
       label: What it should be
     validations:
       required: true
+  - type: textarea
+    id: household
+    attributes:
+      label: A made-up household that shows the problem
+      description: Needed when a result is wrong. Leave blank if only a number is wrong.
+      placeholder: |
+        State and county: OH, Franklin
+        People: adult age 30, child age 3
+        Monthly income: 1,800 from a job
+        Other answers: rent 900, no savings, not already on SNAP
+        OpenBridge says: SNAP "You may well qualify", about 162 a month
+        Expected: ...
   - type: input
     id: source
     attributes:
       label: Official source (URL)
-      description: An agency page, policy manual, or published table.
+      description: An agency page, policy manual, or published table. Link to the exact section if you can.
     validations:
       required: true
+  - type: input
+    id: section
+    attributes:
+      label: Where in the source?
+      placeholder: e.g. Table 2, page 14, or section 5101:4-4-11
   - type: input
     id: published
     attributes:
       label: Source publication or effective date
+      placeholder: e.g. 2025-10-01
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: OpenBridge version or rules data version (if you know it)
+      description: Shown at the bottom of the toolkit, or in BUILD-INFO.json in a download.
+  - type: textarea
+    id: files
+    attributes:
+      label: Proposal or test case file (optional)
+      description: Drag the .json file from the toolkit or the test-case recorder here.
   - type: dropdown
     id: role
     attributes:
@@ -59,3 +106,10 @@ body:
           'Developer',
           'Other',
         ]
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: The household above is made up and has no real person's details.
+          required: true
