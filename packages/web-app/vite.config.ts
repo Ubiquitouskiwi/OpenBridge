@@ -2,9 +2,9 @@ import { resolve } from 'node:path';
 import { defineConfig, type PluginOption } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
-import { inlineSingleFile } from '../../tooling/vite-inline-single-file';
+import { inlineSingleFile } from '../../tooling/vite-inline-single-file.ts';
 
-const workspaceRoot = resolve(__dirname, '../..');
+const workspaceRoot = resolve(import.meta.dirname, '../..');
 
 /** Installable, offline-capable PWA for hosted deployments. */
 function pwa(): PluginOption {

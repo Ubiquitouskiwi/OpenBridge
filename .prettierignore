@@ -5,8 +5,8 @@ build/
 coverage/
 .turbo/
 infra/cdk.out/
-packages/web-app/test-results/
-packages/web-app/playwright-report/
+test-results/
+playwright-report/
 *.tsbuildinfo
 package-lock.json
 
