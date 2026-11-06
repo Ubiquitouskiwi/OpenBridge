@@ -11,6 +11,7 @@
 | [SME_SIGNOFF.md](./SME_SIGNOFF.md)                                   | Subject-matter expert verification record for state adapters                          |
 | [../packages/mcp-server/README.md](../packages/mcp-server/README.md) | Optional MCP server for AI agents: setup, privacy model, tools                        |
 | [../wiki/](../wiki/)                                                 | Source of the GitHub wiki: plain-language guides (style guide: Writing-Wiki-Pages.md) |
+| [brand/](./brand/README.md)                                          | The OpenBridge logo, its files and colors, and accessibility rules for using it       |
 | [screenshots/](./screenshots/README.md)                              | Generated pictures of the app and toolkit, and how to remake them                     |
 | [adr/](./adr/)                                                       | Architecture Decision Records                                                         |
 

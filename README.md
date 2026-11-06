@@ -1,4 +1,9 @@
-# OpenBridge
+<h1>
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="docs/brand/openbridge-logo-dark.svg" />
+    <img src="docs/brand/openbridge-logo.svg" alt="OpenBridge" width="360" />
+  </picture>
+</h1>
 
 **Screen once for the help you already qualify for. Privately, in your browser.**
 

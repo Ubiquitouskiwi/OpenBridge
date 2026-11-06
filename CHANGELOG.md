@@ -9,6 +9,11 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Logo:** a bridge with three people crossing, in warm teal and amber, with the name in Atkinson
+  Hyperlegible. Files and usage rules are in `docs/brand/`. The web app and rule toolkit now have a
+  favicon, the web app has install icons for Android and iPhone, and the README shows the logo
+  (with a dark-mode version).
+
 - **Repository trust tooling:** a dependency review check on every pull request (blocks known
   vulnerabilities and licenses that do not fit AGPL-3.0), a weekly OpenSSF Scorecard check,
   signed build provenance for every release download (`gh attestation verify`), live CI, CodeQL,
