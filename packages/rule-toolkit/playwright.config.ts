@@ -8,6 +8,9 @@ import { defineConfig, devices } from '@playwright/test';
 export default defineConfig({
   testDir: './e2e',
   timeout: 30_000,
-  use: { trace: 'on-first-retry', acceptDownloads: true },
+  // In CI, also write playwright-report/ so the workflow can upload it when a test fails.
+  reporter: process.env.CI ? [['list'], ['html', { open: 'never' }]] : 'list',
+  // There are no retries, so keep a trace for every failure (on-first-retry never records).
+  use: { trace: 'retain-on-failure', acceptDownloads: true },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
 });
