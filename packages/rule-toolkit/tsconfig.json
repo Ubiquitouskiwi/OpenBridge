@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "types": ["vite/client", "vitest/globals", "node"],
+    "resolveJsonModule": true,
+    "allowImportingTsExtensions": false
+  },
+  "references": [{ "path": "../shared" }, { "path": "../eligibility-engine" }],
+  "include": ["src", "e2e", "vitest.config.ts", "playwright.config.ts"]
+}

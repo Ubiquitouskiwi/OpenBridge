@@ -42,6 +42,8 @@ Navigator mode changes two things:
 OpenBridge does not ask for names, so the Dashboard labels are only numbers. Keep track of which
 number is which person on paper you keep private, or not at all.
 
+![The navigator dashboard with two made-up clients, each with View results and Clear client buttons]({{repo}}/raw/HEAD/docs/screenshots/navigator-dashboard.png)
+
 ## Clear between clients
 
 The Dashboard lives only in the browser's memory. Nothing is written to the computer, but it stays
@@ -71,6 +73,8 @@ Under **Share for review**, a client can choose to export their answers for some
 legal aid worker. They must check a box that says they understand it includes personal information.
 They can then press **Export plain PDF**, or type a passphrase and press **Export encrypted
 bundle**. Only do this with your client's clear permission.
+
+![The Your documents and Share for review sections of the results page]({{repo}}/raw/HEAD/docs/screenshots/results-documents.png)
 
 To let a client finish later, use **Save my progress to a file** with a passphrase the client
 chooses and keeps. The file is the client's to keep, not yours. See
