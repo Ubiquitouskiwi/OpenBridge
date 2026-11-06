@@ -6,8 +6,11 @@
  * that works with a double-click, offline, and with no server. The build fails instead of
  * shipping a broken file if anything could not be inlined.
  */
-import type { OutputAsset, OutputBundle, OutputChunk } from 'rollup';
-import type { Plugin } from 'vite';
+import type { Plugin, Rolldown } from 'vite';
+
+type OutputAsset = Rolldown.OutputAsset;
+type OutputBundle = Rolldown.OutputBundle;
+type OutputChunk = Rolldown.OutputChunk;
 
 function escapeRegExp(text: string): string {
   return text.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');

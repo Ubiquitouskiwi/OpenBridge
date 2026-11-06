@@ -30,6 +30,8 @@ Under each answer is a short list of reasons, such as "Your income is close to t
 worth applying to be sure." Reasons tell you what drove the answer. They are the best place to start
 if a result surprises you.
 
+![A results page with an answer and reasons for SNAP, Medicaid, WIC, LIHEAP, and TANF]({{repo}}/raw/HEAD/docs/screenshots/results.png)
+
 ## The details page
 
 Press a program's name to open its details page. There you will find:
@@ -41,11 +43,15 @@ Press a program's name to open its details page. There you will find:
 - **Next steps** and **Documents you'll likely need**.
 - **Apply on the official site**, when OpenBridge has the agency's link.
 
+![The SNAP details page with the estimated benefit and the factors table]({{repo}}/raw/HEAD/docs/screenshots/program-snap-top.png)
+
 ### Results for each person
 
 Medicaid and CHIP, and WIC, look at each person on their own. For these programs the details page
 has an **Each person** section, like "Person 2 (child, age 4)", with that person's own answer and
 reasons. It is common for a child to qualify when a parent does not.
+
+![The Medicaid details page with a separate answer for each person]({{repo}}/raw/HEAD/docs/screenshots/program-medicaid-per-person.png)
 
 ### Show the math
 
@@ -57,6 +63,8 @@ the **Amount**, and **Where it comes from**:
 - **Source not listed yet** means the rule value does not have a source attached yet. Treat it with
   extra care.
 - **Worked out from the lines above** means OpenBridge did the arithmetic.
+
+![Show the math opened on the SNAP details page, with a source link for each rule value]({{repo}}/raw/HEAD/docs/screenshots/program-snap-show-the-math.png)
 
 You will also see the note "These rules are drafts. Experts are still checking them." That note is
 there because no state's rules have been checked by experts yet. See
@@ -73,6 +81,8 @@ little more makes a benefit shrink or stop, so you can end up with less money ov
 tries raises of up to $3,000 more each month and tells you where each program may change or stop.
 Before you change your hours or take a new job, talk with a navigator or the agency.
 
+![The what-if page showing results now and with 250 dollars more each month, and where things may change]({{repo}}/raw/HEAD/docs/screenshots/what-if.png)
+
 ## What to do next
 
 | If you see                               | Do this                                                                                        |
@@ -86,6 +96,8 @@ Before you change your hours or take a new job, talk with a navigator or the age
 If no program looks like a match, OpenBridge says so and points you to **Get help**, where you will
 find 211 and legal aid groups for your state. You can also download a **summary sheet (PDF)** to take
 with you.
+
+![The Get help page listing 211 and legal aid organizations]({{repo}}/raw/HEAD/docs/screenshots/get-help.png)
 
 ## Think a result is wrong?
 
