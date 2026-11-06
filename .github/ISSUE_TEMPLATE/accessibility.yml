@@ -1,0 +1,66 @@
+name: Accessibility barrier
+description: Something is hard or impossible to use with a keyboard, screen reader, zoom, or other tool.
+labels: ['accessibility', 'triage']
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. OpenBridge is for people who may use assistive technology, older devices, or have
+        limited reading time, so these reports matter a lot. Use made-up information only.
+  - type: input
+    id: page
+    attributes:
+      label: Which page or step?
+      placeholder: e.g. Step 2 (household), Your results, toolkit Review a state's rules
+    validations:
+      required: true
+  - type: textarea
+    id: barrier
+    attributes:
+      label: What got in your way?
+      description: What you tried to do, and what stopped you or made it hard.
+      placeholder: With a screen reader, the error under the income box is not read out, so ...
+    validations:
+      required: true
+  - type: dropdown
+    id: how
+    attributes:
+      label: How were you using it?
+      multiple: true
+      options:
+        - Keyboard only
+        - Screen reader
+        - Zoom or large text
+        - Voice control
+        - High contrast or dark mode
+        - Small or older phone
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: tools
+    attributes:
+      label: Tools and versions
+      placeholder: e.g. NVDA 2024.4 with Firefox 133 on Windows 11, VoiceOver on iPhone 12
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: How bad is it?
+      options:
+        - I could not finish the task
+        - I finished, but it was hard or confusing
+        - It is a small problem
+    validations:
+      required: true
+  - type: input
+    id: wcag
+    attributes:
+      label: WCAG success criterion (optional)
+      placeholder: e.g. 1.3.1 Info and Relationships, 2.4.7 Focus Visible
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots, recordings, or notes (optional)
+      description: Check that nothing in them shows real personal details.

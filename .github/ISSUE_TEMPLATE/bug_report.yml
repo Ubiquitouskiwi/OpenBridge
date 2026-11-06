@@ -1,41 +1,103 @@
 name: Bug report
-description: Something in the app or tooling does not work as expected.
+description: Something in the app, the rule toolkit, or the tooling does not work as expected.
 labels: ['bug', 'triage']
 body:
   - type: markdown
     attributes:
       value: |
         Thanks for reporting. **Do not include real personal information** (names, incomes, immigration
-        status) in this issue. Use made-up values. For security problems, follow SECURITY.md instead.
-  - type: textarea
-    id: what
+        status, case details) anywhere in this issue, including screenshots. Use made-up values.
+
+        - A program result looks wrong? Use **Eligibility rule correction** instead.
+        - A security or privacy hole (for example, data left behind on a shared computer)? Follow
+          SECURITY.md and report it privately. Do not open a public issue.
+  - type: dropdown
+    id: area
     attributes:
-      label: What happened?
-      description: What did you expect, and what happened instead?
+      label: Where did it happen?
+      options:
+        - Screening app on a website
+        - Screening app, downloaded single file
+        - Screening app, self-hosted or Docker
+        - Community rule toolkit
+        - MCP server (AI assistant tools)
+        - Running from source (developer)
+        - Release, CI, or build tooling
+        - Not sure
     validations:
       required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version
+      description: >-
+        The release version (for example 0.2.0), from BUILD-INFO.json in a download, or the commit
+        if you run from source. Write "not sure" if you do not know.
+    validations:
+      required: true
+  - type: input
+    id: page
+    attributes:
+      label: Which page or step?
+      placeholder: e.g. Step 3 (income), Your results, What if my income changes, toolkit Propose a rule change
   - type: textarea
     id: steps
     attributes:
       label: Steps to reproduce
+      description: Use a made-up household. Numbered steps help us see exactly what you did.
       placeholder: |
-        1. Choose state ...
-        2. Add household of ...
-        3. See ...
+        1. Choose Ohio
+        2. Add one adult, age 30, and one child, age 3
+        3. Add income of 1,800 a month, then press See my results
+        4. Press ...
     validations:
       required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened instead?
+      description: Include any error message word for word.
+    validations:
+      required: true
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: Does it happen every time?
+      options: ['Every time', 'Sometimes', 'Only once so far']
   - type: input
     id: environment
     attributes:
       label: Browser and device
-      placeholder: e.g. Chrome 130 on a library Windows PC, Safari on iPhone
+      placeholder: e.g. Chrome 130 on a library Windows PC, Safari on iPhone 12, Firefox on Ubuntu
+    validations:
+      required: true
   - type: dropdown
     id: mode
     attributes:
-      label: Mode
-      options: ['Individual', 'Navigator', 'Not sure']
+      label: Mode (screening app only)
+      options: ['Individual', 'Navigator', 'Not sure', 'Not the screening app']
   - type: dropdown
     id: language
     attributes:
       label: Language
       options: ['English', 'Spanish']
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshots or console output (optional)
+      description: >-
+        Drag images here. For developers: errors from the browser console (F12) help a lot. Check
+        that nothing in them shows real personal details.
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I used made-up information and removed any real personal details.
+          required: true

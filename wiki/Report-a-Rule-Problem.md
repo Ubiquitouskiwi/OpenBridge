@@ -20,15 +20,21 @@ write code. Reports like this are among the most valuable help the project gets.
 2. Choose **Eligibility rule correction**.
 3. Fill in the fields below, then submit the issue.
 
-| Field                                       | What to write                                                                                                           |
-| ------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| Program (required)                          | Pick one: SNAP, Medicaid, CHIP, WIC, LIHEAP, TANF, Federal poverty guidelines, or Other.                                |
-| State (required)                            | The two-letter code, for example OH.                                                                                    |
-| What OpenBridge says or uses now (required) | The value or result, and where you saw it, for example "SNAP gross income limit shows 130% on the Show the math table". |
-| What it should be (required)                | The correct value or result, and a sentence on why.                                                                     |
-| Official source (URL) (required)            | A link to an agency page, policy manual, or published table.                                                            |
-| Source publication or effective date        | When the source was published or when the value took effect.                                                            |
-| Your background (optional)                  | For example navigator or caseworker, agency staff, legal aid, or policy researcher.                                     |
+| Field                                           | What to write                                                                                                           |
+| ----------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| Program (required)                              | Pick one: SNAP, Medicaid, CHIP, WIC, LIHEAP, TANF, Federal poverty guidelines, or Other.                                |
+| State (required)                                | The two-letter code, for example OH.                                                                                    |
+| What looks wrong? (required)                    | A number, a result for a household, a missing rule, or a source link or date.                                           |
+| What OpenBridge says or uses now (required)     | The value or result, and where you saw it, for example "SNAP gross income limit shows 130% on the Show the math table". |
+| What it should be (required)                    | The correct value or result, and a sentence on why.                                                                     |
+| A made-up household that shows the problem      | Needed when a result is wrong: state, ages, monthly income, other answers, what OpenBridge said, and what you expected. |
+| Official source (URL) (required)                | A link to an agency page, policy manual, or published table.                                                            |
+| Where in the source?                            | A table, page, or section number, so a reviewer can find the number fast.                                               |
+| Source publication or effective date (required) | When the source was published or when the value took effect.                                                            |
+| OpenBridge version or rules data version        | If you know it. The toolkit shows it at the bottom of every page.                                                       |
+| Proposal or test case file                      | Optional. Drag in a file from the [community rule toolkit](Community-Rule-Toolkit) or the test-case recorder.           |
+| Your background (optional)                      | For example navigator or caseworker, agency staff, legal aid, or policy researcher.                                     |
+| Privacy check (required)                        | Check the box to confirm the household is made up.                                                                      |
 
 One problem per report makes each one easier to check and fix.
 
