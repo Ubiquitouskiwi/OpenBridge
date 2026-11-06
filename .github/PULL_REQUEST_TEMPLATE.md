@@ -21,6 +21,7 @@
 
 - [ ] `npm run verify` passes
 - [ ] `npm run e2e` passes (required for UI changes)
+- [ ] `npm run screenshots` re-run and changed pictures checked (if a screen looks different)
 - [ ] Tests added or updated, and they fail without this change
 
 ## Safety checklist

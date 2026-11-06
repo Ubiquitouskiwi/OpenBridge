@@ -39,6 +39,8 @@ change, so a wrong change gets caught before it reaches a family.
    `single-parent-with-two-kids.json`.
 8. **Send it to us.** Use one of the two ways below.
 
+![The Save a test case for rule reviewers page, with a name typed and the made-up box checked]({{repo}}/raw/HEAD/docs/screenshots/review-test-case.png)
+
 ## How to send it to us
 
 **Option A: an issue (easiest).** On the OpenBridge GitHub page, choose **Issues**, then **New

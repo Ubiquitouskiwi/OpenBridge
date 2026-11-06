@@ -35,7 +35,10 @@ Do the parts that fit your tools. Each one helps.
    order.
 3. **Zoom and small screens (anyone).** Zoom the browser to 200%, and try a narrow window or a phone.
    Check that nothing is cut off and nothing needs sideways scrolling to read. Check that text is
-   easy to read against its background.
+   easy to read against its background. This is how the results page should look on a phone:
+
+   ![The results page on a phone-sized screen, 390 pixels wide, with no sideways scrolling]({{repo}}/raw/HEAD/docs/screenshots/phone-results.png)
+
 4. **Words and errors (anyone).** Check that the words are plain, that number fields give an example
    and accept `$` and commas, and that an error says exactly what to fix next to the right field.
 5. **Motion and timing.** If you leave the app alone, it clears your answers to protect your

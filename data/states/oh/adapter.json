@@ -38,14 +38,14 @@
       "sourceName": "Ohio Medicaid / Medicaid.gov eligibility",
       "url": "https://medicaid.ohio.gov",
       "publishedDate": "2024-01-01",
-      "note": "Illustrative; pending Franklin County SME verification."
+      "note": "Illustrative; pending SME verification."
     },
     {
       "field": "snap.grossIncomeLimitPct",
       "sourceName": "Ohio Dept. of Job and Family Services (BBCE)",
       "url": "https://jfs.ohio.gov",
       "publishedDate": "2024-01-01",
-      "note": "Illustrative; pending Franklin County SME verification."
+      "note": "Illustrative; pending SME verification."
     },
     {
       "field": "wic.incomeLimitPct",
@@ -59,17 +59,17 @@
       "sourceName": "Ohio Dept. of Development HEAP eligibility",
       "url": "https://energyhelp.ohio.gov",
       "publishedDate": "2024-01-01",
-      "note": "Illustrative; pending Franklin County SME verification."
+      "note": "Illustrative; pending SME verification."
     },
     {
       "field": "tanf.baseMonthlyLimitCents",
       "sourceName": "Ohio Works First payment/eligibility standards (ODJFS)",
       "url": "https://jfs.ohio.gov/ocomm/owf",
       "publishedDate": "2024-01-01",
-      "note": "Illustrative; pending Franklin County SME verification."
+      "note": "Illustrative; pending SME verification."
     }
   ],
   "verificationStatus": "draft",
   "lastVerified": "2026-07-02",
-  "lastVerifiedBy": "pending-franklin-county-sme"
+  "lastVerifiedBy": "pending-sme"
 }

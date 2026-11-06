@@ -16,17 +16,17 @@ keeps protecting families long after you send it.
 
 ## Ways to help
 
-| Task                                                | About how long          | Good fit for                            | How                                                    |
-| --------------------------------------------------- | ----------------------- | --------------------------------------- | ------------------------------------------------------ |
-| Record a test case                                  | 30 to 60 minutes        | Caseworkers, navigators                 | [Record a test case](Record-a-Test-Case)               |
-| Report a rule that looks wrong                      | 15 to 30 minutes        | Anyone who knows the program            | [Report a rule problem](Report-a-Rule-Problem)         |
-| Review a state's rules as an expert                 | Several hours per state | Policy experts, agency staff, legal aid | [Review rules as an expert](Review-Rules-as-an-Expert) |
-| Review the Spanish copy                             | 1 to 3 hours            | Qualified Spanish translators           | [Translate OpenBridge](Translate-OpenBridge)           |
-| Propose a new language                              | 15 minutes to start     | Translators, community groups           | [Translate OpenBridge](Translate-OpenBridge)           |
-| Test with a keyboard or screen reader               | 1 to 2 hours            | Accessibility testers, any user         | [Test accessibility](Test-Accessibility)               |
-| Tell us what expert tools you need                  | 15 minutes              | Policy and legal experts                | [Community rule toolkit](Community-Rule-Toolkit)       |
-| Ask for a new state, or offer to help               | 10 minutes              | Anyone                                  | Open a "New state request or offer" issue              |
-| Try it at your organization and tell us how it went | Ongoing                 | Navigators, program managers            | [Guide for navigators](Navigator-Guide)                |
+| Task                                                | About how long            | Good fit for                            | How                                                    |
+| --------------------------------------------------- | ------------------------- | --------------------------------------- | ------------------------------------------------------ |
+| Record a test case                                  | 30 to 60 minutes          | Caseworkers, navigators                 | [Record a test case](Record-a-Test-Case)               |
+| Report a rule that looks wrong                      | 15 to 30 minutes          | Anyone who knows the program            | [Report a rule problem](Report-a-Rule-Problem)         |
+| Review a state's rules as an expert                 | Several hours per state   | Policy experts, agency staff, legal aid | [Review rules as an expert](Review-Rules-as-an-Expert) |
+| Review the Spanish copy                             | 1 to 3 hours              | Qualified Spanish translators           | [Translate OpenBridge](Translate-OpenBridge)           |
+| Propose a new language                              | 15 minutes to start       | Translators, community groups           | [Translate OpenBridge](Translate-OpenBridge)           |
+| Test with a keyboard or screen reader               | 1 to 2 hours              | Accessibility testers, any user         | [Test accessibility](Test-Accessibility)               |
+| Check or correct rules with the rule toolkit        | 30 minutes to a few hours | Policy and legal experts                | [Community rule toolkit](Community-Rule-Toolkit)       |
+| Ask for a new state, or offer to help               | 10 minutes                | Anyone                                  | Open a "New state request or offer" issue              |
+| Try it at your organization and tell us how it went | Ongoing                   | Navigators, program managers            | [Guide for navigators](Navigator-Guide)                |
 
 Times are rough guesses. Do as much or as little as you like. A single good report helps.
 
