@@ -42,6 +42,16 @@ Open a terminal in the folder with the zip file and run the command for your com
 Use your real file name. Compare the long string it prints with the line for that file in
 `SHA256SUMS.txt`. They should be the same.
 
+**For extra proof (optional, for technical users).** Each download is also signed by GitHub to show
+it was built by the project's release workflow from a specific commit. With the
+[GitHub CLI](https://cli.github.com/) installed, run:
+
+```bash
+gh attestation verify openbridge-local-v0.2.0.zip --repo UbiquitousKiwi/OpenBridge
+```
+
+It prints "Verification succeeded" when the file is genuine.
+
 ## If something goes wrong
 
 - **It opens in the wrong program** (like a text editor). Right-click `OpenBridge.html`, choose

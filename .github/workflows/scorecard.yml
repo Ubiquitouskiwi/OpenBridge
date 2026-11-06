@@ -1,0 +1,42 @@
+name: OpenSSF Scorecard
+
+# Weekly check of the repository's security practices (branch protection, token permissions,
+# pinned actions, and more). Findings appear on the Security tab, and the score feeds the README
+# badge at https://scorecard.dev. Requires ossf/scorecard-action in the allowed-actions list
+# (Settings, then Actions, then General).
+
+on:
+  branch_protection_rule:
+  schedule:
+    - cron: '27 6 * * 1'
+  push:
+    branches: [mainline]
+  workflow_dispatch:
+
+permissions: read-all
+
+jobs:
+  analysis:
+    name: Scorecard analysis
+    runs-on: ubuntu-latest
+    permissions:
+      security-events: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Run analysis
+        # Pinned to a commit, as Scorecard itself recommends. Dependabot keeps it current.
+        uses: ossf/scorecard-action@fa7117db83c52d787ae5a89f350999701505d78e # v2.5.0
+        with:
+          results_file: results.sarif
+          results_format: sarif
+          # Publishes the score so the README badge works. Public repositories only.
+          publish_results: true
+
+      - name: Upload to code scanning
+        uses: github/codeql-action/upload-sarif@v4
+        with:
+          sarif_file: results.sarif

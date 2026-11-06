@@ -136,6 +136,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      # Build provenance: sign a record that these files came from this workflow and commit.
+      id-token: write
+      attestations: write
     steps:
       - uses: actions/checkout@v7
 
@@ -174,6 +177,16 @@ jobs:
           rm -f SHA256SUMS.txt
           sha256sum -- *.tar.gz *.zip > SHA256SUMS.txt
           cat SHA256SUMS.txt
+
+      # Anyone can check a download with:
+      #   gh attestation verify <file> --repo <owner>/<repo>
+      # The signature is stored by GitHub; nothing about users is involved.
+      - name: Attest build provenance
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: |
+            release-artifacts/*.tar.gz
+            release-artifacts/*.zip
 
       - name: Create release
         env:

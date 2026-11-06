@@ -9,6 +9,12 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Repository trust tooling:** a dependency review check on every pull request (blocks known
+  vulnerabilities and licenses that do not fit AGPL-3.0), a weekly OpenSSF Scorecard check,
+  signed build provenance for every release download (`gh attestation verify`), live CI, CodeQL,
+  Scorecard, and release badges, `SUPPORT.md`, `CITATION.cff`, release-note categories,
+  `.gitattributes`, and a Codespaces dev container.
+
 - **Screenshots:** `docs/screenshots/` holds 25 pictures of the screening app and the rule toolkit,
   made from the real app with a made-up household by `npm run screenshots` (Playwright, fixed
   date, loopback-only server). The README and 9 wiki pages now show them, and
