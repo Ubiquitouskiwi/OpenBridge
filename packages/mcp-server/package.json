@@ -2,6 +2,11 @@
   "name": "@openbridge/mcp-server",
   "version": "0.1.0",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UbiquitousKiwi/OpenBridge.git",
+    "directory": "packages/mcp-server"
+  },
   "description": "Model Context Protocol server that exposes the OpenBridge eligibility engine to AI agents.",
   "license": "AGPL-3.0-only",
   "type": "module",

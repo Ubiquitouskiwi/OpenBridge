@@ -2,6 +2,13 @@
   "name": "@openbridge/web-app",
   "version": "0.1.0",
   "private": true,
+  "description": "OpenBridge screening app: a React PWA that runs entirely on the user's device.",
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/UbiquitousKiwi/OpenBridge.git",
+    "directory": "packages/web-app"
+  },
   "type": "module",
   "scripts": {
     "dev": "vite",
