@@ -36,12 +36,11 @@ export async function copyText(text: string): Promise<boolean> {
   area.style.opacity = '0';
   document.body.appendChild(area);
   area.select();
-  let ok = false;
   try {
-    ok = document.execCommand('copy');
+    return document.execCommand('copy');
   } catch {
-    ok = false;
+    return false;
+  } finally {
+    area.remove();
   }
-  area.remove();
-  return ok;
 }

@@ -65,7 +65,7 @@ function parseFile<T>(path: string, schema: { parse: (v: unknown) => T }): T {
     return schema.parse(readJson(path));
   } catch (err) {
     const why = err instanceof Error ? err.message : String(err);
-    throw new Error(`OpenBridge reference file failed validation: ${path}\n${why}`);
+    throw new Error(`OpenBridge reference file failed validation: ${path}\n${why}`, { cause: err });
   }
 }
 
