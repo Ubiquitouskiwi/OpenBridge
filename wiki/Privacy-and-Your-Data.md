@@ -31,6 +31,8 @@ Your answers live only in the memory of the browser tab you are using. OpenBridg
 them to the computer's storage, to cookies, or to the browser's autofill. The rule calculations run
 on your device too, so your answers never need to travel anywhere.
 
+![The banner on every question page: Your information is only on this device. It has not been sent anywhere.]({{repo}}/raw/HEAD/docs/screenshots/screen-1-location.png)
+
 ## How to erase it
 
 - Press **Clear my data / Start over** at the top of any page. This erases your answers, your

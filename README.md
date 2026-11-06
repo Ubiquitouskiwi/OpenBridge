@@ -25,7 +25,7 @@ Millions of eligible people never receive benefits they qualify for. The program
 in is the problem. Each program has its own website, its own rules, and its own forms, and nothing
 tells a family that qualifying for one usually means qualifying for others. OpenBridge connects
 those dots for benefit seekers and for the navigators at food banks, libraries, and clinics who help
-them. The [white paper](./OpenBridge_White_Paper.pdf) explains the problem, approach, and known
+them. The [white paper](./docs/whitepaper/OpenBridge_White_Paper.pdf) explains the problem, approach, and known
 gaps in detail.
 
 ## What it does
@@ -50,6 +50,19 @@ gaps in detail.
 - **Navigator mode** for screening several clients in a row.
 - **Works offline** after the first visit, on older browsers and low-cost phones.
 
+## Screenshots
+
+The household in these pictures is made up, and the rules behind the results are unverified drafts.
+
+| Results for every program                                                             | Show the math                                                                                                       |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| [![Results page](docs/screenshots/results-top.png)](docs/screenshots/results.png)     | [![SNAP calculation steps](docs/screenshots/program-snap-top.png)](docs/screenshots/program-snap-show-the-math.png) |
+| **What if my income changes?**                                                        | **Navigator dashboard**                                                                                             |
+| [![What-if page](docs/screenshots/what-if-changes.png)](docs/screenshots/what-if.png) | [![Navigator dashboard](docs/screenshots/navigator-dashboard.png)](docs/screenshots/navigator-dashboard.png)        |
+
+More in [docs/screenshots](docs/screenshots/README.md), including the screening steps, a phone
+view, Spanish, and the community rule toolkit. Regenerate them with `npm run screenshots`.
+
 ## Status
 
 |                        |                                                                                                                  |
@@ -65,11 +78,12 @@ gaps in detail.
 Each [GitHub Release](../../releases) has ready-to-use downloads (see
 [docs/RELEASING.md](./docs/RELEASING.md)):
 
-| Download                             | For                                                                                                       |
-| ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
-| `openbridge-local-v*.zip`            | **Use it on your own computer.** Unzip and double-click `OpenBridge.html`. No install, works offline.     |
-| `openbridge-hosted-v*.tar.gz`        | **Host it for others.** Static site with Docker, Compose, nginx, Caddy, and a no-dependency start script. |
-| `openbridge-image-v*-linux-*.tar.gz` | **Containers.** `docker load -i <file>`, then run on port 8080.                                           |
+| Download                             | For                                                                                                                                   |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `openbridge-local-v*.zip`            | **Use it on your own computer.** Unzip and double-click `OpenBridge.html`. No install, works offline.                                 |
+| `openbridge-rule-toolkit-v*.zip`     | **Help check the rules.** For policy and legal experts: review rules against their sources, propose fixes, check test cases. No code. |
+| `openbridge-hosted-v*.tar.gz`        | **Host it for others.** Static site with Docker, Compose, nginx, Caddy, and a no-dependency start script.                             |
+| `openbridge-image-v*-linux-*.tar.gz` | **Containers.** `docker load -i <file>`, then run on port 8080.                                                                       |
 
 ## Use it with an AI assistant
 

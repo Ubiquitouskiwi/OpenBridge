@@ -73,6 +73,23 @@ The wiki explains how to do things. The detailed technical rules stay in the rep
 [steering files]({{repo}}/tree/HEAD/.kiro/steering) instead of copying them, so there is only one
 place to keep up to date.
 
+## Pictures
+
+Use the screenshots in [`docs/screenshots/`]({{repo}}/tree/HEAD/docs/screenshots). They are made
+by a script from the real app with a made-up household, so they stay correct when the app changes.
+
+```markdown
+![The results page, with an answer for each program]({{repo}}/raw/HEAD/docs/screenshots/results-top.png)
+```
+
+- Write the text in the square brackets for someone who cannot see the picture: say what it shows,
+  not "screenshot".
+- Put a picture right after the step or paragraph it shows. In a numbered list, indent it three
+  spaces so the numbering keeps going.
+- Need a picture that does not exist yet? Add it to the script and run `npm run screenshots`. The
+  [screenshots guide]({{repo}}/blob/HEAD/docs/screenshots/README.md) explains how. Never use a
+  picture of a real person's screen or real case details.
+
 ## Check your work
 
 Run this from the repository root before opening a pull request:
@@ -81,8 +98,8 @@ Run this from the repository root before opening a pull request:
 npm run check:wiki
 ```
 
-It reports broken page links, links to repository files that do not exist, pages missing from the
-sidebar, em dashes, and emoji. It also runs as part of `npm run verify` and in CI.
+It reports broken page links, links to repository files or pictures that do not exist, pages
+missing from the sidebar, em dashes, and emoji. It also runs as part of `npm run verify` and in CI.
 
 ## Related pages
 

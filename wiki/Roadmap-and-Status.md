@@ -11,21 +11,21 @@ truth. If this page and the roadmap disagree, the roadmap wins.
 
 Phase 1 is built as a prototype. The automated checks pass. What is missing is mostly human work.
 
-| Area                    | Status                                                     |
-| ----------------------- | ---------------------------------------------------------- |
-| Programs                | SNAP, Medicaid and CHIP, WIC built; LIHEAP and TANF early  |
-| States                  | Ohio, Texas, Washington, all `draft` (not verified)        |
-| Languages               | English and Spanish                                        |
-| Reference figures       | From 2024; need a refresh                                  |
-| Golden test cases       | 8 in total across three states                             |
-| Expert review of rules  | Not started (Ohio reviewers in Franklin County identified) |
-| Legal review            | Not started (review package prepared)                      |
-| Testing with real users | Not started                                                |
-| Screen reader testing   | Not started (automated checks pass)                        |
-| Ohio prefill            | A list of the right fields, not the official form yet      |
-| Referral directory      | 5 entries                                                  |
-| Release downloads       | Built (local file, hosted bundle, container images)        |
-| Public site             | Not deployed                                               |
+| Area                    | Status                                                                     |
+| ----------------------- | -------------------------------------------------------------------------- |
+| Programs                | SNAP, Medicaid and CHIP, WIC built; LIHEAP and TANF early                  |
+| States                  | Ohio, Texas, Washington, all `draft` (not verified)                        |
+| Languages               | English and Spanish                                                        |
+| Reference figures       | From 2024; need a refresh                                                  |
+| Golden test cases       | 8 in total across three states                                             |
+| Expert review of rules  | Not started (no reviewers yet for any state; recruiting them is a blocker) |
+| Legal review            | Not started (review package prepared)                                      |
+| Testing with real users | Not started                                                                |
+| Screen reader testing   | Not started (automated checks pass)                                        |
+| Ohio prefill            | A list of the right fields, not the official form yet                      |
+| Referral directory      | 5 entries                                                                  |
+| Release downloads       | Built (local file, hosted bundle, container images)                        |
+| Public site             | Not deployed                                                               |
 
 Expert sign-off is tracked in [SME_SIGNOFF.md]({{repo}}/blob/HEAD/docs/SME_SIGNOFF.md) and legal
 review in [LEGAL_REVIEW.md]({{repo}}/blob/HEAD/docs/LEGAL_REVIEW.md).
@@ -61,9 +61,10 @@ Items marked **BLOCKER** must be done before anything ships to the public.
 
 ### Community tools and publishing
 
-- A [[community rule toolkit|Community-Rule-Toolkit]] so people can propose and check rules without
-  code. The first piece, the test-case recorder at `/review`, already exists.
-- This wiki (in progress).
+- The [[community rule toolkit|Community-Rule-Toolkit]] is available: review a state's rules,
+  propose a change with a citation, and check test cases, all without code. Next: Spanish, and
+  reviewing federal figures.
+- This wiki.
 - Publish the repository and deploy a pilot site for partner organizations.
 
 ## After the pilot

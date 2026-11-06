@@ -8,7 +8,11 @@ import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const here = dirname(fileURLToPath(import.meta.url));
-const enDir = resolve(here, '../packages/web-app/src/i18n/locales/en');
+/** English locale folders of every app with user-facing copy. */
+const LOCALE_DIRS = [
+  { app: 'web app', dir: resolve(here, '../packages/web-app/src/i18n/locales/en') },
+  { app: 'rule toolkit', dir: resolve(here, '../packages/rule-toolkit/src/i18n/locales/en') },
+];
 const GRADE_TARGET = 8;
 
 function countSyllables(word: string): number {
@@ -25,21 +29,24 @@ function collectStrings(obj: unknown, out: string[]): void {
     Object.values(obj).forEach((v) => collectStrings(v, out));
 }
 
-const strings: string[] = [];
-for (const file of readdirSync(enDir).filter((f) => f.endsWith('.json'))) {
-  collectStrings(JSON.parse(readFileSync(resolve(enDir, file), 'utf8')), strings);
+function gradeOf(dir: string): number {
+  const strings: string[] = [];
+  for (const file of readdirSync(dir).filter((f) => f.endsWith('.json'))) {
+    collectStrings(JSON.parse(readFileSync(resolve(dir, file), 'utf8')), strings);
+  }
+  const text = strings.join(' ');
+  const sentences = Math.max(1, (text.match(/[.!?]+/g) ?? []).length);
+  const words = text.split(/\s+/).filter(Boolean);
+  const syllables = words.reduce((sum, w) => sum + countSyllables(w), 0);
+  return 0.39 * (words.length / sentences) + 11.8 * (syllables / Math.max(1, words.length)) - 15.59;
 }
 
-const text = strings.join(' ');
-const sentences = Math.max(1, (text.match(/[.!?]+/g) ?? []).length);
-const words = text.split(/\s+/).filter(Boolean);
-const syllables = words.reduce((s, w) => s + countSyllables(w), 0);
-const grade =
-  0.39 * (words.length / sentences) + 11.8 * (syllables / Math.max(1, words.length)) - 15.59;
-
-console.log(
-  `Flesch–Kincaid grade level (en UI copy): ${grade.toFixed(1)} (target <= ${GRADE_TARGET})`,
-);
-if (grade > GRADE_TARGET) {
-  console.warn(`⚠ Copy reads above grade ${GRADE_TARGET}. Consider simplifying.`);
+for (const { app, dir } of LOCALE_DIRS) {
+  const grade = gradeOf(dir);
+  console.log(
+    `Flesch–Kincaid grade level (en ${app} copy): ${grade.toFixed(1)} (target <= ${GRADE_TARGET})`,
+  );
+  if (grade > GRADE_TARGET) {
+    console.warn(`⚠ ${app} copy reads above grade ${GRADE_TARGET}. Consider simplifying.`);
+  }
 }
