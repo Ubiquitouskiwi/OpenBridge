@@ -27,7 +27,7 @@
   "outcome": {
     "eligible": "Probablemente califica",
     "likely_eligible": "Es muy posible que califique",
-    "possibly_eligible": "Podría calificar — vale la pena solicitar",
+    "possibly_eligible": "Podría calificar. Vale la pena solicitar.",
     "ineligible": "Quizás no califique ahora",
     "unknown": "Aún no hay suficiente información"
   },
@@ -56,5 +56,106 @@
       "unlock_failed": "No se pudo desbloquear este archivo. Revise su frase de contraseña.",
       "unreadable": "No se pudo abrir este archivo."
     }
+  },
+  "relationship": {
+    "self": "usted",
+    "spouse": "cónyuge o pareja",
+    "child": "hijo o hija",
+    "parent": "padre o madre",
+    "sibling": "hermano o hermana",
+    "grandparent": "abuelo o abuela",
+    "other_relative": "otro familiar",
+    "non_relative": "no es familiar"
+  },
+  "memberLabel": {
+    "withAge": "Persona {{n}} ({{relationship}}, {{age}} años)",
+    "noAge": "Persona {{n}} ({{relationship}})",
+    "unknown": "Una persona de su hogar"
+  },
+  "people": {
+    "heading": "Cada persona"
+  },
+  "showMath": {
+    "summary": "Ver las cuentas",
+    "memberSummary": "Ver las cuentas de {{person}}",
+    "caption": "Cómo calculamos este resultado",
+    "colStep": "Paso",
+    "colValue": "Cantidad",
+    "colSource": "De dónde viene",
+    "add": "más {{value}}",
+    "subtract": "menos {{value}}",
+    "result": "igual a {{value}}",
+    "limit": "Límite: {{value}}",
+    "fromAnswers": "De sus respuestas",
+    "workedOut": "Calculado con las líneas de arriba",
+    "sourceMissing": "Fuente aún no indicada",
+    "sourceLink": "{{name}}, publicado el {{date}}",
+    "newTab": "(se abre en una pestaña nueva)",
+    "draftNote": "Estas reglas son borradores. Los expertos todavía las están revisando.",
+    "estimateNote": "Esto es un cálculo aproximado. La agencia toma la decisión final."
+  },
+  "whatif": {
+    "title": "¿Y si cambian mis ingresos?",
+    "linkFromResults": "¿Y si cambian mis ingresos?",
+    "backToResults": "Volver a sus resultados",
+    "intro": "Vea cómo un aumento, más horas o menos pago podrían cambiar sus resultados. Lo que escriba aquí se queda en este dispositivo.",
+    "noIntake": "Primero, conteste las preguntas de evaluación. Luego podrá probar cambios de ingresos aquí.",
+    "startScreen": "Comenzar una evaluación",
+    "directionLegend": "¿Sus ingresos mensuales van a subir o bajar?",
+    "more": "Subir (más dinero)",
+    "less": "Bajar (menos dinero)",
+    "amountLabel": "¿Cuánto cada mes?",
+    "amountHint": "Por ejemplo, 250",
+    "quickLegend": "O elija un aumento",
+    "quick": "{{amount}} más",
+    "statusNone": "Mostrando sus resultados sin cambios.",
+    "statusMore": "Mostrando sus resultados con {{amount}} más cada mes.",
+    "statusLess": "Mostrando sus resultados con {{amount}} menos cada mes.",
+    "tableCaption": "Sus resultados ahora y con este cambio",
+    "colProgram": "Programa",
+    "colNow": "Ahora",
+    "colChanged": "Con el cambio",
+    "benefit": "Unos {{amount}} al mes",
+    "cliffsTitle": "Dónde las cosas podrían cambiar",
+    "cliffsIntro": "Probamos pagos más altos, hasta {{max}} más cada mes.",
+    "cliffChangeStop": "{{subject}} podría cambiar si gana unos {{change}} más cada mes. Podría terminar con unos {{stop}} más.",
+    "cliffStop": "{{subject}} podría terminar si gana unos {{stop}} más cada mes.",
+    "cliffChange": "{{subject}} podría cambiar si gana unos {{change}} más cada mes.",
+    "cliffNone": "{{subject}} no cambió en lo que probamos.",
+    "subjectPerson": "{{program}} para {{person}}",
+    "noCliffs": "Ninguno de sus resultados actuales parece cambiar con más pago.",
+    "estimateNote": "Son cálculos aproximados. Las reglas reales tienen más detalles de los que podemos revisar aquí.",
+    "nextStep": "Antes de cambiar sus horas o aceptar un trabajo nuevo, hable con un navegador o con la agencia."
+  },
+  "review": {
+    "title": "Guardar un caso de prueba para revisores de reglas",
+    "linkFromResults": "Para revisores de reglas: guardar esto como caso de prueba",
+    "intro1": "Esta página es para trabajadores sociales y expertos en políticas que revisan nuestras reglas.",
+    "intro2": "Evalúe una familia inventada. Luego guarde los resultados que espera como caso de prueba. Usamos casos de prueba para asegurar que las reglas sigan bien.",
+    "noIntake": "Primero, evalúe una familia inventada. Luego vuelva a esta página.",
+    "dateNote": "Los casos de prueba se revisan como si hoy fuera el 1 de junio de 2024. Por eso un resultado aquí puede no coincidir con su página de resultados.",
+    "madeUpLabel": "Esta familia es inventada. No tiene datos de ninguna persona real.",
+    "nameLabel": "Nombre del caso de prueba (obligatorio)",
+    "nameHint": "Por ejemplo, madre sola con dos hijos",
+    "nameRequired": "Escriba un nombre para este caso de prueba.",
+    "expectedLegend": "¿Qué resultado espera?",
+    "expectedHint": "Pusimos lo que OpenBridge dice ahora. Cambie lo que crea que está mal.",
+    "memberSelect": "{{program}} para {{person}}",
+    "download": "Descargar caso de prueba",
+    "gateHint": "Para descargar, marque la casilla y escriba un nombre.",
+    "saved": "Se guardó {{file}}.",
+    "submitTitle": "Cómo enviárnoslo",
+    "submitIssue": "En la página de OpenBridge en GitHub, abra un nuevo reporte \"Eligibility rule correction\" y adjunte el archivo.",
+    "submitPr": "O abra un pull request que agregue el archivo a data/states/{{code}}/fixtures/."
+  },
+  "forms": {
+    "loading": "Preparando su documento. Esto puede tardar unos segundos.",
+    "ready": "Su documento está listo.",
+    "error": "No pudimos preparar el documento. Inténtelo de nuevo."
+  },
+  "shell": {
+    "skipToContent": "Saltar al contenido",
+    "footerNotice": "OpenBridge no es asesoría legal. Le ayuda a completar solicitudes de beneficios.",
+    "termsLink": "Términos de uso"
   }
 }

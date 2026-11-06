@@ -28,7 +28,10 @@ If a request conflicts with one of these, stop and say so.
 
 1. **No off-device transmission of personal data.** Never add a network call, beacon, analytics,
    telemetry, third-party script, or error reporter that could carry household, income, status,
-   or result data. The only network traffic is fetching the app and public rule files.
+   or result data. The only network traffic is fetching the app and public rule files. The
+   optional MCP server (`packages/mcp-server`, ADR-0003) is a separate component that receives
+   household data from an AI agent: it must keep it in memory for one request only and never log,
+   store, or forward it.
 2. **Memory-only by default.** Never write personal data to `localStorage`, `sessionStorage`,
    `IndexedDB`, cookies, the Cache API, or browser autofill. The only persistence is the
    user-initiated, passphrase-encrypted export file.
@@ -45,8 +48,9 @@ If a request conflicts with one of these, stop and say so.
    `verificationStatus: "verified"`, recorded in `docs/SME_SIGNOFF.md`. Agents leave it `draft`.
 7. **Engine emits codes, UI emits words.** The engine returns reason codes and params only. Every
    new reason code gets an English string in `packages/web-app/src/i18n/locales/en/reasons.json`.
-8. **One-way dependencies.** `shared` <- `eligibility-engine` <- `form-assembly` <- `web-app`.
-   Nothing imports upward or sideways against this direction.
+8. **One-way dependencies.** `shared` <- `eligibility-engine` <- `form-assembly` <- `web-app`,
+   and `shared` <- `eligibility-engine` <- `mcp-server`. Nothing imports upward or sideways
+   against this direction (`mcp-server` reads web-app locale JSON as data, never its code).
 9. **No secrets in the repo.** No keys, tokens, account IDs, ARNs, or personal contact details in
    code, config, fixtures, or docs. The one published project contact,
    `openbridge@starlingtek.com`, is the only email address that belongs in the repo.
@@ -55,7 +59,7 @@ If a request conflicts with one of these, stop and say so.
 
 ## 3. Commands
 
-Node 20 (see `.nvmrc`), npm workspaces, Turborepo.
+Node 24 LTS (see `.nvmrc`), npm workspaces, Turborepo.
 
 ```bash
 npm ci                    # install exactly what the lockfile says
@@ -67,6 +71,8 @@ npm test                  # unit tests only
 npm run test:fixtures     # golden eligibility fixtures only
 npm run validate:adapters # state adapter schema + provenance only
 npm run dev -w @openbridge/web-app   # local dev server (binds to localhost)
+npm run build:local -w @openbridge/web-app   # single-file offline build (dist-local/)
+npm run release:package -- --version X.Y.Z   # release downloads (see docs/RELEASING.md)
 ```
 
 `npm run verify` must pass before you report work as done. If it cannot run in your environment,
@@ -106,15 +112,15 @@ Propose these and wait for an explicit yes. Do not do them on your own initiativ
 
 ## 6. Topic standards (read the one that matches your change)
 
-| You are touching                                     | Read                                                                               |
-| ---------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| Anything (always)                                    | `.kiro/steering/product.md`, `tech.md`, `structure.md`, `engineering-standards.md` |
-| Engine, programs, household or income logic, `data/` | `.kiro/steering/eligibility-rules.md`                                              |
-| Stores, save/export, crypto, network, logging, infra | `.kiro/steering/privacy-security.md`                                               |
-| UI components, copy, locales, PDFs                   | `.kiro/steering/ui-i18n-accessibility.md`                                          |
-| Tests of any kind                                    | `.kiro/steering/testing.md`                                                        |
-| Commits, PRs, changelog, ADRs                        | `.kiro/steering/git-and-review.md`                                                 |
-| Writing or reviewing a spec                          | `.kiro/steering/grill-spec.md` (manual)                                            |
+| You are touching                                                                    | Read                                                                               |
+| ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| Anything (always)                                                                   | `.kiro/steering/product.md`, `tech.md`, `structure.md`, `engineering-standards.md` |
+| Engine, programs, household or income logic, `data/`                                | `.kiro/steering/eligibility-rules.md`                                              |
+| Stores, save/export, crypto, network, logging, infra, MCP server, release packaging | `.kiro/steering/privacy-security.md`                                               |
+| UI components, copy, locales, PDFs                                                  | `.kiro/steering/ui-i18n-accessibility.md`                                          |
+| Tests of any kind                                                                   | `.kiro/steering/testing.md`                                                        |
+| Commits, PRs, changelog, ADRs                                                       | `.kiro/steering/git-and-review.md`                                                 |
+| Writing or reviewing a spec                                                         | `.kiro/steering/grill-spec.md` (manual)                                            |
 
 ## 7. Commits and pull requests
 

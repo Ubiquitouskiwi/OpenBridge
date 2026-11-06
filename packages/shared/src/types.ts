@@ -130,6 +130,35 @@ export interface FactorRow {
   passes: boolean;
 }
 
+/** Unit of a calculation-step value: integer cents, a percentage, or a count. */
+export type CalculationUnit = 'cents' | 'pct' | 'count';
+
+/**
+ * How a step relates to the arithmetic around it, so the UI can lay out "show the math":
+ * `input` is a value from the household, `rule` a value from reference data, `add` and
+ * `subtract` adjust a running total, `result` is a computed subtotal, and `limit` is the
+ * threshold the result is compared against.
+ */
+export type CalculationOp = 'input' | 'rule' | 'add' | 'subtract' | 'result' | 'limit';
+
+/** Where a rule value comes from: a `sources[].field` in the state adapter or federal data. */
+export interface CalculationSourceRef {
+  scope: 'state' | 'federal';
+  field: string;
+}
+
+/**
+ * One step of an evaluator's arithmetic (the "show the math" trace). Steps carry codes and
+ * raw values only; the UI localizes and formats them, like reason codes.
+ */
+export interface CalculationStep {
+  labelCode: string;
+  value: number;
+  unit: CalculationUnit;
+  op: CalculationOp;
+  source?: CalculationSourceRef;
+}
+
 /** Present for per-member programs (Medicaid, CHIP, WIC). */
 export interface MemberEligibility {
   memberId: string;
@@ -137,6 +166,8 @@ export interface MemberEligibility {
   reasons: ReasonCode[];
   factors: FactorRow[];
   estimatedBenefitCents?: number;
+  /** Step-by-step arithmetic behind this member's result. */
+  calculation?: CalculationStep[];
 }
 
 export interface ProgramEligibilityResult {
@@ -151,6 +182,8 @@ export interface ProgramEligibilityResult {
   nextStepCodes: string[];
   applyUrl: string;
   requiredDocumentCodes: string[];
+  /** Step-by-step arithmetic behind a household-scoped result. */
+  calculation?: CalculationStep[];
 }
 
 export interface FplCalculation {

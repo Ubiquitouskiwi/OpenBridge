@@ -23,7 +23,7 @@
   "TANF_NO_DEPENDENT_CHILD": "Este programa es para hogares con un niño. No hay un niño en su hogar.",
   "TANF_PREGNANCY_MAY_QUALIFY": "Algunos estados cubren a una persona embarazada antes de que nazca el bebé. Vale la pena preguntar.",
   "AGE_NEAR_CATEGORY_BOUNDARY": "Una edad que ingresó está cerca de un límite para este programa. Una fecha de nacimiento exacta haría este resultado más seguro.",
-  "STATUS_NEEDS_HUMAN_REVIEW": "El estatus migratorio puede ser complejo. Un navegador puede ayudar — no le impide solicitar.",
+  "STATUS_NEEDS_HUMAN_REVIEW": "El estatus migratorio puede ser complejo. Un navegador puede ayudar, y esto no le impide solicitar.",
   "STATUS_NOT_A_DISQUALIFIER": "El estatus migratorio por sí solo no lo descalifica.",
   "RESULT_LIMITED_BY_MISSING_INCOME_ATTRIBUTION": "Decirnos quién gana cada ingreso haría este resultado más exacto.",
   "MISSING_REQUIRED_INPUT": "Necesitamos un poco más de información para estar seguros.",

@@ -17,12 +17,19 @@ packages/
     src/i18n/          i18next config, renderReason(), locale JSON.
     src/lib/           Browser utilities (crypto).
     e2e/               Playwright specs.
+    vite-plugins/      Build plugins (single-file inlining for the offline local download).
+  mcp-server/          MCP server exposing the engine to AI agents (stdio + loopback HTTP).
+                       Depends on shared + eligibility-engine; reads data/ and en locales as JSON.
   org-dashboard/       Phase 2 placeholder (no code).
+packaging/
+  hosted/              Files shipped in the hosted release (serve.mjs, Dockerfile, nginx, Caddy).
+  local/               Files shipped in the single-file local release.
 data/
   federal/             FPL tables (contiguous/AK/HI), SNAP federal values, sources.json.
   states/<code>/       adapter.json + fixtures/*.json per state.
   referrals/           Static referral directory.
 scripts/               Seeding and CI checks (validate adapters, fixtures, reason keys, readability).
+  release/             Release packaging (package-release.ts).
 infra/                 Reference static-hosting infrastructure (AWS CDK).
 docs/                  Privacy model, adapters guide, deployment, a11y checklist, ADRs, sign-offs.
 .kiro/specs/openbridge/  requirements.md, design.md, tasks.md (source of truth for behavior).

@@ -4,7 +4,7 @@
 
 [![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](./LICENSE)
 ![Status: prototype](https://img.shields.io/badge/status-prototype-orange.svg)
-![Node 20+](https://img.shields.io/badge/node-%3E%3D20-brightgreen.svg)
+![Node 24 LTS](https://img.shields.io/badge/node-24_LTS-brightgreen.svg)
 ![Privacy: no data leaves the device](https://img.shields.io/badge/privacy-on--device_only-2e8b6e.svg)
 ![Built with AI](https://img.shields.io/badge/built_with-AI_agents-8a2be2.svg)
 
@@ -33,6 +33,10 @@ gaps in detail.
 - **One questionnaire, many programs.** Household and income are entered once and reused everywhere.
 - **Every result is explained.** Plain-language reasons and the factors behind them (value, limit,
   pass or fail), written at about a 6th to 8th grade reading level.
+- **Show the math.** Any result expands into the exact arithmetic the engine used, with each rule
+  value linked to its official source, so a caseworker can check it against the program manual.
+- **What if my income changes?** See how results change with a raise or more hours, and where
+  each program, and each person's coverage, may change or stop (benefit cliffs).
 - **Per-person results** for Medicaid and WIC, so children who qualify are not hidden behind a
   household "no."
 - **Cautious by design.** It never gives a hard "no" near a limit, on missing information, on
@@ -56,9 +60,28 @@ gaps in detail.
 | Automated checks       | Unit tests, golden eligibility fixtures, adapter validation, readability, end-to-end and axe accessibility tests |
 | Deployment             | Not deployed; static hosting and self-host docs ready                                                            |
 
+## Download
+
+Each [GitHub Release](../../releases) has ready-to-use downloads (see
+[docs/RELEASING.md](./docs/RELEASING.md)):
+
+| Download                             | For                                                                                                       |
+| ------------------------------------ | --------------------------------------------------------------------------------------------------------- |
+| `openbridge-local-v*.zip`            | **Use it on your own computer.** Unzip and double-click `OpenBridge.html`. No install, works offline.     |
+| `openbridge-hosted-v*.tar.gz`        | **Host it for others.** Static site with Docker, Compose, nginx, Caddy, and a no-dependency start script. |
+| `openbridge-image-v*-linux-*.tar.gz` | **Containers.** `docker load -i <file>`, then run on port 8080.                                           |
+
+## Use it with an AI assistant
+
+OpenBridge includes an [MCP server](./packages/mcp-server/README.md) so AI assistants can use it as
+their calculator. The assistant handles the conversation; OpenBridge does the math with cited,
+versioned rules and returns the same reasons and step-by-step calculation the app shows. It runs
+locally over stdio by default. Household details still pass through the AI service you use, so
+the server's README explains the privacy tradeoff plainly.
+
 ## Quick start
 
-Requires Node 20 or newer.
+Requires Node 24 LTS (22.12 or newer works).
 
 ```bash
 git clone <this-repo-url> openbridge
@@ -100,6 +123,8 @@ Static host delivers only the app and public rule files.
 | `packages/eligibility-engine` | The rules engine and per-program evaluators                        |
 | `packages/form-assembly`      | Document model to PDF                                              |
 | `packages/web-app`            | React + Vite PWA (UI, i18n, stores, encryption, offline)           |
+| `packages/mcp-server`         | MCP server so AI assistants can use the engine                     |
+| `packaging/`                  | Files shipped in the hosted and local release downloads            |
 | `data/`                       | Federal tables, state adapters with fixtures, referral directory   |
 | `scripts/`                    | Data seeding and CI checks                                         |
 | `infra/`                      | Reference static hosting (AWS CDK)                                 |

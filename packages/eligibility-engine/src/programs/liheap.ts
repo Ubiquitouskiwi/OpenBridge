@@ -5,7 +5,13 @@
 import type { ProgramEligibilityResult, ReasonCode } from '@openbridge/shared';
 import { ReasonCodes } from '@openbridge/shared';
 import { decideOutcome, isNearThreshold } from '../outcome.js';
-import { type EvalContext, applyUrl, factor, fplAnnualForSize } from './util.js';
+import {
+  type EvalContext,
+  annualFplTestSteps,
+  applyUrl,
+  factor,
+  fplAnnualForSize,
+} from './util.js';
 
 export function evaluateLiheap(ctx: EvalContext): ProgramEligibilityResult {
   const cfg = ctx.adapter.programs.liheap!;
@@ -53,5 +59,13 @@ export function evaluateLiheap(ctx: EvalContext): ProgramEligibilityResult {
     nextStepCodes: ['STEP_CONTACT_LIHEAP_OFFICE'],
     applyUrl: applyUrl(ctx, 'liheap'),
     requiredDocumentCodes: ['DOC_IDENTITY', 'DOC_INCOME_PROOF', 'DOC_UTILITY_BILL'],
+    calculation: annualFplTestSteps(
+      size,
+      fplAnnual,
+      cfg.incomeLimitPct,
+      'liheap.incomeLimitPct',
+      annualIncome,
+      incomeLimit,
+    ),
   };
 }

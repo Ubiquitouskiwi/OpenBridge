@@ -23,7 +23,7 @@
   "TANF_NO_DEPENDENT_CHILD": "This program is for households with a child. No child is listed in your household.",
   "TANF_PREGNANCY_MAY_QUALIFY": "Some states cover a pregnant person before the baby is born. It's worth asking.",
   "AGE_NEAR_CATEGORY_BOUNDARY": "An age you entered is close to a cutoff for this program. An exact birth date would make this result more sure.",
-  "STATUS_NEEDS_HUMAN_REVIEW": "Immigration status can be complex. A navigator can help — it does not stop you from applying.",
+  "STATUS_NEEDS_HUMAN_REVIEW": "Immigration status can be complex. A navigator can help, and it does not stop you from applying.",
   "STATUS_NOT_A_DISQUALIFIER": "Immigration status alone does not disqualify you.",
   "RESULT_LIMITED_BY_MISSING_INCOME_ATTRIBUTION": "Telling us who earns each income would make this result more exact.",
   "MISSING_REQUIRED_INPUT": "We need a little more information to be sure.",

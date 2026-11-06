@@ -31,7 +31,7 @@ security, UI and accessibility, testing, and git and review.
 ## Setup
 
 ```bash
-nvm use            # Node 20 (see .nvmrc)
+nvm use            # Node 24 LTS (see .nvmrc)
 npm ci
 npm run dev -w @openbridge/web-app
 ```

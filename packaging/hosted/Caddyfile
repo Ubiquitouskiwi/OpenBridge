@@ -1,0 +1,26 @@
+# Example Caddy site for OpenBridge. Caddy gets and renews HTTPS certificates automatically.
+# Copy the contents of ./site to the root below, then run: caddy run --config Caddyfile
+
+benefits.example.org {
+	root * /var/www/openbridge
+	encode gzip zstd
+
+	header {
+		Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self' blob:; worker-src 'self' blob:; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+		X-Content-Type-Options nosniff
+		Referrer-Policy no-referrer
+		Permissions-Policy "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+	}
+
+	@assets path /assets/*
+	header @assets Cache-Control "public, max-age=31536000, immutable"
+
+	@shell path /index.html /sw.js
+	header @shell Cache-Control "no-cache"
+
+	# Single-page app: unknown paths load the app shell.
+	try_files {path} /index.html
+	file_server
+
+	# No access log: the app collects no analytics, and neither should the server.
+}

@@ -1,40 +1,61 @@
 import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
+import { defineConfig, type PluginOption } from 'vite';
 import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
+import { inlineSingleFile } from './vite-plugins/inlineSingleFile';
 
 const workspaceRoot = resolve(__dirname, '../..');
 
-export default defineConfig({
-  plugins: [
-    react(),
-    VitePWA({
-      registerType: 'prompt',
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,json,svg,woff2}'],
-      },
-      manifest: {
-        name: 'OpenBridge',
-        short_name: 'OpenBridge',
-        description: 'Check which benefit programs you may qualify for.',
-        theme_color: '#0b5cad',
-        background_color: '#ffffff',
-        display: 'standalone',
-        start_url: '/',
-        icons: [],
-      },
-    }),
-  ],
-  server: {
-    fs: {
-      // Allow importing the versioned data/ JSON that lives at the workspace root.
-      allow: [workspaceRoot],
+/** Installable, offline-capable PWA for hosted deployments. */
+function pwa(): PluginOption {
+  return VitePWA({
+    registerType: 'prompt',
+    workbox: {
+      globPatterns: ['**/*.{js,css,html,json,svg,woff2}'],
     },
-  },
-  test: {
-    environment: 'jsdom',
-    globals: true,
-    setupFiles: ['./src/test-setup.ts'],
-    exclude: ['**/node_modules/**', '**/e2e/**'],
-  },
+    manifest: {
+      name: 'OpenBridge',
+      short_name: 'OpenBridge',
+      description: 'Check which benefit programs you may qualify for.',
+      theme_color: '#0b5cad',
+      background_color: '#ffffff',
+      display: 'standalone',
+      start_url: '/',
+      icons: [],
+    },
+  });
+}
+
+export default defineConfig(({ mode }) => {
+  // `vite build --mode standalone` makes the single-file download that opens from disk. It has no
+  // service worker (not available on file://) and no public/ files (nothing can fetch them).
+  const local = mode === 'standalone';
+  return {
+    base: local ? './' : '/',
+    publicDir: local ? false : 'public',
+    plugins: [react(), local ? inlineSingleFile() : pwa()],
+    build: local
+      ? {
+          outDir: 'dist-local',
+          emptyOutDir: true,
+          cssCodeSplit: false,
+          assetsInlineLimit: Number.MAX_SAFE_INTEGER,
+          chunkSizeWarningLimit: 4096,
+          // One bundle: the lazily loaded PDF code is folded in so nothing loads from disk.
+          rolldownOptions: { output: { codeSplitting: false } },
+        }
+      : {},
+    server: {
+      fs: {
+        // Allow importing the versioned data/ JSON that lives at the workspace root.
+        allow: [workspaceRoot],
+      },
+    },
+    test: {
+      environment: 'jsdom',
+      globals: true,
+      setupFiles: ['./src/test-setup.ts'],
+      exclude: ['**/node_modules/**', '**/e2e/**'],
+    },
+  };
 });

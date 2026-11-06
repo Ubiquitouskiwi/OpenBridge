@@ -43,3 +43,8 @@ export function renderFactorLabel(i18n: I18n, labelCode: string): string {
 export function renderStep(i18n: I18n, code: string): string {
   return i18n.t(`steps:${code}`, { defaultValue: humanize(code) });
 }
+
+/** Localized label for a "show the math" calculation step code (`math` namespace). */
+export function renderMathLabel(i18n: I18n, code: string): string {
+  return i18n.t(`math:${code}`, { defaultValue: humanize(code.replace(/^CALC_/, '')) });
+}

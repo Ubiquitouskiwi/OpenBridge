@@ -42,8 +42,11 @@ export function decideOutcome(ctx: OutcomeContext): EligibilityOutcome {
   return 'unknown';
 }
 
-/** Ranking used to roll a set of member outcomes up to the most encouraging one (Q37). */
-const OUTCOME_RANK: Record<EligibilityOutcome, number> = {
+/**
+ * Ranking used to roll member outcomes up to the most encouraging one (Q37), and by the
+ * scenario module to tell when a result gets less likely.
+ */
+export const OUTCOME_RANK: Readonly<Record<EligibilityOutcome, number>> = {
   eligible: 5,
   likely_eligible: 4,
   possibly_eligible: 3,

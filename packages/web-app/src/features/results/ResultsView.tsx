@@ -5,6 +5,7 @@ import { useResultStore } from '../../store/result.js';
 import { renderReason } from '../../i18n/renderReason.js';
 import { SaveProgress } from '../save/SaveProgress.js';
 import { DownloadForms } from '../forms/DownloadForms.js';
+import { memberLabel } from './memberLabel.js';
 
 const POSITIVE: EligibilityOutcome[] = ['eligible', 'likely_eligible', 'possibly_eligible'];
 
@@ -41,12 +42,20 @@ export function ResultsView() {
         <ProgramCard key={r.programId} result={r} />
       ))}
 
+      <p>
+        <Link to="/what-if">{t('whatif.linkFromResults')}</Link>
+      </p>
+
       <DownloadForms />
       <SaveProgress />
 
       <div className="results-actions" style={{ marginTop: '1rem' }}>
         <Link to="/help">{t('getHelp')}</Link>
       </div>
+
+      <p className="field-hint">
+        <Link to="/review">{t('review.linkFromResults')}</Link>
+      </p>
     </section>
   );
 
@@ -66,7 +75,8 @@ export function ResultsView() {
           <ul className="reason-list">
             {r.memberResults.map((m) => (
               <li key={m.memberId}>
-                <span className={`outcome-${m.outcome}`}>{t(`outcome.${m.outcome}`)}</span> —{' '}
+                {memberLabel(i18n, result!.profile, m.memberId, result!.evaluationDate)}:{' '}
+                <span className={`outcome-${m.outcome}`}>{t(`outcome.${m.outcome}`)}</span>.{' '}
                 {m.reasons.map((reason) => renderReason(i18n, reason)).join(' ')}
               </li>
             ))}

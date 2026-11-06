@@ -203,3 +203,75 @@ select {
 .doc-list {
   padding-left: 1.2rem;
 }
+
+/* Wide tables scroll inside their own box so the page works at 320 px. */
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+caption {
+  text-align: left;
+  font-weight: 700;
+  padding-block: 0.5rem;
+}
+
+th,
+td {
+  text-align: left;
+  vertical-align: top;
+  padding: 0.4rem 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.calc-steps {
+  margin-block: 1rem;
+}
+
+.calc-steps > summary {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: var(--brand);
+  font-weight: 600;
+}
+
+.calc-op-result,
+.calc-op-limit {
+  background: var(--bg-soft);
+}
+
+.calc-source-missing {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.field-error {
+  color: var(--bad);
+  margin: 0.15rem 0 0;
+}
+
+.checkbox-label input[type='checkbox'] {
+  min-height: auto;
+  width: 1.5rem;
+  height: 1.5rem;
+  vertical-align: middle;
+}
+
+.checkbox-label {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

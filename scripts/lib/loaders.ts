@@ -83,7 +83,7 @@ const stateAdapter = z.object({
       })
       .optional(),
   }),
-  portalUrls: z.record(z.string()),
+  portalUrls: z.record(z.string(), z.string()),
   sources: z.array(provenance),
   verificationStatus: z.enum(['verified', 'draft']),
   lastVerified: z.string(),
@@ -93,10 +93,10 @@ const stateAdapter = z.object({
 const fixture = z.object({
   name: z.string(),
   profile: z.object({}).passthrough(),
-  expected: z.record(z.string()),
-  expectedMembers: z.record(z.record(z.string())).optional(),
+  expected: z.record(z.string(), z.string()),
+  expectedMembers: z.record(z.string(), z.record(z.string(), z.string())).optional(),
   /** Optional golden benefit estimates (integer cents) per program. */
-  expectedBenefits: z.record(z.number().int()).optional(),
+  expectedBenefits: z.record(z.string(), z.number().int()).optional(),
 });
 
 export type Fixture = z.infer<typeof fixture>;

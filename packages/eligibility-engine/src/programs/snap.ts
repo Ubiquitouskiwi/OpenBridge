@@ -5,8 +5,13 @@
  * a categorical-eligibility shortcut via actual receipt, a benefit estimate floored at
  * the federal minimum benefit, an ABAWD notice, and a vehicle-asset caveat.
  */
-import type { FactorRow, ProgramEligibilityResult, ReasonCode } from '@openbridge/shared';
-import { ReasonCodes, percentOfCents, roundCents } from '@openbridge/shared';
+import type {
+  CalculationStep,
+  FactorRow,
+  ProgramEligibilityResult,
+  ReasonCode,
+} from '@openbridge/shared';
+import { CalculationStepCodes, ReasonCodes, percentOfCents, roundCents } from '@openbridge/shared';
 import { resolveAgeYears } from '@openbridge/shared';
 import { decideOutcome, isNearThreshold } from '../outcome.js';
 import { deriveSnapHousehold } from '../household.js';
@@ -14,9 +19,12 @@ import { earnedMonthlyIncomeCents } from '../income.js';
 import {
   type EvalContext,
   applyUrl,
+  calcStep,
   factor,
+  federalField,
   isElderlyOrDisabled,
   monthlyFplLimit,
+  stateField,
 } from './util.js';
 
 export function evaluateSnap(ctx: EvalContext): ProgramEligibilityResult {
@@ -43,7 +51,8 @@ export function evaluateSnap(ctx: EvalContext): ProgramEligibilityResult {
   }
 
   // Net income (only when not categorical / not BBCE-waived).
-  const netMonthly = computeNetIncome(ctx);
+  const netBreakdown = computeNetIncome(ctx);
+  const netMonthly = netBreakdown.net;
   const netLimit =
     cfg.netIncomeLimitPct === null ? null : monthlyFplLimit(ctx, size, cfg.netIncomeLimitPct);
   const netWaived = categorical || cfg.bbce || netLimit === null;
@@ -109,10 +118,33 @@ export function evaluateSnap(ctx: EvalContext): ProgramEligibilityResult {
     withinMarginOfThreshold: withinMargin,
   });
 
+  const calculation = incomeSteps(
+    size,
+    grossMonthly,
+    grossLimit,
+    cfg.grossIncomeLimitPct,
+    netBreakdown,
+    netLimit,
+    netWaived,
+  );
+
   // Benefit estimate for anyone not clearly ineligible.
   let estimatedBenefitCents: number | undefined;
   if (outcome !== 'ineligible') {
-    estimatedBenefitCents = estimateBenefit(ctx, size, netMonthly, reasons);
+    const estimate = estimateBenefit(ctx, size, netMonthly, reasons);
+    estimatedBenefitCents = estimate.benefit;
+    const C = CalculationStepCodes;
+    calculation.push(
+      calcStep(
+        C.SNAP_MAX_ALLOTMENT,
+        estimate.maxAllotment,
+        'cents',
+        'rule',
+        federalField('snap.maxAllotmentByHouseholdSizeCents'),
+      ),
+      calcStep(C.SNAP_BENEFIT_REDUCTION, estimate.reduction, 'cents', 'subtract'),
+      calcStep(C.SNAP_ESTIMATED_BENEFIT, estimate.benefit, 'cents', 'result'),
+    );
   }
   if (grossPass) {
     reasons.push({
@@ -142,10 +174,23 @@ export function evaluateSnap(ctx: EvalContext): ProgramEligibilityResult {
     nextStepCodes: ['STEP_REVIEW_AND_APPLY'],
     applyUrl: applyUrl(ctx, 'snap'),
     requiredDocumentCodes: ['DOC_IDENTITY', 'DOC_INCOME_PROOF', 'DOC_RESIDENCY'],
+    calculation,
   };
 }
 
-function computeNetIncome(ctx: EvalContext): number {
+/** Every intermediate value of the SNAP net-income calculation, for the trace. */
+interface NetIncomeBreakdown {
+  earnedDeduction: number;
+  standardDeduction: number;
+  dependentCare: number;
+  childSupport: number;
+  medical: number;
+  adjusted: number;
+  shelterDeduction: number;
+  net: number;
+}
+
+function computeNetIncome(ctx: EvalContext): NetIncomeBreakdown {
   const { profile, federal, evaluationDate } = ctx;
   const household = deriveSnapHousehold(profile.members, evaluationDate);
   const size = household.size;
@@ -184,7 +229,65 @@ function computeNetIncome(ctx: EvalContext): number {
     ? shelterExcess
     : Math.min(shelterExcess, federal.snap.shelterCapCents);
 
-  return Math.max(0, adjusted - shelterDeduction);
+  return {
+    earnedDeduction,
+    standardDeduction,
+    dependentCare,
+    childSupport,
+    medical,
+    adjusted,
+    shelterDeduction,
+    net: Math.max(0, adjusted - shelterDeduction),
+  };
+}
+
+/** Trace steps for the gross test, the net-income breakdown, and the net test. */
+function incomeSteps(
+  size: number,
+  grossMonthly: number,
+  grossLimit: number,
+  grossLimitPct: number,
+  net: NetIncomeBreakdown,
+  netLimit: number | null,
+  netWaived: boolean,
+): CalculationStep[] {
+  const C = CalculationStepCodes;
+  const steps: CalculationStep[] = [
+    calcStep(C.HOUSEHOLD_SIZE, size, 'count', 'input'),
+    calcStep(C.GROSS_MONTHLY_INCOME, grossMonthly, 'cents', 'input'),
+    calcStep(
+      C.LIMIT_PCT_OF_FPL,
+      grossLimitPct,
+      'pct',
+      'rule',
+      stateField('snap.grossIncomeLimitPct'),
+    ),
+    calcStep(C.MONTHLY_INCOME_LIMIT, grossLimit, 'cents', 'limit'),
+  ];
+  if (netWaived || netLimit === null) return steps;
+  const deductions: [string, number][] = [
+    [C.SNAP_EARNED_INCOME_DEDUCTION, net.earnedDeduction],
+    [C.SNAP_STANDARD_DEDUCTION, net.standardDeduction],
+    [C.SNAP_DEPENDENT_CARE_DEDUCTION, net.dependentCare],
+    [C.SNAP_CHILD_SUPPORT_DEDUCTION, net.childSupport],
+    [C.SNAP_MEDICAL_DEDUCTION, net.medical],
+  ];
+  for (const [code, cents] of deductions) {
+    if (cents > 0) steps.push(calcStep(code, cents, 'cents', 'subtract'));
+  }
+  steps.push(calcStep(C.SNAP_ADJUSTED_INCOME, net.adjusted, 'cents', 'result'));
+  if (net.shelterDeduction > 0) {
+    steps.push(calcStep(C.SNAP_SHELTER_DEDUCTION, net.shelterDeduction, 'cents', 'subtract'));
+  }
+  steps.push(calcStep(C.SNAP_NET_INCOME, net.net, 'cents', 'result'));
+  steps.push(calcStep(C.SNAP_NET_INCOME_LIMIT, netLimit, 'cents', 'limit'));
+  return steps;
+}
+
+interface BenefitEstimate {
+  maxAllotment: number;
+  reduction: number;
+  benefit: number;
 }
 
 function estimateBenefit(
@@ -192,13 +295,14 @@ function estimateBenefit(
   size: number,
   netMonthly: number,
   reasons: ReasonCode[],
-): number {
+): BenefitEstimate {
   const { snap } = ctx.federal;
   const maxAllotment =
     snap.maxAllotmentByHouseholdSizeCents[size] ??
     snap.maxAllotmentByHouseholdSizeCents[snap.maxAllotmentByHouseholdSizeCents.length - 1] ??
     0;
-  const raw = maxAllotment - roundCents(netMonthly * snap.benefitReductionRate);
+  const reduction = roundCents(netMonthly * snap.benefitReductionRate);
+  const raw = maxAllotment - reduction;
   let benefit = Math.max(0, raw);
   // Federal minimum benefit: eligible 1–2 person households receive at least the
   // minimum allotment, even when the formula computes less (including zero). This
@@ -208,7 +312,7 @@ function estimateBenefit(
     reasons.push({ code: ReasonCodes.SNAP_MINIMUM_BENEFIT_APPLIED, params: {} });
   }
   reasons.push({ code: ReasonCodes.SNAP_ESTIMATED_BENEFIT, params: { amount: benefit } });
-  return benefit;
+  return { maxAllotment, reduction, benefit };
 }
 
 function hasAbawdMember(ctx: EvalContext): boolean {

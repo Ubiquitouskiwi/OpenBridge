@@ -7,6 +7,10 @@ coverage/
 cdk.out/
 *.tsbuildinfo
 
+# Release build output
+dist-local/
+release-artifacts/
+
 # Test artifacts
 test-results/
 playwright-report/
