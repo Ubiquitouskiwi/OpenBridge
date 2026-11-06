@@ -8,7 +8,7 @@ disagree, this file wins, then `.kiro/specs/openbridge/requirements.md`, then ev
 ## 1. What this project is
 
 OpenBridge is an open-source, privacy-first web app that screens a household for multiple U.S.
-benefit programs (SNAP, Medicaid/CHIP, WIC, LIHEAP, TANF) in one session, explains every result in
+benefit programs (SNAP, Medicaid/CHIP, WIC; LIHEAP and TANF at an early stage) in one session, explains every result in
 plain language, and produces pre-filled application documents. **All computation runs in the
 browser. No personal data ever leaves the device.** The users include low-literacy, non-English
 speaking, and mixed-status families on shared public computers. A bug here can cost someone food or
@@ -65,7 +65,7 @@ Node 24 LTS (see `.nvmrc`), npm workspaces, Turborepo.
 ```bash
 npm ci                    # install exactly what the lockfile says
 npm run verify            # the full gate: format, lint, typecheck, unit tests, build,
-                          # adapter validation, golden fixtures, reason keys, readability
+                          # adapter validation, golden fixtures, reason keys, readability, wiki
 npm run e2e               # Playwright end-to-end + axe accessibility (run for UI changes)
 npm run format            # apply Prettier
 npm test                  # unit tests only

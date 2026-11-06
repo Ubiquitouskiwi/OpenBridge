@@ -13,7 +13,7 @@ on the server. Everything a person types stays in their own browser.
 | --------------------------------------- | ------------------------------------------------------------------------------------ |
 | `site/`                                 | The app. Serve this folder.                                                          |
 | `site/deployment-config.json`           | Optional settings for your organization (see below).                                 |
-| `serve.mjs`                             | A small start script for quick testing or simple hosting. Needs Node.js 20 or newer. |
+| `serve.mjs`                             | A small start script for quick testing or simple hosting. Needs Node.js 22 or newer. |
 | `Dockerfile`, `compose.yaml`, `docker/` | Run it as a container (non-root nginx, port 8080).                                   |
 | `nginx.conf`, `Caddyfile`               | Example configurations for common web servers.                                       |
 | `BUILD-INFO.json`                       | Version, rules data version, and build details.                                      |

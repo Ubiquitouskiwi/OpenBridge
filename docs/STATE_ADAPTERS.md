@@ -1,7 +1,7 @@
 # State Adapters
 
 A state adapter is a versioned JSON file that supplies a state's program rules to the eligibility
-engine. New states are added as config + fixtures — **no engine code changes** (requirements 5.10,
+engine. New states are added as config + fixtures, with **no engine code changes** (requirements 5.10,
 5.14, Q28).
 
 ## Location
@@ -16,15 +16,15 @@ data/federal/*.json                  # shared federal reference data (FPL, SNAP)
 
 See the `StateAdapter` type in `packages/shared/src/types.ts`. Key fields:
 
-- `programs.snap` — `bbce`, `grossIncomeLimitPct`, `netIncomeLimitPct` (null under BBCE),
+- `programs.snap`: `bbce`, `grossIncomeLimitPct`, `netIncomeLimitPct` (null under BBCE),
   `assetLimitCents` / `assetLimitElderlyDisabledCents` (null under BBCE), `hasVehicleAssetTest`.
-- `programs.medicaid` — `expansion`, `adultLimitPct`, `parentCaretakerLimitPct`, `pregnantLimitPct`,
+- `programs.medicaid`: `expansion`, `adultLimitPct`, `parentCaretakerLimitPct`, `pregnantLimitPct`,
   `childTiers` (age-banded `limitPct`). MAGI pathways only in Phase 1.
-- `programs.wic` / `liheap` / `tanf` — income limits and categorical flags.
-- `portalUrls` — official application links per program.
-- `sources` — **provenance** for required values (see below).
-- `verificationStatus` — `draft` or `verified`.
-- `lastVerified` / `lastVerifiedBy` — SME sign-off record.
+- `programs.wic` / `liheap` / `tanf`: income limits and categorical flags.
+- `portalUrls`: official application links per program.
+- `sources`: **provenance** for required values (see below).
+- `verificationStatus`: `draft` or `verified`.
+- `lastVerified` / `lastVerifiedBy`: SME sign-off record.
 
 Money is integer **cents**; percentages use the `...Pct` suffix and are percentages of the FPL.
 
@@ -57,7 +57,8 @@ them; CI fails on any divergence.
 
 1. Author the adapter with provenance and fixtures (`verificationStatus: "draft"`).
 2. A subject-matter expert reviews the rule values, provenance, and fixtures.
-3. On sign-off, set `verificationStatus: "verified"` and record `lastVerifiedBy` / `lastVerified`.
+3. On sign-off, record it in `docs/SME_SIGNOFF.md`, then set `verificationStatus: "verified"` and
+   record `lastVerifiedBy` / `lastVerified`. Only a human SME's sign-off allows this step.
 4. Adapters left as `draft` show a "these rules are drafts" note in Show the math. (A results-page
    banner exists in the locale files but is not shown yet; see `ROADMAP.md`.)
 
@@ -65,8 +66,8 @@ them; CI fails on any divergence.
 
 Federal values change on a schedule (requirements 5.15, Q29):
 
-- **January** — HHS Federal Poverty Guidelines.
-- **October** — USDA SNAP allotments/deductions (federal fiscal year).
+- **January**: HHS Federal Poverty Guidelines.
+- **October**: USDA SNAP allotments/deductions (federal fiscal year).
 
 Update the constants in `scripts/seed-fpl-data.ts`, run `npm run seed:fpl` (results report `dataVersion` as the poverty-guideline year),
 re-verify with SMEs, and re-run fixtures.

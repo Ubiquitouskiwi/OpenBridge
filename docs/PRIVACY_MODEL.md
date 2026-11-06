@@ -48,7 +48,7 @@ Saved progress and encrypted export bundles use WebCrypto:
 
 - Passphrase → **PBKDF2** (SHA-256, 310,000 iterations, per-file random salt) → **AES-GCM**
   (per-encryption random IV).
-- The key is **never stored**. There is **no recovery** — a forgotten passphrase means re-entering
+- The key is **never stored**. There is **no recovery**: a forgotten passphrase means re-entering
   data. This tradeoff is stated to the user before they rely on it.
 - Envelope format: `openbridge.save.v1` (see `packages/web-app/src/lib/crypto.ts`).
 

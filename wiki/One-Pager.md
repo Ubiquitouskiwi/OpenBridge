@@ -26,7 +26,7 @@ checks those answers against several programs at the same time and explains each
 
 - **Programs:** SNAP, Medicaid and CHIP (income-based pathways only), and WIC, with LIHEAP and TANF
   at an early stage.
-- **States:** Ohio, Texas, and Washington. **Languages:** English and Spanish.
+- **States:** Ohio, Texas, and Washington. **Languages:** English, and Spanish in part (some screens are still English).
 - **Every result is explained** in plain words, and "Show the math" opens the exact steps with a
   link to the source of each rule value.
 - **It is careful.** It will not say "no" when you are close to a limit, when an answer is missing,
@@ -61,7 +61,7 @@ qualifies.
 The Phase 1 prototype is built and its automated checks pass. What is missing is the human work
 that makes results trustworthy:
 
-- Expert review of the rules in all three states (not started; Ohio reviewers identified).
+- Expert review of the rules in all three states (not started; no reviewers yet for any state).
 - Updating reference figures, which are from 2024.
 - Legal review of the Terms of Use, disclaimers, and referral policy.
 - Testing with real benefit seekers and navigators, and with screen readers.

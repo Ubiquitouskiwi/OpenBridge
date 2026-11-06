@@ -14,12 +14,10 @@ All notable changes to this project are documented here. The format follows
   signed build provenance for every release download (`gh attestation verify`), live CI, CodeQL,
   Scorecard, and release badges, `SUPPORT.md`, `CITATION.cff`, release-note categories,
   `.gitattributes`, and a Codespaces dev container.
-
 - **Screenshots:** `docs/screenshots/` holds 25 pictures of the screening app and the rule toolkit,
   made from the real app with a made-up household by `npm run screenshots` (Playwright, fixed
   date, loopback-only server). The README and 9 wiki pages now show them, and
   `npm run check:wiki` fails if a wiki picture is missing.
-
 - `AGENTS.md` operating contract and `.kiro/steering/` standards for AI-assisted development
   (product, tech, structure, engineering, eligibility rules, privacy and security, UI and
   accessibility, testing, git and review).
@@ -32,7 +30,6 @@ All notable changes to this project are documented here. The format follows
   as launch blockers, holds immigration-related wording until counsel approves it, plans the
   referral directory depth first, adds a 90-day plan, and states plainly that expert reviewers
   are still needed.
-
 - **Show the math:** every result can expand into the step-by-step calculation (household size,
   income, poverty line, limit, SNAP deductions and benefit), each rule value linked to its cited
   source or marked "not listed yet". The engine returns this as a `calculation` trace of codes.
@@ -61,6 +58,10 @@ All notable changes to this project are documented here. The format follows
 
 ### Changed
 
+- Pre-publication review: docs no longer overstate review progress or Spanish coverage, the
+  ROADMAP now lists known engine issues and placeholder rule sources openly, workflows grant write
+  permissions only to the jobs that need them, Dependabot also watches Docker base images, every
+  package declares its license and repository, and `npm run rules:apply -- --help` works.
 - Upgraded to Node 24 LTS for tooling, Vite 8, Vitest 5, Zod 4, React Router 7,
   `@vitejs/plugin-react` 6, and `vite-plugin-pwa` 2. The lockfile was regenerated.
 - ESLint 10 (to match the `@eslint/js` 10 Dependabot update) and i18next 26 in the web app (to
@@ -87,3 +88,6 @@ All notable changes to this project are documented here. The format follows
   adapters for Ohio, Texas, and Washington with golden fixtures, React PWA with English and Spanish,
   privacy controls, encrypted save and resume, document generation, referral directory, offline
   support, and reference static hosting infrastructure.
+
+[Unreleased]: https://github.com/UbiquitousKiwi/OpenBridge/compare/v0.1.0...HEAD
+[0.1.0]: https://github.com/UbiquitousKiwi/OpenBridge/releases/tag/v0.1.0

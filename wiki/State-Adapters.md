@@ -25,17 +25,17 @@ Adding a state is data plus test cases. The engine code does not change.
 
 ## The fields, in plain words
 
-| Field                | What it means                                                       |
-| -------------------- | ------------------------------------------------------------------- |
-| `stateCode`          | Two-letter code in capitals, like `OH`.                             |
-| `stateName`          | The state's name as people see it.                                  |
-| `medicaidExpansion`  | Whether the state expanded Medicaid to low-income adults.           |
-| `programs`           | One block per program the state supports (see below).               |
-| `portalUrls`         | The official place to apply, per program.                           |
-| `sources`            | Where each rule value came from (see "Provenance").                 |
-| `verificationStatus` | `draft` or `verified`. Only an expert sign-off makes it `verified`. |
-| `lastVerified`       | The date of the last review, as `YYYY-MM-DD`.                       |
-| `lastVerifiedBy`     | Who reviewed it. Today every adapter says `pending-...`.            |
+| Field                | What it means                                                                                                                        |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `stateCode`          | Two-letter code in capitals, like `OH`.                                                                                              |
+| `stateName`          | The state's name as people see it.                                                                                                   |
+| `medicaidExpansion`  | Whether the state expanded Medicaid to low-income adults.                                                                            |
+| `programs`           | One block per program the state supports (see below).                                                                                |
+| `portalUrls`         | The official place to apply, per program.                                                                                            |
+| `sources`            | Where each rule value came from (see "Provenance").                                                                                  |
+| `verificationStatus` | `draft` or `verified`. Only an expert sign-off makes it `verified`.                                                                  |
+| `lastVerified`       | The date of the last review, as `YYYY-MM-DD`. While an adapter is `draft`, this is only the date the data was entered, not a review. |
+| `lastVerifiedBy`     | Who reviewed it. Today every adapter says `pending-...`.                                                                             |
 
 The program blocks:
 
