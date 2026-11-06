@@ -99,7 +99,7 @@ jobs:
 
       # Built and saved as a tarball for the release; never pushed to a registry.
       - name: Build image
-        uses: docker/build-push-action@v6
+        uses: docker/build-push-action@v7
         env:
           # Skip the build-record artifact; the release only needs the image tarball.
           DOCKER_BUILD_RECORD_UPLOAD: 'false'
