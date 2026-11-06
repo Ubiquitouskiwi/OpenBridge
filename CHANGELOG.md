@@ -57,6 +57,9 @@ All notable changes to this project are documented here. The format follows
 
 - Upgraded to Node 24 LTS for tooling, Vite 8, Vitest 5, Zod 4, React Router 7,
   `@vitejs/plugin-react` 6, and `vite-plugin-pwa` 2. The lockfile was regenerated.
+- ESLint 10 (to match the `@eslint/js` 10 Dependabot update) and i18next 26 in the web app (to
+  match react-i18next 17). This puts `package-lock.json` back in sync so `npm ci` works in CI.
+  Dependabot now groups packages that must move together.
 - The skip link and Terms of Use footer link now go through i18n and the router (they were
   hardcoded English and caused full page reloads).
 - Applied Prettier formatting across the codebase (whitespace only).
