@@ -5,6 +5,8 @@ of questions, and it checks SNAP, Medicaid and CHIP, WIC, and more at the same t
 every result in plain words and helps you start the paperwork. Everything happens on your own
 device. Nothing you type is sent anywhere.
 
+![The OpenBridge results page, with an answer and reasons for each program]({{repo}}/raw/HEAD/docs/screenshots/results-top.png)
+
 > **OpenBridge is a prototype.** The rules are drafts that experts have not checked yet. Results
 > are estimates, not decisions. See [[Roadmap and status|Roadmap-and-Status]].
 

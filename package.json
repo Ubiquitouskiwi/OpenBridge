@@ -23,11 +23,11 @@
   "scripts": {
     "build": "turbo run build",
     "test": "turbo run test",
-    "typecheck": "turbo run typecheck",
+    "typecheck": "turbo run typecheck && tsc -p tooling/tsconfig.json",
     "lint": "turbo run lint",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "e2e": "npm run e2e -w @openbridge/web-app",
+    "e2e": "npm run e2e -w @openbridge/web-app && npm run e2e -w @openbridge/rule-toolkit",
     "release:package": "tsx scripts/release/package-release.ts",
     "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run validate:adapters && npm run test:fixtures && npm run check:reason-keys && npm run check:readability && npm run check:wiki",
     "validate:adapters": "tsx scripts/validate-state-adapter.ts",
@@ -35,7 +35,9 @@
     "check:reason-keys": "tsx scripts/check-reason-keys.ts",
     "seed:fpl": "tsx scripts/seed-fpl-data.ts",
     "check:readability": "tsx scripts/check-readability.ts",
-    "check:wiki": "tsx scripts/check-wiki.ts"
+    "check:wiki": "tsx scripts/check-wiki.ts",
+    "rules:apply": "tsx scripts/apply-rule-proposal.ts",
+    "screenshots": "npm run build -w @openbridge/rule-toolkit && playwright test -c scripts/screenshots/playwright.config.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

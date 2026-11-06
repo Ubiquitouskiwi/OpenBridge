@@ -20,18 +20,24 @@ packages/
     vite-plugins/      Build plugins (single-file inlining for the offline local download).
   mcp-server/          MCP server exposing the engine to AI agents (stdio + loopback HTTP).
                        Depends on shared + eligibility-engine; reads data/ and en locales as JSON.
+  rule-toolkit/        Single-file offline app for experts: review rules, propose changes, check
+                       test cases (ADR-0005). Depends on shared + eligibility-engine.
   org-dashboard/       Phase 2 placeholder (no code).
+tooling/               Build tooling shared by apps (vite-inline-single-file.ts).
 packaging/
   hosted/              Files shipped in the hosted release (serve.mjs, Dockerfile, nginx, Caddy).
   local/               Files shipped in the single-file local release.
+  toolkit/             Files shipped in the rule toolkit release.
 data/
   federal/             FPL tables (contiguous/AK/HI), SNAP federal values, sources.json.
   states/<code>/       adapter.json + fixtures/*.json per state.
   referrals/           Static referral directory.
 scripts/               Seeding and CI checks (validate adapters, fixtures, reason keys, readability).
   release/             Release packaging (package-release.ts).
+  screenshots/         Playwright capture scripts for docs/screenshots (`npm run screenshots`).
 infra/                 Reference static-hosting infrastructure (AWS CDK).
 docs/                  Privacy model, adapters guide, deployment, a11y checklist, ADRs, sign-offs.
+  screenshots/         Generated PNGs used by the README, docs, and wiki. Never edit by hand.
 wiki/                  GitHub wiki source (flat *.md pages, _Sidebar.md, _Footer.md), published by
                        .github/workflows/wiki.yml and checked by `npm run check:wiki`.
 .kiro/specs/openbridge/  requirements.md, design.md, tasks.md (source of truth for behavior).
@@ -51,6 +57,8 @@ wiki/                  GitHub wiki source (flat *.md pages, _Sidebar.md, _Footer
 - New doc: `docs/` and a line in `docs/README.md`. Technical reference belongs in `docs/`; plain-
   language how-to guides belong in `wiki/` (follow `wiki/Writing-Wiki-Pages.md`). When behavior a
   wiki page describes changes, update the page in the same change.
+- New or changed screenshot: a step in `scripts/screenshots/*.capture.ts`, then
+  `npm run screenshots`, and a row in `docs/screenshots/README.md`. Commit the PNGs it changes.
 
 ## Naming
 

@@ -3,7 +3,7 @@
  *
  * - every wiki link ([[Page]], [[Text|Page]], or [text](Page)) points to an existing page;
  * - every repository link ({{repo}}/blob/HEAD/<path> or {{repo}}/tree/HEAD/<path>) points to a
- *   file or folder that exists;
+ *   file or folder that exists, and so does every picture ({{repo}}/raw/HEAD/docs/screenshots/...);
  * - every page is listed in _Sidebar.md, so nothing is unreachable;
  * - pages follow the plain-copy rules (no em dashes, no emoji).
  */
@@ -46,7 +46,7 @@ function main(): void {
     for (const m of text.matchAll(/\]\(([^)\s]+)\)/g)) {
       const href = m[1] ?? '';
       if (href.startsWith('{{repo}}/')) {
-        const path = href.replace(/^\{\{repo\}\}\/(blob|tree)\/HEAD\//, '').split('#')[0] ?? '';
+        const path = href.replace(/^\{\{repo\}\}\/(blob|tree|raw)\/HEAD\//, '').split('#')[0] ?? '';
         if (path === href || !existsSync(join(ROOT, decodeURIComponent(path)))) {
           problems.push(`${where(m.index)} repository link not found: ${href}`);
         }
