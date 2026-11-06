@@ -31,5 +31,16 @@ updates:
     directory: /
     schedule:
       interval: monthly
+    # One pull request for all action updates, so workflows move together.
+    groups:
+      actions:
+        patterns: ['*']
     commit-message:
       prefix: ci
+  # Base images in the Dockerfiles (node, nginx-unprivileged).
+  - package-ecosystem: docker
+    directories: ['/', '/packages/mcp-server', '/packaging/hosted']
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: build
