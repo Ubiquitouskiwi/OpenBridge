@@ -143,13 +143,13 @@ jobs:
       # download-artifact also tries to fetch docker/build-push-action's build-record
       # artifacts, which are not zip files, and the step fails.
       - name: Download site and local downloads
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: release-artifacts
           path: release-artifacts
 
       - name: Download container images
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           pattern: image-*
           path: release-artifacts
