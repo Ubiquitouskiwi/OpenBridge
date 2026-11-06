@@ -11,7 +11,7 @@
 # audience). There is no built-in authentication.
 
 # ---- build stage ----------------------------------------------------------------------------
-FROM node:24-slim AS build
+FROM node:25-slim AS build
 WORKDIR /repo
 
 # Manifests first, so dependency layers cache. Every workspace manifest is needed for npm ci.
@@ -41,7 +41,7 @@ RUN rm -rf node_modules packages/*/node_modules \
  && mkdir -p packages/mcp-server/node_modules
 
 # ---- runtime stage --------------------------------------------------------------------------
-FROM node:24-slim AS runtime
+FROM node:25-slim AS runtime
 ENV NODE_ENV=production \
     OPENBRIDGE_MCP_HOST=0.0.0.0 \
     OPENBRIDGE_MCP_PORT=8787 \
