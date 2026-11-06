@@ -45,7 +45,9 @@ body:
     id: current
     attributes:
       label: What it says now
-      description: Copy the words exactly if you can.
+      description: >-
+        Copy the words exactly, but replace any real household, income, or health details with
+        made-up values.
     validations:
       required: true
   - type: textarea
