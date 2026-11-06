@@ -17,6 +17,10 @@ updates:
       dev-dependencies:
         dependency-type: development
         update-types: [minor, patch]
+    # @types/node matches the Node LTS line we run (24); a new major would type APIs we lack.
+    ignore:
+      - dependency-name: '@types/node'
+        update-types: ['version-update:semver-major']
     commit-message:
       prefix: build
       include: scope
@@ -42,5 +46,10 @@ updates:
     directories: ['/', '/packages/mcp-server', '/packaging/hosted']
     schedule:
       interval: monthly
+    # Stay on the Node LTS line in .nvmrc (24). Dependabot otherwise offers each new major,
+    # including odd-numbered releases (25, 27) that never become LTS. Move majors by hand.
+    ignore:
+      - dependency-name: 'node'
+        update-types: ['version-update:semver-major']
     commit-message:
       prefix: build
