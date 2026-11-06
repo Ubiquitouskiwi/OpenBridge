@@ -29,12 +29,13 @@
     "format:check": "prettier --check .",
     "e2e": "npm run e2e -w @openbridge/web-app",
     "release:package": "tsx scripts/release/package-release.ts",
-    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run validate:adapters && npm run test:fixtures && npm run check:reason-keys && npm run check:readability",
+    "verify": "npm run format:check && npm run lint && npm run typecheck && npm test && npm run build && npm run validate:adapters && npm run test:fixtures && npm run check:reason-keys && npm run check:readability && npm run check:wiki",
     "validate:adapters": "tsx scripts/validate-state-adapter.ts",
     "test:fixtures": "tsx scripts/run-fixtures.ts",
     "check:reason-keys": "tsx scripts/check-reason-keys.ts",
     "seed:fpl": "tsx scripts/seed-fpl-data.ts",
-    "check:readability": "tsx scripts/check-readability.ts"
+    "check:readability": "tsx scripts/check-readability.ts",
+    "check:wiki": "tsx scripts/check-wiki.ts"
   },
   "devDependencies": {
     "@eslint/js": "^9.15.0",

@@ -6,9 +6,9 @@ inclusion: always
 
 ## Branches
 
-- `main` is always releasable and protected. Work on short-lived branches named
+- `mainline` (the default branch) is always releasable and protected. Work on short-lived branches named
   `<type>/<short-description>`, e.g. `feat/tx-tanf-adapter`, `fix/snap-min-benefit`.
-- Agents never push to `main`, force-push shared branches, or rewrite published history.
+- Agents never push to `mainline`, force-push shared branches, or rewrite published history.
 
 ## Commits
 

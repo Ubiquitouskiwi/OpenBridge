@@ -84,6 +84,10 @@ Edit `site/deployment-config.json`:
   several clients).
 - `autoClearTimeoutSeconds`: how long before an idle screen clears itself in individual mode.
 
+> Only `defaultMode` and `autoClearTimeoutSeconds` change behavior today, and the file is applied
+> only when **both** are present. `orgName`, `contact`, and `localResources` are accepted but not
+> shown in the app yet (tracked in `ROADMAP.md`).
+
 ## Privacy checklist for hosts
 
 - Do not add analytics, tracking pixels, chat widgets, or third-party scripts to the pages.

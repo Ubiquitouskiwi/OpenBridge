@@ -146,6 +146,12 @@ same bar as any human contribution, and the repo is set up to enforce that:
 - Agents may not invent rule values or mark a state verified. Only human experts can.
 - AI-written commits carry an `Assisted-by:` trailer, and a human maintainer reviews every PR.
 
+## Learn more
+
+The [project wiki](../../wiki) has plain-language guides for everyone: how to use and host
+OpenBridge, how to read results, how experts can review rules or record test cases without code,
+and how developers add rules and states. Its source is the [`wiki/`](./wiki) folder.
+
 ## Contributing
 
 Help is welcome, and much of the most valuable help is not code: benefits and policy expertise to
