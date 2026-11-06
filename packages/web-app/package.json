@@ -17,7 +17,7 @@
     "@openbridge/eligibility-engine": "*",
     "@openbridge/form-assembly": "*",
     "@openbridge/shared": "*",
-    "i18next": "^26.7.2",
+    "i18next": "^26.7.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-i18next": "^17.1.11",
