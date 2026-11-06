@@ -7,7 +7,7 @@ to make a real difference here.
 
 - **Verify rules.** Benefits navigators, caseworkers, agency staff, and policy researchers can check
   state rule values and test households. Use the "Eligibility rule correction" issue template.
-- **Add a state.** See `docs/STATE_ADAPTERS.md` and the "New state" issue template.
+- **Add a state.** See `docs/STATE_ADAPTERS.md` and the "New state request or offer" issue template.
 - **Translate** or review Spanish copy, or help add a language.
 - **Test accessibility**, especially with screen readers (`docs/ACCESSIBILITY_CHECKLIST.md`).
 - **Pilot it** at your organization and tell us what works and what does not.
@@ -34,8 +34,10 @@ security, UI and accessibility, testing, and git and review.
 ## Setup
 
 ```bash
-nvm use            # Node 24 LTS (see .nvmrc)
+git clone https://github.com/UbiquitousKiwi/OpenBridge.git && cd OpenBridge
+nvm use            # Node 24.15+ (see .nvmrc)
 npm ci
+npm run verify     # confirm your setup passes
 npm run dev -w @openbridge/web-app
 ```
 

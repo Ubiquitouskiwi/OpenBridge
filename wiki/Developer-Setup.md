@@ -5,8 +5,8 @@ for anyone who wants to change code, rule data, or the wiki and run the same che
 
 ## Before you start
 
-- **Node 24 LTS.** The version is in [`.nvmrc`]({{repo}}/blob/HEAD/.nvmrc). Node 22.12 or newer
-  also works. With [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the repository folder.
+- **Node 24 LTS, 24.15 or newer.** The version is in [`.nvmrc`]({{repo}}/blob/HEAD/.nvmrc). Node
+  22.22.2 or newer also works. Older versions print "Unsupported engine" warnings during `npm ci`. With [nvm](https://github.com/nvm-sh/nvm), run `nvm use` in the repository folder.
 - **Git**, and a fork or clone of the repository.
 
 **No setup at all:** on the repository page choose **Code**, then **Codespaces**, then **Create
@@ -20,11 +20,14 @@ to open the app on port 5173; the link works only for you.
 1. Get the code and install exactly what the lockfile lists:
 
    ```bash
-   git clone <this-repo-url> openbridge
+   git clone https://github.com/UbiquitousKiwi/OpenBridge.git openbridge
    cd openbridge
    nvm use
    npm ci
    ```
+
+   `npm ci` may print "deprecated" and "N vulnerabilities" notices. They come from development
+   tools only (`npm audit --omit=dev` reports none), so you do not need to run `npm audit fix`.
 
 2. Start the app in development mode:
 
@@ -32,8 +35,9 @@ to open the app on port 5173; the link works only for you.
    npm run dev -w @openbridge/web-app
    ```
 
-   Open [http://localhost:5173](http://localhost:5173). The dev server listens only on your own
-   computer.
+   Open [http://localhost:5173](http://localhost:5173). Use `localhost`, not `127.0.0.1`: the dev
+   server listens only on your own computer. Press Ctrl+C to stop it. npm may then print a
+   "lifecycle script failed" line, which is normal.
 
 3. Run the full quality gate. This is what CI runs, and it must pass before you open a pull
    request:
@@ -55,16 +59,17 @@ to open the app on port 5173; the link works only for you.
 
 ## Other useful commands
 
-| Command                                      | What it does                                      |
-| -------------------------------------------- | ------------------------------------------------- |
-| `npm run format`                             | Apply Prettier formatting                         |
-| `npm test`                                   | Unit tests only                                   |
-| `npm test -w @openbridge/eligibility-engine` | Unit tests for one package                        |
-| `npm run test:fixtures`                      | Golden test cases only                            |
-| `npm run validate:adapters`                  | State adapter schema and sources, then test cases |
-| `npm run check:wiki`                         | Wiki links, pictures, sidebar, em dashes, emoji   |
-| `npm run screenshots`                        | Remake the pictures in `docs/screenshots/`        |
-| `npm run build:local -w @openbridge/web-app` | Single-file offline build in `dist-local/`        |
+| Command                                          | What it does                                      |
+| ------------------------------------------------ | ------------------------------------------------- |
+| `npm run format`                                 | Apply Prettier formatting                         |
+| `npm test`                                       | Unit tests only                                   |
+| `npm test -w @openbridge/eligibility-engine`     | Unit tests for one package                        |
+| `npm run test:fixtures`                          | Golden test cases only                            |
+| `npm run validate:adapters`                      | State adapter schema and sources, then test cases |
+| `npm run check:wiki`                             | Wiki links, pictures, sidebar, em dashes, emoji   |
+| `npm run screenshots`                            | Remake the pictures in `docs/screenshots/`        |
+| `npm run rules:apply -- proposal.json --dry-run` | Preview a rule toolkit proposal without writing   |
+| `npm run build:local -w @openbridge/web-app`     | Single-file offline build in `dist-local/`        |
 
 The full list is in [`AGENTS.md`]({{repo}}/blob/HEAD/AGENTS.md) section 3.
 
@@ -77,9 +82,11 @@ The full list is in [`AGENTS.md`]({{repo}}/blob/HEAD/AGENTS.md) section 3.
 | `packages/form-assembly`      | Document model to PDF                                         |
 | `packages/web-app`            | The React app: screens, translations, stores, offline support |
 | `packages/mcp-server`         | MCP server so AI assistants can use the engine                |
+| `packages/rule-toolkit`       | The offline rule toolkit for experts (no code needed)         |
 | `packages/org-dashboard`      | Placeholder for a later organization dashboard (no code yet)  |
 | `data/`                       | Federal tables, state adapters with test cases, referrals     |
 | `scripts/`                    | Data seeding and CI checks                                    |
+| `tooling/`                    | Shared build tooling                                          |
 | `packaging/`                  | Files shipped in the hosted and local downloads               |
 | `infra/`                      | Reference static hosting on AWS (CDK)                         |
 | `docs/`                       | Privacy model, adapter guide, deployment, decisions (ADRs)    |

@@ -11,7 +11,7 @@ in vulnerable situations. Security and privacy are core requirements, not aftert
    or autofill. The only persistence is the user-initiated, passphrase-encrypted export file.
 3. **Allowlist error reporting.** No third-party client error reporting ships in Phase 1. If any is
    added later, it must capture only an allowlist of non-PII fields (error type, stack, safe app
-   state) — never form values, the profile, or reason-code parameters.
+   state). Never capture form values, the profile, or reason-code parameters.
 4. **No PII in analytics.** Phase 1 ships no user analytics. Any future analytics must be aggregate
    and anonymous.
 5. **Encryption.** Saved/exported data uses WebCrypto PBKDF2 (SHA-256) + AES-GCM with no stored key

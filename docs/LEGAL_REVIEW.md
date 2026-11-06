@@ -1,6 +1,6 @@
 # Legal Review Package (pre-launch)
 
-> Status: **OPEN DEPENDENCY — not build-blocking.** Per the spec (requirement 5.13.2, Q27), the
+> Status: **Open. Not build-blocking, but launch-blocking.** Per the spec (requirement 5.13.2, Q27), the
 > referral and Terms-of-Use posture must be reviewed by qualified legal counsel before public
 > launch. This document is the package for that review.
 
@@ -32,6 +32,6 @@
 
 | Reviewer  | Role          | Scope                          | Date | Outcome |
 | --------- | ------------- | ------------------------------ | ---- | ------- |
-| _pending_ | Legal counsel | UPL, Terms, referral liability | —    | —       |
+| _pending_ | Legal counsel | UPL, Terms, referral liability | none | none    |
 
 Launch is blocked on a recorded "approved" outcome here.

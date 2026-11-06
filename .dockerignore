@@ -6,6 +6,13 @@
 **/*.tsbuildinfo
 **/test-results
 **/playwright-report
+**/blob-report
+**/coverage
+**/build
+.devcontainer
+wiki
+docs/screenshots
+**/.env*.local
 infra/cdk.out
 release-artifacts
 .git

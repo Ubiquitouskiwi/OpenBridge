@@ -15,7 +15,7 @@ Phase 1 is built as a prototype. The automated checks pass. What is missing is m
 | ----------------------- | -------------------------------------------------------------------------- |
 | Programs                | SNAP, Medicaid and CHIP, WIC built; LIHEAP and TANF early                  |
 | States                  | Ohio, Texas, Washington, all `draft` (not verified)                        |
-| Languages               | English and Spanish                                                        |
+| Languages               | English; Spanish in part (some screens are still English)                  |
 | Reference figures       | From 2024; need a refresh                                                  |
 | Golden test cases       | 8 in total across three states                                             |
 | Expert review of rules  | Not started (no reviewers yet for any state; recruiting them is a blocker) |
@@ -41,6 +41,11 @@ Items marked **BLOCKER** must be done before anything ships to the public.
   pilot with those states clearly labeled unverified.
 - **BLOCKER:** Update all reference figures to current federal poverty guidelines and SNAP figures,
   with sources.
+- **BLOCKER:** Replace the placeholder sources in the state rule files with the official sources
+  each number was actually read from.
+- **BLOCKER:** Fix three known engine issues that can show "you may not qualify" too early: a
+  missing age, a roommate's income counted for SNAP, and savings just over the SNAP limit. The
+  [roadmap]({{repo}}/blob/HEAD/ROADMAP.md) has the details.
 - Add more [[golden test cases|Golden-Test-Cases]] for every kind of case in each state.
 - Decide who owns the yearly updates in January (poverty guidelines) and October (SNAP).
 
@@ -57,6 +62,8 @@ Items marked **BLOCKER** must be done before anything ships to the public.
 - **BLOCKER:** A hands-on accessibility pass with screen readers.
 - Build the Ohio SNAP and Medicaid forms to match the current official forms.
 - Grow the referral directory to county level in the pilot states.
+- **BLOCKER:** Finish the Spanish translation. Many screens, menus, and PDF titles are still in
+  English.
 - Have a qualified translator review the Spanish.
 
 ### Community tools and publishing

@@ -17,7 +17,8 @@ citations come from the same engine and rule files as the OpenBridge web app.
 
 - **OpenBridge stores nothing and logs nothing.** Each tool call is computed in memory and
   forgotten when it returns. The server makes no outbound network calls, has no database, and
-  logs only "started" and "stopped" lines.
+  logs only a "started" line, and a "stopped" line when it is shut down
+  with Ctrl+C or a stop signal.
 - **But the household details pass through the AI app and its model provider.** Unlike the
   OpenBridge web app (where nothing leaves the device), the person's answers are typed into an
   AI service, which sends them to its model and then to this server. That service's own privacy

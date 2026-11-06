@@ -24,9 +24,37 @@ Launch blockers are marked **(blocker)**. Nothing ships to the public until ever
       ship the pilot with those states clearly labeled unverified.
 - [ ] **(blocker)** Refresh all reference data to current federal poverty guidelines and SNAP
       figures, with sources, and bump `dataVersion`.
+- [ ] **(blocker)** Replace the placeholder state rule sources. Most `sources[]` entries in
+      `data/states/*/adapter.json` say "Illustrative; pending SME verification", share a placeholder
+      `publishedDate`, or point to an agency home page, and many rule values (for example
+      `snap.bbce`, `medicaid.childTiers`, asset limits) have no source entry at all. Each value needs
+      a primary source it was actually read from. Then make `scripts/validate-state-adapter.ts`
+      require a source with a `url` for every rule value, not one per program.
 - [ ] Grow golden fixtures to cover every case category in `.kiro/steering/eligibility-rules.md`
-      for each state (currently 8 fixtures total).
+      for each state (currently 8 fixtures total). Missing everywhere: categorical eligibility
+      (`receivesSnap` and similar), mixed-status households, and threshold just-under/just-over
+      pairs. TX and WA also lack elderly or disabled cases.
 - [ ] Decide the long-term owner of the January (FPL) and October (SNAP) refresh cycle.
+
+**Known engine issues** (found in a review before going public; each needs a failing fixture
+first, then a fix reviewed against `.kiro/steering/eligibility-rules.md`):
+
+- [ ] **(blocker)** A missing age can lead to "ineligible". TANF treats an unknown age as an adult
+      (`programs/tanf.ts`), and Medicaid sends an unknown age to the adult rules (`medicaid.ts`),
+      which is a hard "no" in Texas. An unknown age should give "possibly eligible" with a reason.
+- [ ] **(blocker)** SNAP compares the whole household's income against a limit sized for the
+      SNAP household only, so a roommate who buys food separately can push a family to
+      "ineligible" (`programs/snap.ts`).
+- [ ] **(blocker)** SNAP's asset test has no near-limit band: savings just over the limit give a
+      hard "ineligible" (`programs/snap.ts`). The 10% near-threshold rule should apply.
+- [ ] WIC and the early TANF paths return outcomes directly instead of through `decideOutcome()`
+      (`programs/wic.ts`, `programs/tanf.ts`), and `engine.ts` downgrades missing inputs by hand.
+- [ ] Age cut-offs (child under 19, elderly 65, WIC child under 5, dependent child 18) are
+      constants in engine code. Move the ones that are rule values into `data/` with sources.
+- [ ] LIHEAP categorical eligibility through SNAP can still be lowered to "possibly eligible" by
+      the near-limit check (`programs/liheap.ts`).
+- [ ] Decide (with an ADR) whether status-complex Medicaid adults should top out at "possibly
+      eligible" instead of "likely eligible".
 
 ### Legal and trust
 

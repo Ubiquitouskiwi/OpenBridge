@@ -27,5 +27,5 @@ Security or privacy problems are different: report them privately as described i
 
 ## Response times
 
-OpenBridge is maintained by a small volunteer team. We try to reply to issues within a week and to
+OpenBridge is maintained by StarlingTek, LLC with community contributors. We try to reply to issues within a week and to
 security reports within 5 business days. There is no paid support.

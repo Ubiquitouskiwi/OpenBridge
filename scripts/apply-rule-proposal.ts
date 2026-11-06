@@ -38,6 +38,14 @@ const proposalSchema = z.object({
   createdWith: z.string().max(100).optional(),
 });
 
+const USAGE = [
+  'Usage: npm run rules:apply -- <proposal.json> [--dry-run]',
+  '',
+  'Applies a rule proposal file from the community rule toolkit to data/states/<code>/adapter.json.',
+  '  --dry-run   Show the changes without writing anything.',
+  '  --help      Show this message.',
+].join('\n');
+
 function fail(message: string): never {
   console.error(`✖ ${message}`);
   process.exit(1);
@@ -61,9 +69,13 @@ function readProposal(path: string): RuleProposal {
 
 async function main(): Promise<void> {
   const args = process.argv.slice(2);
+  if (args.includes('--help') || args.includes('-h')) {
+    console.log(USAGE);
+    return;
+  }
   const dryRun = args.includes('--dry-run');
-  const file = args.find((a) => !a.startsWith('--'));
-  if (!file) fail('Usage: npm run rules:apply -- <proposal.json> [--dry-run]');
+  const file = args.find((a) => !a.startsWith('-'));
+  if (!file) fail(USAGE);
 
   const proposal = readProposal(resolve(file));
   const code = proposal.stateCode.toLowerCase();

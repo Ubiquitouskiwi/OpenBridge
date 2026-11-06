@@ -85,7 +85,7 @@
   pass) and wire it into CI.
   _Requirements: 5.10, 5.14.4, Q28_
 - [x] 5.3 Author the **Ohio** adapter (expansion + integrated) with provenance and a `fixtures/` set;
-  mark `verificationStatus` pending SME sign-off; leave a clear place for Franklin County review.
+  mark `verificationStatus` pending SME sign-off; leave a clear place for Ohio SME review.
   _Requirements: 5.10, 5.14, Q5/Q21_
 - [x] 5.4 Author the **Texas** (non-expansion, non-BBCE, asset test) and **Washington** (expansion +
   BBCE) adapters with provenance and fixtures.
@@ -207,7 +207,7 @@
   _Requirements: 5.5, 5.9.4, 5.14, 5.10, Q25/Q28/Q33_
 - [x] 15.2 Prepare the legal-counsel review package for the referral/Terms posture (open dependency,
   not build-blocking) and the SME sign-off record for the Ohio adapter.
-  _Review package and sign-off template prepared. Legal review and Franklin County sign-off are
+  _Review package and sign-off template prepared. Legal review and Ohio SME sign-off are
   still **pending**; see `docs/LEGAL_REVIEW.md` and `docs/SME_SIGNOFF.md` and `ROADMAP.md`._
   _Requirements: 5.13.2, 5.14.3, Q21/Q27_
 

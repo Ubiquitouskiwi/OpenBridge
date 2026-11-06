@@ -15,7 +15,7 @@
 ![Built with AI](https://img.shields.io/badge/built_with-AI_agents-8a2be2.svg)
 
 OpenBridge is an open-source web app that checks a household against several U.S. benefit programs
-at once (SNAP, Medicaid and CHIP, WIC, with LIHEAP and TANF in progress), explains every result in
+at once (SNAP, Medicaid and CHIP, WIC, with LIHEAP and TANF at an early stage), explains every result in
 plain language, and helps people get started on the paperwork. It needs no account and sends no
 personal data anywhere: every calculation runs on the user's own device.
 
@@ -38,7 +38,7 @@ gaps in detail.
 
 - **One questionnaire, many programs.** Household and income are entered once and reused everywhere.
 - **Every result is explained.** Plain-language reasons and the factors behind them (value, limit,
-  pass or fail), written at about a 6th to 8th grade reading level.
+  pass or fail), written at or below an 8th grade reading level.
 - **Show the math.** Any result expands into the exact arithmetic the engine used, with each rule
   value linked to its official source, so a caseworker can check it against the program manual.
 - **What if my income changes?** See how results change with a raise or more hours, and where
@@ -75,13 +75,13 @@ view, Spanish, and the community rule toolkit. Regenerate them with `npm run scr
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | Programs in the engine | SNAP, Medicaid/CHIP (income-based pathways), WIC, LIHEAP, TANF (early)                                           |
 | States                 | Ohio, Texas, Washington (all `draft`, unverified)                                                                |
-| Languages              | English, Spanish                                                                                                 |
+| Languages              | English; Spanish in part (some screens are still English)                                                        |
 | Automated checks       | Unit tests, golden eligibility fixtures, adapter validation, readability, end-to-end and axe accessibility tests |
 | Deployment             | Not deployed; static hosting and self-host docs ready                                                            |
 
 ## Download
 
-Each [GitHub Release](../../releases) has ready-to-use downloads (see
+Releases made with the release workflow (after v0.1.0) have ready-to-use downloads (see
 [docs/RELEASING.md](./docs/RELEASING.md)):
 
 | Download                             | For                                                                                                                                   |
@@ -101,10 +101,11 @@ the server's README explains the privacy tradeoff plainly.
 
 ## Quick start
 
-Requires Node 24 LTS (22.12 or newer works).
+Requires Node 24.15 or newer (Node 22.22.2 or newer also works). Run `nvm use` to pick the version
+in `.nvmrc`.
 
 ```bash
-git clone <this-repo-url> openbridge
+git clone https://github.com/UbiquitousKiwi/OpenBridge.git openbridge
 cd openbridge
 npm ci
 npm run dev -w @openbridge/web-app   # http://localhost:5173
@@ -144,12 +145,17 @@ Static host delivers only the app and public rule files.
 | `packages/form-assembly`      | Document model to PDF                                              |
 | `packages/web-app`            | React + Vite PWA (UI, i18n, stores, encryption, offline)           |
 | `packages/mcp-server`         | MCP server so AI assistants can use the engine                     |
+| `packages/rule-toolkit`       | Offline rule toolkit for policy and legal experts (no code needed) |
+| `packages/org-dashboard`      | Placeholder for a later organization dashboard (no code yet)       |
 | `packaging/`                  | Files shipped in the hosted and local release downloads            |
 | `data/`                       | Federal tables, state adapters with fixtures, referral directory   |
-| `scripts/`                    | Data seeding and CI checks                                         |
+| `scripts/`                    | Data seeding, CI checks, release packaging, screenshots            |
+| `tooling/`                    | Shared build tooling (single-file Vite plugin)                     |
 | `infra/`                      | Reference static hosting (AWS CDK)                                 |
 | `docs/`                       | Privacy model, adapter guide, deployment, accessibility, decisions |
+| `wiki/`                       | Source of the GitHub wiki                                          |
 | `.kiro/specs/openbridge/`     | Requirements, design, and implementation plan                      |
+| `.kiro/steering/`             | Topic standards for contributors and AI agents                     |
 
 ## Built with AI, held to a human standard
 

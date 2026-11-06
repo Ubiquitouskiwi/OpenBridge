@@ -29,7 +29,7 @@ server.
 
 ## Steps
 
-1. **Try it on one computer.** In the unpacked folder, run `node serve.mjs` (needs Node.js 20 or
+1. **Try it on one computer.** In the unpacked folder, run `node serve.mjs` (needs Node.js 22 or
    newer) and open http://127.0.0.1:8080. Only that computer can reach it.
 2. **Choose how to serve it.** Pick one option from the table below.
 3. **Set your defaults** in `site/deployment-config.json` (see below).

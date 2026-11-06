@@ -1,4 +1,4 @@
 # @openbridge/web-app
 
-The React + Vite PWA. Scaffolded in tasks.md section 6 (shell, i18n, stores), with intake,
-results, privacy, encryption, and offline features following in sections 7–12.
+The React + Vite PWA: intake, results, Show the math, what-if, documents, encrypted save,
+navigator mode, and offline support. See the root README to run it.
