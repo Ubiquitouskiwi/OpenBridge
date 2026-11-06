@@ -6,6 +6,14 @@ updates:
       interval: weekly
     open-pull-requests-limit: 5
     groups:
+      # Packages that must move together. Bumping one alone leaves package-lock.json unable to
+      # satisfy peer ranges, and `npm ci` fails in CI (for example @eslint/js 10 needs eslint 10).
+      eslint:
+        patterns: ['eslint', '@eslint/*', '@typescript-eslint/*']
+      i18next:
+        patterns: ['i18next', 'react-i18next']
+      react:
+        patterns: ['react', 'react-dom', '@types/react', '@types/react-dom']
       dev-dependencies:
         dependency-type: development
         update-types: [minor, patch]
