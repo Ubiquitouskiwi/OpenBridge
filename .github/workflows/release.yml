@@ -95,7 +95,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - uses: docker/setup-qemu-action@v3
-      - uses: docker/setup-buildx-action@v3
+      - uses: docker/setup-buildx-action@v4
 
       # Built and saved as a tarball for the release; never pushed to a registry.
       - name: Build image
