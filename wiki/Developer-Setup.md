@@ -56,7 +56,8 @@ for anyone who wants to change code, rule data, or the wiki and run the same che
 | `npm test -w @openbridge/eligibility-engine` | Unit tests for one package                        |
 | `npm run test:fixtures`                      | Golden test cases only                            |
 | `npm run validate:adapters`                  | State adapter schema and sources, then test cases |
-| `npm run check:wiki`                         | Wiki links, sidebar, em dashes, and emoji         |
+| `npm run check:wiki`                         | Wiki links, pictures, sidebar, em dashes, emoji   |
+| `npm run screenshots`                        | Remake the pictures in `docs/screenshots/`        |
 | `npm run build:local -w @openbridge/web-app` | Single-file offline build in `dist-local/`        |
 
 The full list is in [`AGENTS.md`]({{repo}}/blob/HEAD/AGENTS.md) section 3.

@@ -26,6 +26,8 @@ not need to write code.
 - Official application forms stay in English, because agencies require them. People using another
   language get a companion guide that explains the steps.
 
+![The OpenBridge start page in Spanish]({{repo}}/raw/HEAD/docs/screenshots/welcome-spanish.png)
+
 ## Plain language in every language
 
 The people using OpenBridge are often stressed, short on time, and may not read well in any

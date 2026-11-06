@@ -9,13 +9,23 @@ All notable changes to this project are documented here. The format follows
 
 ### Added
 
+- **Screenshots:** `docs/screenshots/` holds 25 pictures of the screening app and the rule toolkit,
+  made from the real app with a made-up household by `npm run screenshots` (Playwright, fixed
+  date, loopback-only server). The README and 9 wiki pages now show them, and
+  `npm run check:wiki` fails if a wiki picture is missing.
+
 - `AGENTS.md` operating contract and `.kiro/steering/` standards for AI-assisted development
   (product, tech, structure, engineering, eligibility rules, privacy and security, UI and
   accessibility, testing, git and review).
 - `npm run verify` single quality gate, `npm run format`, `npm run format:check`, `npm run e2e`.
 - Public repository files: README, ROADMAP, LICENSE (AGPL-3.0), Code of Conduct, issue and PR
   templates, Dependabot configuration, Architecture Decision Records.
-- Project white paper (`OpenBridge_White_Paper.pdf`).
+- Project white paper, now in `docs/whitepaper/` with every version kept (`_v1.0`, `_v1.1`).
+  Version 1.1 makes the privacy claim precise (no personal data collected, stored, or sent; hosts
+  may keep standard connection logs), adds organizational footing and liability and distribution
+  as launch blockers, holds immigration-related wording until counsel approves it, plans the
+  referral directory depth first, adds a 90-day plan, and states plainly that expert reviewers
+  are still needed.
 
 - **Show the math:** every result can expand into the step-by-step calculation (household size,
   income, poverty line, limit, SNAP deductions and benefit), each rule value linked to its cited
@@ -33,6 +43,12 @@ All notable changes to this project are documented here. The format follows
   and build info. Nothing is pushed to a registry. ADR-0004, `docs/RELEASING.md`.
 - Root `Dockerfile` (non-root nginx, health check, OCI labels) and a CI job that builds and
   smoke-tests the image.
+- **Community rule toolkit** (`packages/rule-toolkit`, ADR-0005): a single offline file for policy
+  and legal experts to review a state's rules against their sources, propose rule changes with a
+  citation, and check test cases, with no code. Released as `openbridge-rule-toolkit-v*.zip`.
+  Maintainers apply proposals with `npm run rules:apply -- proposal.json`, which refuses stale
+  proposals and keeps adapters `draft`. Shared catalog and proposal logic live in
+  `packages/shared`.
 - **GitHub wiki** (source in `wiki/`): plain-language guides for using, hosting, reviewing rules,
   recording test cases, translating, and developing, published by `.github/workflows/wiki.yml`.
   `npm run check:wiki` (part of `npm run verify`) checks links, the sidebar, and copy rules.

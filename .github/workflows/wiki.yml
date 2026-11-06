@@ -10,7 +10,9 @@ name: Publish wiki
 on:
   push:
     branches: [mainline]
-    paths: ['wiki/**', '.github/workflows/wiki.yml']
+    # Pictures load from docs/screenshots/ in this repository (`{{repo}}/raw/HEAD/...`), so they
+    # are not copied into the wiki. They are listed here so the link check runs when they change.
+    paths: ['wiki/**', 'docs/screenshots/**', 'scripts/check-wiki.ts', '.github/workflows/wiki.yml']
   workflow_dispatch:
 
 permissions:

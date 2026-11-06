@@ -16,7 +16,9 @@ Launch blockers are marked **(blocker)**. Nothing ships to the public until ever
 
 ### Correctness
 
-- [ ] **(blocker)** SME review and sign-off of the Ohio adapter (Franklin County reviewers),
+- [ ] **(blocker)** Recruit expert reviewers (none yet for any state): social workers, public
+      health researchers including epidemiologists, navigators, and legal aid staff. Then complete
+      SME review and sign-off of the Ohio adapter,
       recorded in `docs/SME_SIGNOFF.md`.
 - [ ] **(blocker)** Identify reviewers for Texas and Washington and complete their sign-off, or
       ship the pilot with those states clearly labeled unverified.
@@ -75,15 +77,17 @@ Launch blockers are marked **(blocker)**. Nothing ships to the public until ever
 
 - [x] One-button GitHub Release with a hosted download, a single-file local download, and
       prebuilt container images (`docs/RELEASING.md`).
-- [ ] Add the community rule toolkit as a release download once it exists.
+- [x] Release the community rule toolkit as its own download (`openbridge-rule-toolkit-v*.zip`).
 
-### Community tools and documentation (next)
+### Community tools and documentation
 
-- [ ] Community rule toolkit for non-programmers: guided forms to propose a rule value with a
-      cited source, review a state adapter side by side with its sources, and turn screenings into
-      golden test cases (the first piece, the `/review` test-case recorder, ships today).
-- [ ] GitHub wiki: one-pager overview, white paper and its versions, how to use the app, how to
-      add or correct rules with code and with the community tools, and how to review as an expert.
+- [x] Community rule toolkit for non-programmers (`packages/rule-toolkit`, ADR-0005): review a
+      state's rules against their sources, propose a rule change with a citation, and check test
+      cases, in one offline file; maintainers apply proposals with `npm run rules:apply`.
+- [ ] Toolkit next steps: Spanish copy, reviewing federal figures (poverty line, SNAP amounts),
+      and opening an adapter file from a pull request to review it before merge.
+- [x] GitHub wiki (`wiki/`): overview, white paper versions, using and hosting the app, expert
+      review, the toolkit, adding rules and states, and developer guides.
 
 ### Publishing
 
@@ -106,4 +110,4 @@ Medicaid covers income-based (MAGI) pathways only; CHIP is approximated through 
 WIC caps at "possibly eligible" because nutritional risk is assessed in person; SNAP work
 requirements, vehicle assets, and itemized self-employment costs are not computed; only three
 states are covered; there are no accounts or usage analytics. The
-[white paper](./OpenBridge_White_Paper.pdf) covers these in depth.
+[white paper](./docs/whitepaper/OpenBridge_White_Paper.pdf) covers these in depth.
