@@ -31,6 +31,16 @@ instead, and a maintainer will make the change.
 5. **Add or update the `sources[]` entry** for that field: `field` (the path, like
    `wic.incomeLimitPct`), `sourceName`, `url`, `publishedDate` (`YYYY-MM-DD`), and an optional
    `note`.
+
+   If an expert sent a proposal file from the [[community rule toolkit|Community-Rule-Toolkit]],
+   steps 4 and 5 are one command. It checks the proposal against today's values, sets each value,
+   records the citation, and keeps the state `draft`:
+
+   ```bash
+   npm run rules:apply -- path/to/proposal.json --dry-run   # preview
+   npm run rules:apply -- path/to/proposal.json             # apply
+   ```
+
 6. **Leave `verificationStatus` as `draft`.** Only a human expert sets `verified`, after a
    sign-off in [`docs/SME_SIGNOFF.md`]({{repo}}/blob/HEAD/docs/SME_SIGNOFF.md).
 7. **Add or update a golden test case** in `data/states/<code>/fixtures/` that shows the change:

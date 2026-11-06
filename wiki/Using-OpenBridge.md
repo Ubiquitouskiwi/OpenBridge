@@ -20,24 +20,39 @@ anyone looking for help for themselves or their family. You do not need to be go
    on your computer (see [[Run it on your computer|Run-OpenBridge-on-Your-Computer]]).
 2. **Pick who it is for.** Choose **I'm checking for myself**. (Choose **I'm helping others
    (navigator)** only if you screen people for work. See [[Guide for navigators|Navigator-Guide]].)
+
+   ![The OpenBridge start page with the two choices and the Start button]({{repo}}/raw/HEAD/docs/screenshots/welcome.png)
+
 3. **Pick a language if you want.** The small menu at the top says **EN** for English and **ES** for
    Spanish. Some screens are still in English only.
 4. **Press Start.** You will see "Step 1 of 5" at the top. A message says your information is only on
    this device and has not been sent anywhere.
 5. **Step 1, "Where do you live?"** Choose your **State**. You can type your **County**. Leave **I
    live in this state** checked if it is true. Press **Next**.
+
+   ![Step 1, Where do you live, with the state set to Ohio]({{repo}}/raw/HEAD/docs/screenshots/screen-1-location.png)
+
 6. **Step 2, "Who is in your household?"** Press **Add a person** for each person who lives and eats
    with you, starting with yourself. For each person, choose a **Relationship** and give a **Date of
    birth** or an **Age**. Check any boxes that fit, like **Pregnant** or **Has a disability**.
    **Immigration status** is optional. Leaving it blank is fine, and status alone never makes
    OpenBridge say "no". Press **Next**.
+
+   ![Step 2, Who is in your household, with an adult and a child added]({{repo}}/raw/HEAD/docs/screenshots/screen-2-household.png)
+
 7. **Step 3, "What income does your household have?"** Press **Add income** for each kind of money
    coming in. Choose the **Type**, type the **Amount (before taxes)**, and choose **How often?** If
    you are paid by the hour, also fill in **Hours per week**. If no one has income, skip this step.
    Press **Next**.
+
+   ![Step 3, income, with one job earning 1,800 dollars a month]({{repo}}/raw/HEAD/docs/screenshots/screen-3-income.png)
+
 8. **Step 4, "A few optional details".** You can add rent, utilities, savings, and whether you
    already get SNAP, Medicaid, or cash assistance. These are optional, but they can make your
    results more exact. Press **Next**.
+
+   ![Step 4, optional details such as rent and savings]({{repo}}/raw/HEAD/docs/screenshots/screen-4-expenses.png)
+
 9. **Step 5, "Review".** Check the count of people and incomes. Press **Back** to fix anything.
    Then press **See my results**.
 
@@ -65,6 +80,8 @@ the reasons. Press a program's name to see more: the numbers, **Show the math**,
 documents you will likely need. To learn what each answer means, read
 [[Understanding your results|Understanding-Your-Results]].
 
+![The top of the results page, with an answer for each program]({{repo}}/raw/HEAD/docs/screenshots/results-top.png)
+
 From the results page you can also:
 
 - Press **What if my income changes?** to see how a raise or fewer hours might change things.
@@ -79,12 +96,16 @@ Your answers disappear when you close the page. To keep them:
 2. Type a passphrase (a secret phrase) in **Passphrase (at least 6 characters)**.
 3. Press **Download saved file**. Your browser saves a file named `openbridge-progress.json`.
 
+   ![The Save my progress to a file section, opened, with a passphrase box]({{repo}}/raw/HEAD/docs/screenshots/results-save-progress.png)
+
 > Write your passphrase down somewhere safe. If you forget it, no one can open the file, not even
 > the OpenBridge team.
 
 To come back later, open OpenBridge, press **I have a saved file**, choose the file in **Saved
 file**, type your **Passphrase**, and press **Unlock and continue**. Your answers fill back in at
 Step 1. Press **Next** through the steps and **See my results** again.
+
+![The Resume from a saved file page]({{repo}}/raw/HEAD/docs/screenshots/resume.png)
 
 ## Clear your information when you are done
 

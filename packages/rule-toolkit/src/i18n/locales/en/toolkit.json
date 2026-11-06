@@ -1,0 +1,243 @@
+{
+  "common": {
+    "appName": "OpenBridge Rule Toolkit",
+    "skipToContent": "Skip to main content",
+    "navLabel": "Toolkit sections",
+    "stateLabel": "State",
+    "statePlaceholder": "Choose a state",
+    "saved": "Saved. Look for {{file}} in your downloads.",
+    "copied": "Copied. You can paste it now.",
+    "copyFailed": "Your browser did not let us copy. Select the text in the box below and copy it.",
+    "copyFallbackLabel": "Text to copy",
+    "newTab": "(opens in a new tab)",
+    "verification": {
+      "draft": "draft (experts are still checking these rules)",
+      "verified": "checked by an expert"
+    },
+    "footerPrivacy": "This file works on your computer only. Nothing you type is sent anywhere. Your work is gone when you close the page, unless you download it."
+  },
+  "home": {
+    "navLabel": "Home",
+    "title": "OpenBridge Rule Toolkit",
+    "intro": "OpenBridge helps families find out which benefits they may get. You know the rules. These tools help you check them and tell us what to fix, with no code.",
+    "open": "Open {{tool}}",
+    "knowHeading": "Good to know",
+    "drafts": "The rules in OpenBridge are drafts. Experts like you are still checking them.",
+    "private": "Nothing you type here is sent anywhere. Your work stays on this computer until you download a file.",
+    "sources": "Every rule value needs an official source and the date it was published.",
+    "sendHeading": "How to send us your files",
+    "sendIssue": "On the OpenBridge GitHub page, open a new issue with the \"Eligibility rule correction\" form. Drag your file into one of the text boxes to attach it.",
+    "sendEmail": "Or email the file to openbridge@starlingtek.com.",
+    "sendAfter": "A maintainer adds your change to the rules. Then an expert checks it before it is used.",
+    "versions": "Toolkit version {{toolkit}}. Rules data version {{data}}."
+  },
+  "tools": {
+    "review": {
+      "title": "Review a state's rules",
+      "description": "See each rule value for a state next to its source. Mark each one as right, wrong, or not sure. Then download a report."
+    },
+    "propose": {
+      "title": "Propose a rule change",
+      "description": "Tell us a value that should change, with the official source. You get a file a maintainer can apply."
+    },
+    "check": {
+      "title": "Check a test case",
+      "description": "Open a test case file. See if the current rules give the results it expects."
+    }
+  },
+  "value": {
+    "pct": "{{value}}% of the poverty line",
+    "yes": "Yes",
+    "no": "No",
+    "notUsed": "Not used"
+  },
+  "fields": {
+    "snap": {
+      "bbce": "Uses broad-based categorical eligibility (looser income and asset tests)",
+      "grossIncomeLimitPct": "Income limit before deductions",
+      "netIncomeLimitPct": "Income limit after deductions",
+      "assetLimitCents": "Asset limit",
+      "assetLimitElderlyDisabledCents": "Asset limit for homes with an older or disabled person",
+      "hasVehicleAssetTest": "Counts cars as assets"
+    },
+    "medicaid": {
+      "expansion": "Expanded Medicaid to more adults",
+      "adultLimitPct": "Income limit for adults",
+      "parentCaretakerLimitPct": "Income limit for parents and caretakers",
+      "pregnantLimitPct": "Income limit for pregnant people",
+      "childTierLimitPct": "Income limit for children ages {{minAge}} to {{maxAge}}"
+    },
+    "wic": {
+      "incomeLimitPct": "Income limit"
+    },
+    "liheap": {
+      "incomeLimitPct": "Income limit",
+      "categoricalIfSnap": "People who get SNAP qualify on income"
+    },
+    "tanf": {
+      "baseMonthlyLimitCents": "Monthly income limit for the first person",
+      "perAdditionalPersonCents": "Amount added to the limit for each other person"
+    }
+  },
+  "review": {
+    "intro": "Pick a state. For each value, open its source and check that the number matches. Your choices stay on this computer.",
+    "stateStatus": "These rules are {{status}}. Last checked on {{date}}.",
+    "progress": "{{checked}} of {{total}} checked",
+    "valueLabel": "What the rules say",
+    "sourceLabel": "Source",
+    "noSource": "No source listed yet",
+    "published": "published {{date}}",
+    "checkLegend": "Does it match the source?",
+    "status": {
+      "matches": "Matches the source",
+      "mismatch": "Does not match",
+      "unsure": "Not sure",
+      "unchecked": "Not checked yet"
+    },
+    "noteLabel": "Note (optional)",
+    "reviewerLegend": "About you (optional)",
+    "reviewerHint": "This goes only into the report you download. We do not keep it.",
+    "reviewerName": "Your name",
+    "reviewerRole": "Your role, for example caseworker or legal aid attorney",
+    "finishHeading": "Finish your review",
+    "finishHelp": "Download the report, or copy its text. Then send it to us. You can do this even if you have not checked every value.",
+    "download": "Download report",
+    "copy": "Copy report text"
+  },
+  "report": {
+    "title": "OpenBridge rule review: {{state}}",
+    "date": "Date: {{date}}",
+    "reviewerName": "Reviewer: {{name}}",
+    "reviewerRole": "Role: {{role}}",
+    "verificationStatus": "Rules status: {{status}}",
+    "lastVerified": "Rules last checked: {{date}}",
+    "toolkitVersion": "Toolkit version: {{version}}",
+    "dataVersion": "Rules data version: {{version}}",
+    "summaryHeading": "Summary",
+    "countMatches": "Matches the source: {{count}}",
+    "countMismatch": "Does not match: {{count}}",
+    "countUnsure": "Not sure: {{count}}",
+    "countUnchecked": "Not checked yet: {{count}}",
+    "valuesHeading": "Each value",
+    "colProgram": "Program",
+    "colRule": "Rule",
+    "colValue": "What the rules say",
+    "colCheck": "Check",
+    "colSource": "Source",
+    "colNotes": "Notes",
+    "sourceCell": "{{name}}, published {{date}} ({{url}})",
+    "footer": "Made with the OpenBridge Rule Toolkit. To fix a value, use Propose a rule change, or open an \"Eligibility rule correction\" issue."
+  },
+  "propose": {
+    "intro": "Pick a state, then the value that should change. Enter the new value and the official source that shows it.",
+    "changeLegend": "Change {{n}}",
+    "programLabel": "Program",
+    "programPlaceholder": "Choose a program",
+    "fieldLabel": "Rule value",
+    "fieldPlaceholder": "Choose a rule value",
+    "currentValue": "What the rules say now",
+    "currentSource": "Source now",
+    "newValueLegend": "New value",
+    "amountLabel": {
+      "pct": "New percent of the poverty line",
+      "cents": "New dollar amount"
+    },
+    "amountHint": {
+      "pct": "Enter a number, for example 130 for 130% of the poverty line.",
+      "cents": "Enter dollars, for example 2,750 or 2750.50.",
+      "boolean": "Choose one."
+    },
+    "choice": {
+      "yes": "Yes",
+      "no": "No",
+      "notUsed": "Not used (this test does not apply)"
+    },
+    "changeError": {
+      "fieldRequired": "Choose the rule value you want to change.",
+      "valueRequired": "Enter the new value.",
+      "pctInvalid": "Enter a number with no letters, for example 130.",
+      "centsInvalid": "Enter a dollar amount, for example 2,750 or 2750.50.",
+      "valueInvalid": "This value cannot be used here. Check the number.",
+      "duplicate": "You already picked this value in another change. Use one change per value.",
+      "sameAsCurrent": "This is the same as what the rules say now. Enter the new value."
+    },
+    "removeChange": "Remove change {{n}}",
+    "addChange": "Add another change from the same source",
+    "sourceLegend": "Official source",
+    "sourceHelp": "This source must show every change above. For a different source, make a second proposal.",
+    "sourceName": "Name of the source",
+    "sourceNameHint": "For example, Ohio SNAP Policy Manual, section 4.2.",
+    "sourceUrl": "Web address of the source",
+    "sourceUrlHint": "It must start with https://",
+    "sourceDate": "Date the source was published",
+    "sourceDateHint": "Use the date printed on the source.",
+    "sourceError": {
+      "sourceName": {
+        "required": "Enter the name of the source.",
+        "tooLong": "Make the name shorter."
+      },
+      "url": {
+        "required": "Enter the web address of the source.",
+        "notHttps": "Enter a full web address that starts with https://"
+      },
+      "publishedDate": {
+        "required": "Enter the date the source was published.",
+        "invalid": "Enter a real date."
+      }
+    },
+    "explanation": "Why should this change?",
+    "explanationHint": "In your own words. For example, where in the source the number is.",
+    "explanationError": {
+      "required": "Tell us why this should change.",
+      "tooLong": "Make this shorter."
+    },
+    "finishHeading": "Finish your proposal",
+    "notReady": "When every part above is filled in, you can download your proposal.",
+    "checkForm": "Check my proposal",
+    "fixErrors": "Some parts need a fix. Look for the notes in red above.",
+    "checkFailed": "Something in this proposal does not match the current rules. Pick the state again and start over.",
+    "ready": "Your proposal is ready.",
+    "download": "Download proposal file",
+    "copy": "Copy issue text",
+    "nextStep": "Next, open an \"Eligibility rule correction\" issue on GitHub. Paste the issue text and attach the file. You can also email both to openbridge@starlingtek.com. A maintainer applies the file, and an expert reviews the change."
+  },
+  "issue": {
+    "title": "Rule correction for {{state}}",
+    "changesHeading": "Changes",
+    "changeLine": "{{program}}, {{rule}}: change from {{from}} to {{to}} (`{{path}}`)",
+    "sourceHeading": "Official source",
+    "sourceName": "Name: {{name}}",
+    "sourceUrl": "Link: {{url}}",
+    "sourceDate": "Published: {{date}}",
+    "whyHeading": "Why",
+    "fileHeading": "Proposal file",
+    "fileLine": "Attached: {{file}} (made with {{version}})."
+  },
+  "check": {
+    "intro": "Open a test case file. It is a made-up household and the results it should get. You can save one from the OpenBridge test-case page, or find them in the data/states folder on GitHub.",
+    "dateNote": "Test cases are checked as if today were {{date}}.",
+    "fileLabel": "Test case file",
+    "fileHint": "A .json file. It stays on this computer.",
+    "error": {
+      "notJson": "We could not read this file. Choose a test case file that ends in .json.",
+      "wrongShape": "This file is not a test case. Choose a file saved from the test-case page.",
+      "unknownState": "This test case is for a state the toolkit does not have rules for yet.",
+      "engineFailed": "We could not check this test case. Try saving it again from the test-case page.",
+      "unreadable": "We could not open this file. Try again."
+    },
+    "resultsHeading": "Results for: {{name}}",
+    "allPass": "All {{count}} checks pass with the current {{state}} rules.",
+    "someMismatch": "{{failed}} of {{total}} checks do not match the current {{state}} rules.",
+    "mismatchHelp": "A mismatch means the rules or the test case may be wrong. Look at the math below. If the rules are wrong, propose a rule change.",
+    "expected": "Test case expects",
+    "engine": "Rules give",
+    "noResult": "No result",
+    "pass": "Pass",
+    "mismatch": "Mismatch",
+    "reasonsHeading": "Why",
+    "memberRowTitle": "{{program}} for {{person}}",
+    "memberUnknown": "a person ({{id}})",
+    "benefitRowTitle": "{{program}}, estimated monthly amount",
+    "fromTestCase": "From the test case"
+  }
+}

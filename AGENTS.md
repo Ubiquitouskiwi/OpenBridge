@@ -49,9 +49,9 @@ If a request conflicts with one of these, stop and say so.
 7. **Engine emits codes, UI emits words.** The engine returns reason codes and params only. Every
    new reason code gets an English string in `packages/web-app/src/i18n/locales/en/reasons.json`.
 8. **One-way dependencies.** `shared` depends on nothing. `eligibility-engine` and
-   `form-assembly` depend only on `shared`. `web-app` may use all three; `mcp-server` uses
-   `shared` and `eligibility-engine`. Nothing imports upward or sideways (`mcp-server` reads
-   web-app locale JSON as data, never its code).
+   `form-assembly` depend only on `shared`. `web-app` may use all three; `mcp-server` and
+   `rule-toolkit` use `shared` and `eligibility-engine`. Nothing imports upward or sideways
+   (`mcp-server` and `rule-toolkit` read web-app locale JSON as data, never its code).
 9. **No secrets in the repo.** No keys, tokens, account IDs, ARNs, or personal contact details in
    code, config, fixtures, or docs. The one published project contact,
    `openbridge@starlingtek.com`, is the only email address that belongs in the repo.
@@ -72,6 +72,7 @@ npm test                  # unit tests only
 npm run test:fixtures     # golden eligibility fixtures only
 npm run validate:adapters # state adapter schema + provenance only
 npm run dev -w @openbridge/web-app   # local dev server (binds to localhost)
+npm run screenshots       # remake docs/screenshots/ with Playwright (run when a screen changes)
 npm run build:local -w @openbridge/web-app   # single-file offline build (dist-local/)
 npm run release:package -- --version X.Y.Z   # release downloads (see docs/RELEASING.md)
 ```

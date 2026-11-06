@@ -4,6 +4,7 @@ name: Release
 # Produces these downloads on one GitHub Release (see docs/RELEASING.md):
 #   - openbridge-hosted-v<version>.tar.gz            static site, Docker/Compose files, server examples
 #   - openbridge-local-v<version>.zip                single-file app, double-click to run offline
+#   - openbridge-rule-toolkit-v<version>.zip         single-file tools for policy and legal experts
 #   - openbridge-image-v<version>-linux-<arch>.tar.gz  prebuilt container images (docker load)
 # plus SHA256SUMS.txt. Images are attached as files only; nothing is pushed to a registry.
 # Every release is gated on the same checks as CI.
@@ -38,8 +39,8 @@ jobs:
     name: Verify and package
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
           cache: npm
@@ -66,7 +67,7 @@ jobs:
       - name: Install Playwright browser
         run: npx playwright install --with-deps chromium
 
-      - name: End-to-end and accessibility tests
+      - name: End-to-end and accessibility tests (web app and rule toolkit)
         run: npm run e2e
 
       - name: Build the single-file local version
@@ -77,7 +78,7 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: npm run release:package -- --version "$VERSION"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: release-artifacts
           path: release-artifacts/
@@ -92,7 +93,7 @@ jobs:
       matrix:
         arch: [amd64, arm64]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: docker/setup-qemu-action@v3
       - uses: docker/setup-buildx-action@v3
 
@@ -122,7 +123,7 @@ jobs:
           mkdir -p image-artifacts
           gzip -9 -c /tmp/openbridge-image.tar > "image-artifacts/openbridge-image-v${VERSION}-linux-${ARCH}.tar.gz"
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: image-${{ matrix.arch }}
           path: image-artifacts/
@@ -136,7 +137,7 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       # Download only this workflow's own artifacts, by name. Without a name or pattern,
       # download-artifact also tries to fetch docker/build-push-action's build-record
@@ -160,6 +161,7 @@ jobs:
           VERSION: ${{ inputs.version }}
         run: |
           for f in "openbridge-hosted-v${VERSION}.tar.gz" "openbridge-local-v${VERSION}.zip" \
+                   "openbridge-rule-toolkit-v${VERSION}.zip" \
                    "openbridge-image-v${VERSION}-linux-amd64.tar.gz" \
                    "openbridge-image-v${VERSION}-linux-arm64.tar.gz"; do
             if [ ! -s "$f" ]; then echo "::error::Missing release file $f"; exit 1; fi

@@ -27,7 +27,7 @@
 - [[Report a rule problem|Report-a-Rule-Problem]]
 - [[Translate OpenBridge|Translate-OpenBridge]]
 - [[Test accessibility|Test-Accessibility]]
-- [[Community rule toolkit (planned)|Community-Rule-Toolkit]]
+- [[Community rule toolkit|Community-Rule-Toolkit]]
 
 **Rules and policy (with code)**
 
