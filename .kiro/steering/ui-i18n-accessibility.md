@@ -1,7 +1,13 @@
 ---
 inclusion: fileMatch
 fileMatchPattern:
-  ['packages/web-app/src/**', 'packages/web-app/e2e/**', 'packages/form-assembly/**']
+  [
+    'packages/web-app/src/**',
+    'packages/web-app/e2e/**',
+    'packages/form-assembly/**',
+    'packages/rule-toolkit/src/**',
+    'packages/rule-toolkit/e2e/**',
+  ]
 ---
 
 # UI, language, and accessibility standards

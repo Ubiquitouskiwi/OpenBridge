@@ -10,6 +10,7 @@ fileMatchPattern:
     'packages/web-app/vite.config.ts',
     'packages/web-app/index.html',
     'packages/mcp-server/**',
+    'packages/rule-toolkit/**',
     'packaging/**',
     'Dockerfile',
     'infra/**',

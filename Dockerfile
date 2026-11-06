@@ -18,6 +18,7 @@ COPY packages/eligibility-engine/package.json packages/eligibility-engine/
 COPY packages/form-assembly/package.json packages/form-assembly/
 COPY packages/web-app/package.json packages/web-app/
 COPY packages/mcp-server/package.json packages/mcp-server/
+COPY packages/rule-toolkit/package.json packages/rule-toolkit/
 RUN npm ci --ignore-scripts --no-audit --no-fund
 COPY . .
 RUN npx turbo run build --filter=@openbridge/web-app

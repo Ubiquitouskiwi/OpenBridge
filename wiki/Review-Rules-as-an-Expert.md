@@ -26,6 +26,12 @@ state, you check four things (from the [sign-off record]({{repo}}/blob/HEAD/docs
 - Have the official sources ready: the state's policy manuals and income tables, plus federal ones
   (HHS poverty guidelines, USDA FNS for SNAP and WIC, and Medicaid.gov).
 
+## The easy way: the rule toolkit
+
+The [[community rule toolkit|Community-Rule-Toolkit]] shows every value in plain words next to its
+source, lets you mark each one, and downloads a review report you can send us. It needs no code and
+no GitHub knowledge. The steps below do the same review straight from the files, if you prefer.
+
 ## Steps
 
 1. **Open the state's rule file.** On GitHub, open [data/states]({{repo}}/tree/HEAD/data/states),

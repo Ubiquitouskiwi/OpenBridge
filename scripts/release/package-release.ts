@@ -3,10 +3,12 @@
  *
  *   openbridge-hosted-v<version>.tar.gz   static site + server examples, for hosting
  *   openbridge-local-v<version>.zip       single-file app, double-click to run offline
- *   SHA256SUMS.txt                        checksums for both
+ *   openbridge-rule-toolkit-v<version>.zip single-file tools for policy and legal experts
+ *   SHA256SUMS.txt                        checksums for every download
  *
- * Prerequisites: `npm run build` (hosted, packages/web-app/dist) and
- * `npm run build:local -w @openbridge/web-app` (local, packages/web-app/dist-local).
+ * Prerequisites: `npm run build` (hosted site in packages/web-app/dist and the toolkit in
+ * packages/rule-toolkit/dist) and `npm run build:local -w @openbridge/web-app` (local,
+ * packages/web-app/dist-local).
  *
  * Usage: tsx scripts/release/package-release.ts [--version 1.2.3]
  */
@@ -29,6 +31,7 @@ const OUT = join(ROOT, 'release-artifacts');
 const STAGING = join(OUT, 'staging');
 const HOSTED_BUILD = join(ROOT, 'packages/web-app/dist');
 const LOCAL_BUILD = join(ROOT, 'packages/web-app/dist-local/OpenBridge.html');
+const TOOLKIT_BUILD = join(ROOT, 'packages/rule-toolkit/dist/OpenBridge-Rule-Toolkit.html');
 
 // Semantic Versioning 2.0.0, without a leading "v".
 const SEMVER = /^\d+\.\d+\.\d+(?:-[0-9A-Za-z.-]+)?(?:\+[0-9A-Za-z.-]+)?$/;
@@ -115,6 +118,15 @@ function stageLocal(name: string, info: Record<string, unknown>): void {
   writeFileSync(join(dir, 'BUILD-INFO.json'), `${JSON.stringify(info, null, 2)}\n`);
 }
 
+function stageToolkit(name: string, info: Record<string, unknown>): void {
+  const dir = join(STAGING, name);
+  mkdirSync(dir, { recursive: true });
+  cpSync(TOOLKIT_BUILD, join(dir, 'OpenBridge-Rule-Toolkit.html'));
+  cpSync(join(ROOT, 'packaging/toolkit/README.txt'), join(dir, 'README.txt'));
+  cpSync(join(ROOT, 'LICENSE'), join(dir, 'LICENSE'));
+  writeFileSync(join(dir, 'BUILD-INFO.json'), `${JSON.stringify(info, null, 2)}\n`);
+}
+
 function sha256(path: string): string {
   return createHash('sha256').update(readFileSync(path)).digest('hex');
 }
@@ -123,6 +135,7 @@ function main(): void {
   const version = parseVersion(process.argv.slice(2));
   requireFile(join(HOSTED_BUILD, 'index.html'), 'Run `npm run build` first.');
   requireFile(LOCAL_BUILD, 'Run `npm run build:local -w @openbridge/web-app` first.');
+  requireFile(TOOLKIT_BUILD, 'Run `npm run build` first (it builds the rule toolkit).');
 
   rmSync(OUT, { recursive: true, force: true });
   mkdirSync(STAGING, { recursive: true });
@@ -130,15 +143,18 @@ function main(): void {
 
   const hosted = `openbridge-hosted-v${version}`;
   const local = `openbridge-local-v${version}`;
+  const toolkit = `openbridge-rule-toolkit-v${version}`;
   stageHosted(hosted, info);
   stageLocal(local, info);
+  stageToolkit(toolkit, info);
 
   // execFileSync passes arguments directly (no shell), so names cannot inject commands.
   execFileSync('tar', ['-czf', join(OUT, `${hosted}.tar.gz`), '-C', STAGING, hosted]);
   execFileSync('zip', ['-rqX', join(OUT, `${local}.zip`), local], { cwd: STAGING });
+  execFileSync('zip', ['-rqX', join(OUT, `${toolkit}.zip`), toolkit], { cwd: STAGING });
   rmSync(STAGING, { recursive: true, force: true });
 
-  const artifacts = [`${hosted}.tar.gz`, `${local}.zip`];
+  const artifacts = [`${hosted}.tar.gz`, `${local}.zip`, `${toolkit}.zip`];
   const sums = artifacts.map((f) => `${sha256(join(OUT, f))}  ${f}`).join('\n');
   writeFileSync(join(OUT, 'SHA256SUMS.txt'), `${sums}\n`);
 
