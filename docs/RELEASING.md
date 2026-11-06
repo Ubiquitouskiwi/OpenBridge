@@ -8,6 +8,7 @@ package or container registry: every download is attached to the GitHub Release 
 | Download                                                                   | For                                                      | How people use it                                                                                                                                          |
 | -------------------------------------------------------------------------- | -------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `openbridge-local-v<version>.zip`                                          | Anyone who wants to use OpenBridge on their own computer | Unzip, double-click `OpenBridge.html`. Works offline; nothing to install.                                                                                  |
+| `openbridge-rule-toolkit-v<version>.zip`                                   | Policy and legal experts who check and improve the rules | Unzip, double-click `OpenBridge-Rule-Toolkit.html`. Works offline; nothing to install. See `packaging/toolkit/README.txt`.                                 |
 | `openbridge-hosted-v<version>.tar.gz`                                      | Organizations hosting it for others                      | Static `site/` plus `Dockerfile`, `compose.yaml`, nginx and Caddy examples, and `serve.mjs` (no-dependency Node server). See `packaging/hosted/README.md`. |
 | `openbridge-image-v<version>-linux-amd64.tar.gz` and `-linux-arm64.tar.gz` | Hosts who use containers                                 | `docker load -i <file>`, then `docker run -p 127.0.0.1:8080:8080 openbridge:<version>`.                                                                    |
 | `SHA256SUMS.txt`                                                           | Everyone                                                 | Checksums for every file above.                                                                                                                            |
@@ -15,10 +16,9 @@ package or container registry: every download is attached to the GitHub Release 
 Each download includes `BUILD-INFO.json` with the version, the rules data version, the review
 status of every state adapter, and the commit it was built from.
 
-Planned: a third audience package, the **community rule toolkit** (tools that let policy and
-legal experts propose rules and test cases without code). It will be added to this workflow as
-another download when it exists. The first piece, the in-app test-case recorder at `/review`, ships
-in the app today.
+The rule toolkit download is for policy and legal experts: review a state's rules, propose a
+rule change with a citation, or check a test case, all offline and without code (ADR-0005). A
+maintainer applies a downloaded proposal with `npm run rules:apply -- proposal.json`.
 
 ## How to cut a release (maintainers)
 
